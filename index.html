@@ -1,0 +1,606 @@
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Artina Qhanapa</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<meta name="description" content="Colectivo de artistas de Tacna, Perú. Pintura y escultura con envíos a todo el Perú.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Lexend:wght@400;500;600;700&family=Figtree:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+/* Layout: identidad del logo. Blanco cálido, letras geométricas negras, rojo óxido y naranja del mosaico; espiral como separador; galería en carrusel. */
+:root {
+  --muro: #fffcf8;        /* blanco cálido, fondo del logo */
+  --papel: #ffffff;
+  --tinta: #141110;       /* negro de las letras */
+  --tinta-suave: #5e534d;
+  --linea: #eee2d8;
+  --rojo: #b3300e;        /* rojo óxido de la espiral y "Colectivo de arte" */
+  --rojo-suave: #fcebe3;
+  --naranja: #f0821e;     /* naranja del mosaico */
+  --whatsapp: #1c7c54;
+  --f-display: "Lexend", "Montserrat", "Avenir Next", "Segoe UI", sans-serif;
+  --f-texto: "Figtree", "Segoe UI", system-ui, sans-serif;
+  --f-ficha: "IBM Plex Mono", ui-monospace, "SFMono-Regular", Menlo, monospace;
+  color-scheme: light;    /* la marca vive sobre fondo claro: diseño de un solo tema */
+}
+
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } * { transition: none !important; animation: none !important; } }
+body {
+  margin: 0;
+  background: var(--muro); color: var(--tinta);
+  font: 400 1rem/1.6 var(--f-texto);
+}
+.envoltura {
+  max-width: 1240px; margin-inline: auto;
+  padding-left: max(16px, env(safe-area-inset-left, 0px));
+  padding-right: max(16px, env(safe-area-inset-right, 0px));
+}
+a { color: inherit; }
+:focus-visible { outline: 2px solid var(--rojo); outline-offset: 3px; }
+
+/* Aviso de borrador */
+.aviso { background: var(--rojo-suave); color: var(--tinta); font: 500 .8rem/1.4 var(--f-ficha); }
+.aviso .envoltura { padding-block: .55rem; display: flex; gap: .75rem; align-items: center; justify-content: space-between; }
+.aviso button { background: none; border: 0; color: inherit; font: inherit; cursor: pointer; text-decoration: underline; flex: none; }
+
+/* Encabezado */
+header.sitio .envoltura { padding-block: .9rem; display: flex; align-items: center; justify-content: space-between; gap: 1rem; flex-wrap: wrap; border-bottom: 1px solid var(--linea); }
+.marca { display: inline-block; text-decoration: none; line-height: 0; }
+.marca img { height: 52px; width: auto; }
+.espiral { display: flex; align-items: center; gap: .9rem; color: var(--rojo); margin: 0 0 1.4rem; max-width: 26rem; }
+.espiral::before, .espiral::after { content: ""; height: 5px; background: var(--rojo); flex: 1; border-radius: 1px; }
+.espiral svg { width: 40px; height: 40px; flex: none; }
+.punto { display: inline-block; width: .32em; height: .32em; border-radius: 50%; background: var(--rojo); vertical-align: middle; margin: 0 .35em; }
+nav.menu { display: flex; gap: 1.25rem; flex-wrap: wrap; font-size: .92rem; }
+nav.menu a { text-decoration: none; color: var(--tinta); font-weight: 500; }
+nav.menu a:hover { color: var(--rojo); }
+
+/* Portada */
+.portada .envoltura { min-height: min(72vh, 680px); padding-block: clamp(2.5rem, 6vw, 5rem) clamp(2rem, 4vw, 3rem); display: grid; grid-template-columns: minmax(0, 1.15fr) minmax(0, .85fr); gap: clamp(2rem, 5vw, 4.5rem); align-items: center; }
+.portada h1 { font: 700 clamp(2.3rem, 5.6vw, 4.4rem)/1.02 var(--f-display); margin: 0 0 1.25rem; text-wrap: balance; letter-spacing: -.02em; text-transform: uppercase; }
+.portada h1 em { font-style: normal; color: var(--rojo); }
+.portada p { max-width: 34rem; color: var(--tinta-suave); font-size: 1.08rem; margin: 0 0 1.75rem; }
+.etiqueta { font: 600 .8rem/1 var(--f-display); letter-spacing: .14em; text-transform: uppercase; color: var(--rojo); margin: 0 0 1rem; }
+.acciones { display: flex; gap: .75rem; flex-wrap: wrap; }
+.boton { display: inline-flex; align-items: center; gap: .5rem; padding: .85rem 1.35rem; border-radius: 6px; font: 600 .92rem/1 var(--f-display); letter-spacing: .02em; text-decoration: none; border: 1px solid var(--tinta); cursor: pointer; background: transparent; color: var(--tinta); }
+.boton.lleno { background: var(--rojo); border-color: var(--rojo); color: #fff; }
+.boton:hover { transform: translateY(-1px); }
+.boton { transition: transform .15s ease; }
+.destacada { margin: 0; justify-self: end; max-width: 420px; width: 100%; }
+.destacada button { all: unset; cursor: pointer; display: block; width: 100%; }
+.destacada img { display: block; width: 100%; height: auto; box-shadow: 0 1px 0 var(--linea), 0 24px 48px -24px rgba(0,0,0,.45); }
+.destacada figcaption { margin-top: .75rem; font: .8rem/1.4 var(--f-ficha); color: var(--tinta-suave); }
+
+/* Galería */
+section.bloque .envoltura { padding-block: clamp(2.5rem, 5vw, 4rem); }
+.cabecera-bloque { display: flex; justify-content: space-between; align-items: end; gap: 1rem; flex-wrap: wrap; margin-bottom: 1.75rem; }
+h2 { font: 700 clamp(1.7rem, 3.2vw, 2.5rem)/1.05 var(--f-display); text-transform: uppercase; letter-spacing: -.01em; margin: 0; text-wrap: balance; }
+.filtros { display: flex; gap: .4rem; flex-wrap: wrap; }
+.filtros button { font: 500 .85rem/1 var(--f-texto); padding: .55rem .95rem; border-radius: 999px; border: 1px solid var(--linea); background: var(--papel); color: var(--tinta-suave); cursor: pointer; }
+.filtros button[aria-pressed="true"] { background: var(--tinta); color: #fff; border-color: var(--tinta); }
+.filtros .cuenta { font-family: var(--f-ficha); opacity: .7; margin-left: .3rem; }
+.controles { display: flex; gap: 1rem; align-items: center; flex-wrap: wrap; }
+.flechas { display: flex; gap: .4rem; align-items: center; }
+.flecha { width: 2.6rem; height: 2.6rem; border-radius: 50%; border: 1px solid var(--tinta); background: transparent; color: var(--tinta); font: 400 1.2rem/1 var(--f-texto); cursor: pointer; display: grid; place-items: center; }
+.flecha:hover:not(:disabled) { background: var(--rojo); border-color: var(--rojo); color: #fff; }
+.flecha:disabled { opacity: .3; cursor: default; }
+.carrusel { position: relative; }
+.galeria { display: flex; align-items: flex-start; gap: clamp(.75rem, 2vw, 1.75rem); overflow-x: auto; scroll-snap-type: x mandatory; padding-block: 1.5rem 1rem; padding-inline: max(16px, calc(50% - 200px)); scrollbar-width: none; overscroll-behavior-x: contain; perspective: 1200px; }
+.galeria::-webkit-scrollbar { display: none; }
+.galeria:focus-visible { outline: 2px solid var(--rojo); outline-offset: 4px; }
+.obra { flex: none; margin: 0; scroll-snap-align: center; width: max-content; max-width: 78vw; transform: rotateY(var(--giro, 0deg)) scale(var(--escala, 1)); opacity: var(--opacidad, 1); transition: transform .45s cubic-bezier(.2,.7,.2,1), opacity .45s ease; transform-origin: center 40%; animation: entrar .7s cubic-bezier(.2,.7,.2,1) backwards; animation-delay: var(--retraso, 0ms); }
+@keyframes entrar { from { opacity: 0; transform: translateY(28px) scale(.94); } }
+.obra button { all: unset; cursor: zoom-in; display: block; }
+.marco { display: block; position: relative; overflow: hidden; border-radius: 4px; box-shadow: 0 2px 0 var(--linea); transition: box-shadow .45s ease; }
+.obra img { display: block; height: clamp(280px, 50vh, 460px); width: auto; max-width: 78vw; object-fit: cover; background: var(--linea); transition: transform .6s cubic-bezier(.2,.7,.2,1); }
+.obra.activa .marco { box-shadow: 0 0 0 3px var(--papel), 0 0 0 6px var(--rojo), 0 28px 44px -24px rgba(0,0,0,.55); }
+.obra button:hover img { transform: scale(1.06); }
+.ver { position: absolute; left: 50%; bottom: 1rem; transform: translate(-50%, 12px); opacity: 0; background: var(--rojo); color: #fff; font: 600 .78rem/1 var(--f-display); letter-spacing: .08em; text-transform: uppercase; padding: .6rem .9rem; border-radius: 4px; transition: opacity .3s ease, transform .3s ease; white-space: nowrap; }
+.obra button:hover .ver, .obra button:focus-visible .ver, .obra.activa .ver { opacity: 1; transform: translate(-50%, 0); }
+.obra .cartela { max-width: 100%; opacity: .55; transition: opacity .4s ease; }
+.obra.activa .cartela { opacity: 1; }
+.pie-carrusel { display: grid; justify-items: center; gap: .8rem; margin-top: .5rem; }
+.puntos { display: flex; gap: .45rem; flex-wrap: wrap; justify-content: center; }
+.puntos button { width: 9px; height: 9px; padding: 0; border-radius: 50%; border: 0; background: var(--linea); cursor: pointer; transition: width .3s ease, background .3s ease; }
+.puntos button[aria-current="true"] { width: 26px; border-radius: 5px; background: var(--rojo); }
+.barra { width: min(220px, 60%); height: 3px; background: var(--linea); border-radius: 2px; overflow: hidden; }
+.barra span { display: block; height: 100%; width: 100%; background: var(--naranja); transform-origin: left; transform: scaleX(0); }
+.barra.corre span { animation: llenar 4.5s linear forwards; }
+.barra.detenida span { animation-play-state: paused; }
+@keyframes llenar { to { transform: scaleX(1); } }
+.flecha.play { font-size: .7rem; letter-spacing: -.1em; }
+dialog[open] { animation: abrir .35s cubic-bezier(.2,.7,.2,1); }
+dialog[open]::backdrop { animation: velo .35s ease; }
+@keyframes abrir { from { opacity: 0; transform: translateY(16px) scale(.97); } }
+@keyframes velo { from { opacity: 0; } }
+#ficha-img { animation: fundido .35s ease; }
+@keyframes fundido { from { opacity: 0; } }
+.progreso { font: 500 .78rem/1 var(--f-ficha); color: var(--tinta-suave); font-variant-numeric: tabular-nums; min-width: 4.5ch; text-align: right; }
+/* Vista ampliada */
+.ficha .lamina img { cursor: zoom-in; }
+dialog.ampliada .ficha { grid-template-columns: 1fr; }
+dialog.ampliada .datos { display: none; }
+dialog.ampliada .lamina { background: #0e0c0b; padding: 0; }
+dialog.ampliada .lamina img { max-height: calc(100dvh - 24px); cursor: zoom-out; }
+.nav-ficha { position: absolute; top: 50%; transform: translateY(-50%); width: 2.6rem; height: 2.6rem; border-radius: 50%; border: 0; background: rgba(20,17,16,.6); color: #fff; font-size: 1.2rem; cursor: pointer; z-index: 2; }
+.nav-ficha.ant { left: .6rem; }
+.nav-ficha.sig { right: .6rem; }
+.cerrar { z-index: 3; }
+.lamina { position: relative; }
+.obra button:focus-visible .marco { outline: 2px solid var(--rojo); outline-offset: 4px; }
+.cartela { display: grid; grid-template-columns: auto minmax(0,1fr); gap: .1rem .75rem; margin-top: .7rem; }
+.cartela .num { font: 600 .72rem/1.6 var(--f-ficha); color: var(--rojo); grid-row: span 2; padding-top: .15rem; }
+.cartela .titulo { font: 500 1.02rem/1.3 var(--f-texto); }
+.cartela .meta { font: .78rem/1.4 var(--f-ficha); color: var(--tinta-suave); }
+
+/* Artistas */
+.artistas-vacio { border: 1px dashed var(--linea); padding: 2rem; max-width: 44rem; color: var(--tinta-suave); background: var(--papel); }
+.artistas-vacio strong { color: var(--tinta); }
+.lista-artistas { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 1.5rem; }
+
+/* Cómo comprar */
+.pasos { list-style: none; padding: 0; margin: 0; display: grid; grid-template-columns: repeat(3, minmax(0,1fr)); gap: 1px; background: var(--linea); border: 1px solid var(--linea); }
+.pasos li { background: var(--papel); padding: 1.6rem 1.4rem 1.8rem; min-width: 0; }
+.pasos .n { font: 700 2.4rem/1 var(--f-display); -webkit-text-stroke: 0; color: var(--rojo); display: block; margin-bottom: .8rem; }
+.pasos h3 { margin: 0 0 .4rem; font: 600 1.05rem/1.3 var(--f-texto); }
+.pasos p { margin: 0; color: var(--tinta-suave); font-size: .95rem; }
+.pagos { display: flex; gap: .5rem; flex-wrap: wrap; margin-top: .9rem; }
+.chip { font: 500 .74rem/1 var(--f-ficha); padding: .4rem .6rem; border: 1px solid var(--linea); border-radius: 4px; color: var(--tinta); }
+
+/* Pie */
+footer .envoltura { padding-block: 2.5rem 3rem; border-top: 1px solid var(--linea); display: flex; justify-content: space-between; gap: 1.5rem; flex-wrap: wrap; font-size: .92rem; color: var(--tinta-suave); }
+footer .marca img { height: 64px; }
+.guia { display: grid; grid-template-columns: minmax(0,1fr) auto; gap: 2rem; align-items: end; }
+.guia .mascota { width: clamp(110px, 14vw, 170px); height: auto; }
+@media (max-width: 760px) { .guia { grid-template-columns: 1fr; } .guia .mascota { justify-self: end; width: 110px; } }
+.mosaico { height: 6px; background: linear-gradient(to right, var(--rojo) 0 34%, var(--naranja) 34% 58%, var(--tinta) 58% 68%, var(--naranja) 68% 84%, var(--rojo) 84%); background-size: 220px 6px; }
+.portada .etiqueta { color: var(--rojo); margin-bottom: 1.1rem; }
+
+/* Ficha de obra */
+dialog { border: 0; padding: 0; background: var(--papel); color: var(--tinta); max-width: calc(100vw - 24px); width: min(1600px, calc(100vw - 24px)); height: calc(100dvh - 24px); max-height: calc(100dvh - 24px); overflow: hidden; }
+dialog::backdrop { background: rgba(15, 12, 11, .72); }
+.ficha { display: grid; grid-template-columns: minmax(0, 1fr) clamp(300px, 26vw, 400px); height: 100%; }
+.ficha .lamina { background: #1a1614; display: grid; place-items: center; padding: clamp(.75rem, 1.5vw, 1.25rem); min-height: 0; height: 100%; overflow: hidden; }
+.ficha .lamina img { width: 100%; height: 100%; max-height: calc(100dvh - 24px - 2.5rem); object-fit: contain; box-shadow: none; }
+.ficha .datos { padding: clamp(1.25rem, 3vw, 2.25rem); display: flex; flex-direction: column; gap: 1rem; min-width: 0; overflow-y: auto; }
+.ficha h3 { font: 700 clamp(1.5rem, 2.6vw, 2rem)/1.12 var(--f-display); margin: 0; text-wrap: balance; }
+.ficha .descr { color: var(--tinta-suave); margin: 0; }
+.ficha dl { margin: 0; display: grid; grid-template-columns: auto minmax(0,1fr); gap: .45rem 1rem; font-size: .9rem; border-top: 1px solid var(--linea); padding-top: 1rem; }
+.ficha dt { font: 500 .72rem/1.7 var(--f-ficha); text-transform: uppercase; letter-spacing: .08em; color: var(--tinta-suave); }
+.ficha dd { margin: 0; }
+.precio { font: 500 1.35rem/1.2 var(--f-texto); font-variant-numeric: tabular-nums; }
+.boton.wa { background: var(--whatsapp); border-color: var(--whatsapp); color: #fff; justify-content: center; }
+.boton.wa[aria-disabled="true"] { opacity: .55; cursor: not-allowed; }
+.nota { font: .78rem/1.5 var(--f-ficha); color: var(--tinta-suave); margin: 0; }
+.cerrar { position: absolute; top: .6rem; right: .6rem; width: 2.4rem; height: 2.4rem; border-radius: 50%; border: 1px solid var(--linea); background: var(--papel); color: var(--tinta); font-size: 1.3rem; line-height: 1; cursor: pointer; }
+.pendiente { color: var(--tinta-suave); font-style: italic; }
+
+@media (max-width: 760px) {
+  .portada .envoltura { grid-template-columns: 1fr; }
+  .destacada { justify-self: start; max-width: 100%; }
+  .pasos { grid-template-columns: 1fr; }
+  .ficha { grid-template-columns: 1fr; height: auto; }
+  .ficha .lamina { height: 72dvh; }
+  .ficha .lamina img { max-height: 100%; }
+  dialog.ampliada .lamina { height: calc(100dvh - 24px); }
+  dialog { max-height: calc(100dvh - 24px); overflow-y: auto; }
+}
+
+/* Fondo animado con las obras */
+.fondo { position: fixed; inset: 0; z-index: -1; overflow: hidden; background: var(--muro); pointer-events: none; }
+.fondo .capa { position: absolute; inset: 0; opacity: 0; transition: opacity 2.2s ease; }
+.fondo .capa::before { content: ""; position: absolute; inset: -40px; background: var(--img) center / cover no-repeat; filter: blur(36px) saturate(1.15); opacity: .45; }
+.fondo .capa.visible { opacity: 1; }
+.fondo .pieza { position: absolute; right: max(4vw, 24px); top: 50%; width: auto; height: auto; max-height: min(66vh, 620px); max-width: 42vw; box-shadow: 0 2px 0 rgba(0,0,0,.08), 0 30px 60px -24px rgba(0,0,0,.55); transform: translateY(-50%); will-change: transform; }
+.fondo .capa.mueve-a .pieza { animation: kb-a 14s ease-in-out forwards; }
+.fondo .capa.mueve-b .pieza { animation: kb-b 14s ease-in-out forwards; }
+@keyframes kb-a { from { transform: translateY(-48%) scale(.97) rotate(-.6deg); } to { transform: translateY(-52%) scale(1.02) rotate(.4deg); } }
+@keyframes kb-b { from { transform: translateY(-52%) scale(1.02) rotate(.5deg); } to { transform: translateY(-48%) scale(.97) rotate(-.4deg); } }
+@media (max-width: 760px) { .fondo .pieza { right: 50%; top: auto; bottom: 6vh; max-width: 70vw; max-height: 42vh; transform: translateX(50%); } .fondo .capa.mueve-a .pieza, .fondo .capa.mueve-b .pieza { animation: none; } }
+.velo-portada { background: linear-gradient(90deg, rgba(255,252,248,.93) 0%, rgba(255,252,248,.85) 42%, rgba(255,252,248,.25) 72%, rgba(255,252,248,.08) 100%); }
+header.sitio, section.bloque, footer { background: rgba(255,252,248,.84); backdrop-filter: blur(6px); -webkit-backdrop-filter: blur(6px); }
+.creditos-fondo { position: fixed; right: max(12px, env(safe-area-inset-right, 0px)); bottom: calc(12px + env(safe-area-inset-bottom, 0px)); z-index: 5; font: 500 .72rem/1 var(--f-ficha); background: rgba(20,17,16,.72); color: #fff; padding: .5rem .7rem; border-radius: 4px; display: flex; gap: .6rem; align-items: center; }
+.creditos-fondo button { all: unset; cursor: pointer; text-decoration: underline; }
+.creditos-fondo button:focus-visible { outline: 2px solid var(--naranja); outline-offset: 2px; }
+@media (max-width: 760px) { .velo-portada { background: linear-gradient(180deg, rgba(255,252,248,.92) 0%, rgba(255,252,248,.86) 60%, rgba(255,252,248,.4) 100%); } }
+
+/* Música de fondo */
+.musica { position: fixed; left: max(12px, env(safe-area-inset-left, 0px)); bottom: calc(12px + env(safe-area-inset-bottom, 0px)); z-index: 6; display: inline-flex; align-items: center; gap: .55rem; padding: .6rem .95rem .6rem .7rem; border-radius: 999px; border: 0; background: var(--tinta); color: #fff; font: 600 .82rem/1 var(--f-display); letter-spacing: .03em; cursor: pointer; box-shadow: 0 10px 24px -12px rgba(0,0,0,.6); }
+.musica:hover { background: var(--rojo); }
+.musica .ondas { display: inline-flex; align-items: flex-end; gap: 2px; height: 14px; }
+.musica .ondas i { width: 3px; height: 4px; background: var(--naranja); border-radius: 1px; }
+.musica[aria-pressed="true"] .ondas i { animation: onda .9s ease-in-out infinite; }
+.musica[aria-pressed="true"] .ondas i:nth-child(2) { animation-delay: .15s; }
+.musica[aria-pressed="true"] .ondas i:nth-child(3) { animation-delay: .3s; }
+.musica[aria-pressed="true"] .ondas i:nth-child(4) { animation-delay: .45s; }
+@keyframes onda { 0%, 100% { height: 4px; } 50% { height: 14px; } }
+</style>
+
+<div class="aviso" id="aviso">
+  <div class="envoltura">
+    <span>Versión de prueba · los títulos son provisionales y faltan artistas y precios</span>
+    <button type="button" id="cerrar-aviso">Ocultar</button>
+  </div>
+</div>
+
+<div class="fondo" id="fondo" aria-hidden="true"></div>
+<div class="mosaico" aria-hidden="true"></div>
+<header class="sitio">
+  <div class="envoltura">
+    <a class="marca" href="#inicio"><img src="marca/logo.png" alt="Artina Qhanapa, colectivo de arte" width="1000" height="481"></a>
+    <nav class="menu" aria-label="Secciones">
+      <a href="#obras">Obras</a>
+      <a href="#artistas">Artistas</a>
+      <a href="#comprar">Cómo comprar</a>
+      <a href="#contacto">Contacto</a>
+    </nav>
+  </div>
+</header>
+
+<main id="inicio">
+  <section class="portada velo-portada">
+    <div class="envoltura">
+      <div>
+        <p class="etiqueta">Colectivo de arte<span class="punto"></span>Tacna, Perú</p>
+        <h1>Arte hecho en <em>Tacna</em>, para tu casa</h1>
+        <div class="espiral" aria-hidden="true"><svg viewBox="0 0 30 30" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><path d="M15 15.5c0-1.2 1.6-1.6 2.4-.6 1 1.4-.2 3.6-2.2 3.7-2.6.1-4.2-2.6-3.4-5 1-3 4.8-4 7.4-2.4 3.2 2 3.6 6.6 1.2 9.4-2.8 3.4-8.2 3.4-11 .2"/></svg></div>
+        <p id="intro">Pintura y escultura de las artistas de Artina Qhanapa. Mira las obras, elige la tuya y pídela por WhatsApp. Enviamos a todo el Perú.</p>
+        <div class="acciones">
+          <a class="boton lleno" href="#obras">Ver las obras</a>
+          <a class="boton" href="#comprar">Cómo comprar</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="bloque" id="obras">
+    <div class="envoltura">
+      <div class="cabecera-bloque">
+        <h2>Obras</h2>
+        <div class="controles">
+          <div class="filtros" role="group" aria-label="Filtrar por tipo" id="filtros"></div>
+          <div class="flechas">
+            <span class="progreso" id="progreso" aria-live="polite"></span>
+            <button class="flecha" type="button" id="car-ant" aria-label="Obra anterior">←</button>
+            <button class="flecha play" type="button" id="car-play" aria-label="Pausar carrusel">❚❚</button>
+            <button class="flecha" type="button" id="car-sig" aria-label="Obra siguiente">→</button>
+          </div>
+        </div>
+      </div>
+      <div class="carrusel" id="carrusel">
+        <div class="galeria" id="galeria" tabindex="0" aria-label="Carrusel de obras" aria-roledescription="carrusel"></div>
+        <div class="pie-carrusel">
+          <div class="puntos" id="puntos"></div>
+          <div class="barra" id="barra" aria-hidden="true"><span></span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="bloque" id="artistas">
+    <div class="envoltura">
+      <div class="cabecera-bloque"><h2>Las artistas</h2></div>
+      <div id="lista-artistas"></div>
+    </div>
+  </section>
+
+  <section class="bloque" id="comprar">
+    <div class="envoltura">
+      <div class="cabecera-bloque guia"><h2>Cómo comprar una obra</h2><img class="mascota" src="marca/mascota.png" alt="" width="476" height="600"></div>
+      <ol class="pasos">
+        <li><span class="n">1</span><h3>Elige la obra</h3><p>Abre la ficha de la obra que te guste para ver sus medidas, la técnica y el precio.</p></li>
+        <li><span class="n">2</span><h3>Escríbenos por WhatsApp</h3><p>Toca "Pedir por WhatsApp" en la ficha. El mensaje sale con el nombre de la obra y te confirmamos si está disponible.</p></li>
+        <li><span class="n">3</span><h3>Paga y recibe</h3><p id="texto-envios">Pagas por Yape, Plin o transferencia y te la enviamos por agencia a todo el Perú.</p>
+          <div class="pagos"><span class="chip">Yape</span><span class="chip">Plin</span><span class="chip">Transferencia</span></div></li>
+      </ol>
+    </div>
+  </section>
+</main>
+
+<footer id="contacto">
+  <div class="envoltura">
+    <div>
+      <div class="marca"><img src="marca/logo.png" alt="Artina Qhanapa, colectivo de arte" width="1000" height="481"></div>
+      <div id="ciudad">Tacna, Perú</div>
+    </div>
+    <div id="datos-contacto"></div>
+  </div>
+</footer>
+
+<div class="creditos-fondo" id="creditos-fondo" hidden><span id="creditos-texto"></span><button type="button" id="fondo-pausa">Pausar fondo</button></div>
+
+<button class="musica" type="button" id="musica" aria-pressed="false" title="Música original de estilo andino, creada para Artina Qhanapa"><span class="ondas" aria-hidden="true"><i></i><i></i><i></i><i></i></span><span id="musica-texto">Activar música</span></button>
+<audio id="audio" src="musica/fondo.mp3" loop preload="none"></audio>
+
+<dialog id="ficha" aria-labelledby="ficha-titulo">
+  <button class="cerrar" type="button" id="cerrar-ficha" aria-label="Cerrar">×</button>
+  <div class="ficha">
+    <div class="lamina">
+      <button class="nav-ficha ant" type="button" id="ficha-ant" aria-label="Obra anterior">←</button>
+      <img id="ficha-img" alt="" title="Toca para ver en grande">
+      <button class="nav-ficha sig" type="button" id="ficha-sig" aria-label="Obra siguiente">→</button>
+    </div>
+    <div class="datos">
+      <p class="etiqueta" id="ficha-num"></p>
+      <h3 id="ficha-titulo"></h3>
+      <p class="descr" id="ficha-descr"></p>
+      <dl id="ficha-dl"></dl>
+      <div class="precio" id="ficha-precio"></div>
+      <a class="boton wa" id="ficha-wa" target="_blank" rel="noopener">Pedir por WhatsApp</a>
+      <p class="nota" id="ficha-nota"></p>
+    </div>
+  </div>
+</dialog>
+
+<script>
+(function () {
+  const $ = (id) => document.getElementById(id);
+  const esc = (s) => String(s ?? "").replace(/[&<>"']/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]));
+  const pendiente = (txt) => `<span class="pendiente">${txt}</span>`;
+  const soles = (n) => "S/ " + Number(n).toLocaleString("es-PE", { minimumFractionDigits: 0 });
+  const TIPOS = { pintura: "Pinturas", escultura: "Esculturas" };
+
+  try { if (localStorage.getItem("aviso-oculto") === "1") $("aviso").hidden = true; } catch (e) {}
+  $("cerrar-aviso").addEventListener("click", () => {
+    $("aviso").hidden = true;
+    try { localStorage.setItem("aviso-oculto", "1"); } catch (e) {}
+  });
+
+  fetch("datos.json").then(r => r.json()).then(iniciar).catch(() => {
+    $("galeria").innerHTML = '<p class="pendiente">No se pudieron cargar las obras. Revisa que el archivo datos.json esté junto a esta página.</p>';
+  });
+
+  function iniciar(d) {
+    const col = d.colectivo || {}, ventas = d.ventas || {};
+    const artistas = Object.fromEntries((d.artistas || []).filter(a => a.nombre).map(a => [a.id, a]));
+    const obras = d.obras || [];
+    const numeroWa = String(ventas.whatsapp || "").replace(/\D/g, "");
+    const waBase = numeroWa ? "https://wa.me/" + (numeroWa.length === 9 ? "51" + numeroWa : numeroWa) : "";
+
+    if (col.historia) $("intro").textContent = col.historia;
+    if (col.ciudad) $("ciudad").textContent = col.ciudad;
+    if (ventas.envios) $("texto-envios").textContent = "Pagas por Yape, Plin o transferencia. " + ventas.envios;
+
+    const contacto = [];
+    if (numeroWa) contacto.push(`WhatsApp: <strong>${esc(ventas.whatsapp)}</strong>`);
+    else contacto.push(pendiente("WhatsApp por configurar"));
+    if (col.facebook) contacto.push(`<a href="${esc(col.facebook)}" target="_blank" rel="noopener">Facebook</a>`);
+    $("datos-contacto").innerHTML = contacto.join("<br>");
+
+    const nombreArtista = (o) => artistas[o.artista_id]?.nombre || "";
+    const metaCorta = (o) => [nombreArtista(o) || "Artista por confirmar", o.precio_soles ? soles(o.precio_soles) : null].filter(Boolean).join(" · ");
+    const num = (o) => "N.º " + String(o.id).replace(/\D/g, "").padStart(2, "0");
+
+    // Obra destacada
+    const dest = obras.find(o => o.id === "obra-12") || obras[0];
+    if (dest && $("destacada")) {
+      $("destacada").innerHTML = `<button type="button" data-id="${esc(dest.id)}"><img src="${esc(dest.imagenes[0])}" alt="${esc(dest.titulo)}"></button><figcaption>${num(dest)} · ${esc(dest.titulo)}</figcaption>`;
+    }
+
+    // Filtros
+    let filtro = "todas";
+    const cuenta = (t) => obras.filter(o => t === "todas" || o.tipo === t).length;
+    const tipos = ["todas", ...Object.keys(TIPOS).filter(t => cuenta(t))];
+    function pintarFiltros() {
+      $("filtros").innerHTML = tipos.map(t => `<button type="button" data-filtro="${t}" aria-pressed="${t === filtro}">${t === "todas" ? "Todas" : TIPOS[t]}<span class="cuenta">${cuenta(t)}</span></button>`).join("");
+    }
+    $("filtros").addEventListener("click", (e) => {
+      const b = e.target.closest("button[data-filtro]"); if (!b) return;
+      filtro = b.dataset.filtro; pintarFiltros(); pintarGaleria();
+      reiniciarAuto();
+    });
+
+    // Carrusel animado: la obra del centro se destaca, avanza sola y se pausa al interactuar
+    const gal = $("galeria");
+    const reducido = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    const visibles = () => obras.filter(o => filtro === "todas" || o.tipo === filtro);
+    const items = () => [...gal.querySelectorAll(".obra")];
+    let activa = 0, pausado = false, usuarioPauso = false, enVista = true;
+
+    function irA(i, suave = true) {
+      const lista = items(); if (!lista.length) return;
+      i = (i + lista.length) % lista.length;
+      const el = lista[i];
+      const destino = el.offsetLeft - (gal.clientWidth - el.offsetWidth) / 2;
+      gal.scrollTo({ left: destino, behavior: suave && !reducido ? "smooth" : "auto" });
+    }
+    function actualizarFlechas() {
+      const lista = items(); if (!lista.length) { $("progreso").textContent = ""; return; }
+      const centro = gal.scrollLeft + gal.clientWidth / 2;
+      let mejor = 0, dist = Infinity;
+      lista.forEach((el, i) => {
+        const c = el.offsetLeft + el.offsetWidth / 2;
+        const d = (c - centro) / (gal.clientWidth * 0.6);
+        const ad = Math.min(Math.abs(d), 1);
+        el.style.setProperty("--escala", (1 - ad * 0.16).toFixed(3));
+        el.style.setProperty("--opacidad", (1 - ad * 0.5).toFixed(3));
+        el.style.setProperty("--giro", (Math.max(-1, Math.min(1, d)) * -10).toFixed(2) + "deg");
+        if (Math.abs(c - centro) < dist) { dist = Math.abs(c - centro); mejor = i; }
+      });
+      if (lista[activa]) lista[activa].classList.remove("activa");
+      activa = mejor; lista[activa].classList.add("activa");
+      $("progreso").textContent = `${activa + 1} / ${lista.length}`;
+      [...$("puntos").children].forEach((p, i) => p.setAttribute("aria-current", i === activa ? "true" : "false"));
+    }
+    $("car-ant").addEventListener("click", () => { irA(activa - 1); reiniciarAuto(); });
+    $("car-sig").addEventListener("click", () => { irA(activa + 1); reiniciarAuto(); });
+    gal.addEventListener("scroll", () => requestAnimationFrame(actualizarFlechas), { passive: true });
+    window.addEventListener("resize", () => { actualizarFlechas(); irA(activa, false); });
+    gal.addEventListener("keydown", (e) => {
+      if (e.key === "ArrowRight") { e.preventDefault(); irA(activa + 1); reiniciarAuto(); }
+      if (e.key === "ArrowLeft") { e.preventDefault(); irA(activa - 1); reiniciarAuto(); }
+    });
+    $("puntos").addEventListener("click", (e) => {
+      const p = e.target.closest("button[data-i]"); if (!p) return;
+      irA(+p.dataset.i); reiniciarAuto();
+    });
+
+    // Reproducción automática
+    let temporizador = null;
+    const PASO_MS = 4500;
+    function pintarPlay() {
+      const b = $("car-play");
+      b.textContent = usuarioPauso ? "▶" : "❚❚";
+      b.setAttribute("aria-label", usuarioPauso ? "Reproducir carrusel" : "Pausar carrusel");
+      $("barra").classList.toggle("detenida", usuarioPauso || pausado || reducido);
+    }
+    function reiniciarAuto() {
+      clearInterval(temporizador);
+      const barra = $("barra"); barra.classList.remove("corre"); void barra.offsetWidth;
+      if (usuarioPauso || reducido) { pintarPlay(); return; }
+      barra.classList.add("corre");
+      temporizador = setInterval(() => {
+        if (pausado || !enVista || document.hidden || dlg.open) return;
+        irA(activa + 1);
+        barra.classList.remove("corre"); void barra.offsetWidth; barra.classList.add("corre");
+      }, PASO_MS);
+      pintarPlay();
+    }
+    $("car-play").addEventListener("click", () => { usuarioPauso = !usuarioPauso; reiniciarAuto(); });
+    const zona = $("carrusel");
+    zona.addEventListener("pointerenter", () => { pausado = true; pintarPlay(); });
+    zona.addEventListener("pointerleave", () => { pausado = false; pintarPlay(); });
+    zona.addEventListener("focusin", () => { pausado = true; pintarPlay(); });
+    zona.addEventListener("focusout", () => { pausado = false; pintarPlay(); });
+    gal.addEventListener("touchstart", () => { pausado = true; pintarPlay(); setTimeout(() => { pausado = false; pintarPlay(); }, 6000); }, { passive: true });
+    if ("IntersectionObserver" in window) new IntersectionObserver(([e]) => { enVista = e.isIntersecting; }).observe(gal);
+
+    function pintarGaleria() {
+      const lista = visibles();
+      gal.innerHTML = lista.map((o, i) => `
+        <figure class="obra" style="--retraso:${Math.min(i, 6) * 70}ms">
+          <button type="button" data-id="${esc(o.id)}" aria-label="Ver ficha de ${esc(o.titulo)}">
+            <span class="marco"><img src="${esc(o.imagenes[0])}" alt="${esc(o.titulo)}"><span class="ver">Ver obra</span></span>
+          </button>
+          <figcaption class="cartela">
+            <span class="num">${num(o)}</span>
+            <span class="titulo">${esc(o.titulo)}</span>
+            <span class="meta">${esc(metaCorta(o))}</span>
+          </figcaption>
+        </figure>`).join("");
+      $("puntos").innerHTML = lista.map((o, i) => `<button type="button" data-i="${i}" aria-label="Ir a ${esc(o.titulo)}"></button>`).join("");
+      activa = 0;
+      gal.querySelectorAll("img").forEach(im => im.addEventListener("load", () => { actualizarFlechas(); if (activa === 0) irA(0, false); }));
+      requestAnimationFrame(() => { actualizarFlechas(); irA(0, false); });
+    }
+    pintarFiltros(); pintarGaleria();
+
+    // Música de fondo: apagada al inicio, se enciende con el botón
+    (function musica() {
+      const btn = $("musica"), audio = $("audio");
+      if (d.musica) audio.src = d.musica;
+      let fade = null;
+      function volumen(destino, alTerminar) {
+        clearInterval(fade);
+        fade = setInterval(() => {
+          const v = audio.volume + (destino > audio.volume ? 0.03 : -0.05);
+          if ((destino > audio.volume && v >= destino) || (destino <= audio.volume && v <= destino)) {
+            audio.volume = Math.max(0, Math.min(1, destino)); clearInterval(fade); if (alTerminar) alTerminar();
+          } else audio.volume = Math.max(0, Math.min(1, v));
+        }, 60);
+      }
+      function pintar(on) { btn.setAttribute("aria-pressed", on); $("musica-texto").textContent = on ? "Pausar música" : "Activar música"; }
+      btn.addEventListener("click", () => {
+        if (audio.paused) {
+          audio.volume = 0;
+          audio.play().then(() => { pintar(true); volumen(0.4); }).catch(() => { $("musica-texto").textContent = "No se pudo reproducir"; });
+        } else { pintar(false); volumen(0, () => audio.pause()); }
+      });
+    })();
+
+    // Fondo animado: las pinturas se alternan detrás de la página
+    (function fondoAnimado() {
+      const pinturas = obras.filter(o => o.tipo !== "escultura" && o.imagenes && o.imagenes[0]);
+      if (!pinturas.length) return;
+      const reducido = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+      const cont = $("fondo");
+      const capas = [0, 1].map(() => { const c = document.createElement("div"); c.className = "capa"; const im = document.createElement("img"); im.className = "pieza"; im.alt = ""; c.appendChild(im); cont.appendChild(c); return c; });
+      let i = Math.floor(Math.random() * pinturas.length), cual = 0, timer = null, detenido = reducido;
+      pinturas.forEach(o => { const im = new Image(); im.src = o.imagenes[0]; });
+      function mostrar() {
+        const o = pinturas[i % pinturas.length];
+        const c = capas[cual], otra = capas[1 - cual];
+        c.style.setProperty("--img", `url("${o.imagenes[0]}")`); c.querySelector(".pieza").src = o.imagenes[0];
+        c.classList.remove("mueve-a", "mueve-b"); void c.offsetWidth;
+        if (!reducido) c.classList.add(i % 2 ? "mueve-a" : "mueve-b");
+        c.classList.add("visible"); otra.classList.remove("visible");
+        $("creditos-texto").textContent = "Fondo: " + o.titulo;
+        cual = 1 - cual; i++;
+      }
+      function iniciar() { clearInterval(timer); if (!detenido) timer = setInterval(() => { if (!document.hidden) mostrar(); }, 8000); }
+      mostrar(); iniciar();
+      const cred = $("creditos-fondo"); cred.hidden = false;
+      const portada = document.querySelector(".portada");
+      if (portada && "IntersectionObserver" in window) new IntersectionObserver(([e]) => { cred.hidden = !e.isIntersecting; }, { threshold: 0.25 }).observe(portada);
+      const btn = $("fondo-pausa");
+      btn.textContent = detenido ? "Animar fondo" : "Pausar fondo";
+      btn.addEventListener("click", () => {
+        detenido = !detenido;
+        capas.forEach(c => c.querySelector(".pieza").style.animationPlayState = detenido ? "paused" : "running");
+        btn.textContent = detenido ? "Animar fondo" : "Pausar fondo";
+        iniciar();
+      });
+    })();
+    const dlg = $("ficha");
+    reiniciarAuto();
+
+    // Artistas
+    const lista = Object.values(artistas);
+    $("lista-artistas").innerHTML = lista.length
+      ? `<div class="lista-artistas">${lista.map(a => `<div><strong>${esc(a.nombre)}</strong><br><span class="pendiente">${esc(a.disciplina)}</span><p>${esc(a.descripcion)}</p></div>`).join("")}</div>`
+      : `<div class="artistas-vacio"><strong>Muy pronto.</strong> Aquí presentaremos a cada artista del colectivo, con su foto, lo que hace y sus obras.</div>`;
+
+    // Ficha
+    let actual = null;
+    function mover(d) {
+      const lista = visibles().length ? visibles() : obras;
+      const i = lista.findIndex(x => x.id === actual);
+      if (i < 0) return;
+      abrir(lista[(i + d + lista.length) % lista.length].id);
+    }
+    $("ficha-ant").addEventListener("click", () => mover(-1));
+    $("ficha-sig").addEventListener("click", () => mover(1));
+    $("ficha-img").addEventListener("click", () => dlg.classList.toggle("ampliada"));
+    dlg.addEventListener("keydown", (e) => {
+      if (e.key === "ArrowRight") mover(1);
+      if (e.key === "ArrowLeft") mover(-1);
+    });
+    dlg.addEventListener("close", () => dlg.classList.remove("ampliada"));
+    function abrir(id) {
+      const o = obras.find(x => x.id === id); if (!o) return;
+      actual = id;
+      const fim = $("ficha-img"); fim.style.animation = "none"; void fim.offsetWidth; fim.style.animation = "";
+      $("ficha-img").src = o.imagenes[0]; $("ficha-img").alt = o.titulo;
+      $("ficha-num").textContent = num(o) + " · " + (o.tipo === "escultura" ? "Escultura" : "Pintura");
+      $("ficha-titulo").textContent = o.titulo;
+      $("ficha-descr").textContent = o.descripcion || "";
+      const filas = [
+        ["Artista", nombreArtista(o) ? esc(nombreArtista(o)) : pendiente("Por confirmar")],
+        ["Técnica", o.tecnica && !/por confirmar/i.test(o.tecnica) ? esc(o.tecnica) : pendiente("Por confirmar")],
+        ["Medidas", o.medidas ? esc(o.medidas) : pendiente("Por confirmar")],
+        ["Año", o.anio ? esc(o.anio) : pendiente("—")],
+      ];
+      $("ficha-dl").innerHTML = filas.map(([k, v]) => `<dt>${k}</dt><dd>${v}</dd>`).join("");
+      $("ficha-precio").innerHTML = o.disponible === false ? "Vendida" : (o.precio_soles ? soles(o.precio_soles) : pendiente("Precio a consultar"));
+      const wa = $("ficha-wa");
+      const msg = `Hola, me interesa la obra "${o.titulo}" (${num(o)}) que vi en la web de Artina Qhanapa.`;
+      if (waBase && o.disponible !== false) {
+        wa.href = waBase + "?text=" + encodeURIComponent(msg); wa.removeAttribute("aria-disabled");
+        $("ficha-nota").textContent = "Si el botón no abre WhatsApp, escríbenos al " + ventas.whatsapp + ".";
+      } else {
+        wa.removeAttribute("href"); wa.setAttribute("aria-disabled", "true");
+        $("ficha-nota").textContent = o.disponible === false ? "Esta obra ya fue vendida." : "El número de WhatsApp para ventas todavía no está configurado.";
+      }
+      if (dlg.open) return;
+      if (typeof dlg.showModal === "function") dlg.showModal(); else dlg.setAttribute("open", "");
+    }
+    document.addEventListener("click", (e) => {
+      const b = e.target.closest("button[data-id]"); if (b) abrir(b.dataset.id);
+    });
+    $("cerrar-ficha").addEventListener("click", () => dlg.close());
+    dlg.addEventListener("click", (e) => { if (e.target === dlg) dlg.close(); });
+  }
+})();
+</script>

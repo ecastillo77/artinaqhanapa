@@ -1,0 +1,235 @@
+{
+  "colectivo": {
+    "nombre": "Artina Qhanapa",
+    "significado": "",
+    "historia": "",
+    "ciudad": "Tacna, Perú",
+    "logo": "marca/logo.png",
+    "facebook": "https://www.facebook.com/p/Artina-Qhanapa-61591239882374/"
+  },
+  "ventas": {
+    "whatsapp": "",
+    "yape_plin_titular": "",
+    "envios": "Envíos a todo el Perú por agencia (Shalom u Olva Courier), pagados por el comprador. En Tacna, entrega o recojo en persona."
+  },
+  "artistas": [
+    {
+      "id": "artista-1",
+      "nombre": "",
+      "disciplina": "",
+      "descripcion": "",
+      "foto": ""
+    }
+  ],
+  "obras": [
+    {
+      "id": "obra-01",
+      "titulo": "Mujer con girasoles",
+      "titulo_es_provisional": true,
+      "tipo": "pintura",
+      "artista_id": "",
+      "tecnica": "Técnica mixta: pintura con collage de tela y objetos (por confirmar)",
+      "medidas": "",
+      "anio": "",
+      "precio_soles": null,
+      "disponible": true,
+      "descripcion": "Retrato de mujer con los ojos cerrados; de su cabeza brotan girasoles, pétalos y telas rojizas sobre fondo oscuro.",
+      "imagenes": [
+        "obras/obra-01.jpg"
+      ]
+    },
+    {
+      "id": "obra-02",
+      "titulo": "Niña y la granada",
+      "titulo_es_provisional": true,
+      "tipo": "pintura",
+      "artista_id": "",
+      "tecnica": "Óleo o acrílico sobre lienzo (por confirmar)",
+      "medidas": "",
+      "anio": "",
+      "precio_soles": null,
+      "disponible": true,
+      "descripcion": "Paisaje onírico con árboles de granadas y relojes flotantes; una niña de trenzas mira a un personaje granada.",
+      "imagenes": [
+        "obras/obra-02.jpg"
+      ]
+    },
+    {
+      "id": "obra-03",
+      "titulo": "Formas en movimiento",
+      "titulo_es_provisional": true,
+      "tipo": "pintura",
+      "artista_id": "",
+      "tecnica": "Óleo o acrílico sobre lienzo (por confirmar)",
+      "medidas": "",
+      "anio": "",
+      "precio_soles": null,
+      "disponible": true,
+      "descripcion": "Composición abstracta de formas orgánicas y espirales en rojo, verde y azul.",
+      "imagenes": [
+        "obras/obra-03.jpg"
+      ]
+    },
+    {
+      "id": "obra-04",
+      "titulo": "Mujer y gato negro",
+      "titulo_es_provisional": true,
+      "tipo": "escultura",
+      "artista_id": "",
+      "tecnica": "Escultura (material por confirmar)",
+      "medidas": "",
+      "anio": "",
+      "precio_soles": null,
+      "disponible": true,
+      "descripcion": "Figura femenina arrodillada con acabado marmolado rosa y negro, abrazada por un gato negro de ojos encendidos.",
+      "imagenes": [
+        "obras/obra-04.jpg"
+      ]
+    },
+    {
+      "id": "obra-05",
+      "titulo": "Ojo y palomas",
+      "titulo_es_provisional": true,
+      "tipo": "pintura",
+      "artista_id": "",
+      "tecnica": "Óleo o acrílico sobre lienzo (por confirmar)",
+      "medidas": "",
+      "anio": "",
+      "precio_soles": null,
+      "disponible": true,
+      "descripcion": "Un gran ojo en la oscuridad, rodeado de palomas doradas y manos que se elevan.",
+      "imagenes": [
+        "obras/obra-05.jpg"
+      ]
+    },
+    {
+      "id": "obra-06",
+      "titulo": "Viento y luz verde",
+      "titulo_es_provisional": true,
+      "tipo": "pintura",
+      "artista_id": "",
+      "tecnica": "Técnica por confirmar",
+      "medidas": "",
+      "anio": "",
+      "precio_soles": null,
+      "disponible": true,
+      "descripcion": "Abstracto de trazos ondulantes en negro, blanco y verde fluorescente.",
+      "imagenes": [
+        "obras/obra-06.jpg"
+      ]
+    },
+    {
+      "id": "obra-07",
+      "titulo": "Mujer, serpiente y lechuza",
+      "titulo_es_provisional": true,
+      "tipo": "pintura",
+      "artista_id": "",
+      "tecnica": "Óleo o acrílico sobre lienzo (por confirmar)",
+      "medidas": "",
+      "anio": "",
+      "precio_soles": null,
+      "disponible": true,
+      "descripcion": "Mujer de cabello rojo con calaveras, envuelta por una serpiente verde, junto a una lechuza, sobre ramas doradas.",
+      "imagenes": [
+        "obras/obra-07.jpg"
+      ]
+    },
+    {
+      "id": "obra-08",
+      "titulo": "Espíritu de la flor",
+      "titulo_es_provisional": true,
+      "tipo": "pintura",
+      "artista_id": "",
+      "tecnica": "Óleo o acrílico sobre lienzo (por confirmar)",
+      "medidas": "",
+      "anio": "",
+      "precio_soles": null,
+      "disponible": true,
+      "descripcion": "Personaje en forma de flor de floripondio sobre fondo verde con burbujas.",
+      "imagenes": [
+        "obras/obra-08.jpg"
+      ]
+    },
+    {
+      "id": "obra-09",
+      "titulo": "Nubes azules",
+      "titulo_es_provisional": true,
+      "tipo": "escultura",
+      "artista_id": "",
+      "tecnica": "Escultura pintada (material por confirmar)",
+      "medidas": "",
+      "anio": "",
+      "precio_soles": null,
+      "disponible": true,
+      "descripcion": "Figura blanca de formas redondeadas decorada con nubes en azul cobalto.",
+      "imagenes": [
+        "obras/obra-09.jpg"
+      ]
+    },
+    {
+      "id": "obra-10",
+      "titulo": "Rostro con antifaz",
+      "titulo_es_provisional": true,
+      "tipo": "escultura",
+      "artista_id": "",
+      "tecnica": "Escultura con aplicaciones de encaje y lentejuelas (material por confirmar)",
+      "medidas": "",
+      "anio": "",
+      "precio_soles": null,
+      "disponible": true,
+      "descripcion": "Busto dorado con antifaz de encaje blanco y lentejuelas.",
+      "imagenes": [
+        "obras/obra-10.jpg"
+      ]
+    },
+    {
+      "id": "obra-11",
+      "titulo": "Niña andina con cordero",
+      "titulo_es_provisional": true,
+      "tipo": "pintura",
+      "artista_id": "",
+      "tecnica": "Óleo o acrílico sobre lienzo (por confirmar)",
+      "medidas": "",
+      "anio": "",
+      "precio_soles": null,
+      "disponible": true,
+      "descripcion": "Niña con chullo y manta tejida que abraza un cordero, con montañas y espirales en tonos cálidos.",
+      "imagenes": [
+        "obras/obra-11.jpg"
+      ]
+    },
+    {
+      "id": "obra-12",
+      "titulo": "Ciudad de los sueños",
+      "titulo_es_provisional": true,
+      "tipo": "pintura",
+      "artista_id": "",
+      "tecnica": "Óleo o acrílico sobre lienzo (por confirmar)",
+      "medidas": "",
+      "anio": "",
+      "precio_soles": null,
+      "disponible": true,
+      "descripcion": "Arquitectura surrealista con un gran ojo, un rostro, nubes sobre columnas y un caracol.",
+      "imagenes": [
+        "obras/obra-12.jpg"
+      ]
+    },
+    {
+      "id": "obra-13",
+      "titulo": "Mujer de la luna roja",
+      "titulo_es_provisional": true,
+      "tipo": "pintura",
+      "artista_id": "",
+      "tecnica": "Óleo o acrílico sobre lienzo (por confirmar)",
+      "medidas": "",
+      "anio": "",
+      "precio_soles": null,
+      "disponible": true,
+      "descripcion": "Mujer de cabello rojo bajo una luna naranja, con vestido que se derrite sobre el agua y granadas a sus pies.",
+      "imagenes": [
+        "obras/obra-13.jpg"
+      ]
+    }
+  ],
+  "musica": "musica/fondo.mp3"
+}
