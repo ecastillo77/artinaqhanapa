@@ -216,6 +216,7 @@ header.sitio, section.bloque, footer { background: rgba(255,252,248,.84); backdr
 .musica[aria-pressed="true"] .ondas i:nth-child(3) { animation-delay: .3s; }
 .musica[aria-pressed="true"] .ondas i:nth-child(4) { animation-delay: .45s; }
 @keyframes onda { 0%, 100% { height: 4px; } 50% { height: 14px; } }
+.portada p .nombre { font: 700 1.3em/1.2 var(--f-display); color: var(--rojo); letter-spacing: .01em; text-transform: uppercase; white-space: nowrap; }
 </style>
 
 <div class="aviso" id="aviso">
@@ -246,7 +247,7 @@ header.sitio, section.bloque, footer { background: rgba(255,252,248,.84); backdr
         <p class="etiqueta">Colectivo de arte<span class="punto"></span>Tacna, Perú</p>
         <h1>Arte hecho en <em>Tacna</em>, para tu casa</h1>
         <div class="espiral" aria-hidden="true"><svg viewBox="0 0 30 30" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><path d="M15 15.5c0-1.2 1.6-1.6 2.4-.6 1 1.4-.2 3.6-2.2 3.7-2.6.1-4.2-2.6-3.4-5 1-3 4.8-4 7.4-2.4 3.2 2 3.6 6.6 1.2 9.4-2.8 3.4-8.2 3.4-11 .2"/></svg></div>
-        <p id="intro">El colectivo de arte “Artina Qhanapa” está conformado por jóvenes artistas plásticos profesionales, de la ciudad de Tacna, deseosos de llegar a más públicos y pasar fronteras. En el marco de la buena fe y la constante investigación.</p>
+        <p id="intro">El colectivo de arte <strong class="nombre">Artina Qhanapa</strong> está conformado por jóvenes artistas plásticos profesionales, de la ciudad de Tacna, deseosos de llegar a más públicos y pasar fronteras. En el marco de la buena fe y la constante investigación.</p>
         <div class="acciones">
           <a class="boton lleno" href="#obras">Ver las obras</a>
           <a class="boton" href="#comprar">Cómo comprar</a>
@@ -359,7 +360,7 @@ header.sitio, section.bloque, footer { background: rgba(255,252,248,.84); backdr
     const numeroWa = String(ventas.whatsapp || "").replace(/\D/g, "");
     const waBase = numeroWa ? "https://wa.me/" + (numeroWa.length === 9 ? "51" + numeroWa : numeroWa) : "";
 
-    if (col.historia) $("intro").textContent = col.historia;
+    if (col.historia) $("intro").innerHTML = esc(col.historia).replace(/[“”"«»]?Artina Qhanapa[“”"«»]?/, '<strong class="nombre">Artina Qhanapa</strong>');
     if (col.ciudad) $("ciudad").textContent = col.ciudad;
     if (ventas.envios) $("texto-envios").textContent = "Pagas por Yape, Plin o transferencia. " + ventas.envios;
 
