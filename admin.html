@@ -126,6 +126,9 @@ nav.pestanas .cuenta { font-family: var(--f-ficha); font-weight: 400; color: var
     <button class="boton principal" type="button" id="guardar" disabled>Guardar y publicar</button>
   </div>
 </header>
+<div class="aviso-cambios" id="aviso-permiso" hidden style="background:var(--rojo);color:#fff">
+  <div class="envoltura"><span>Tu clave solo permite <b>leer</b>: no podrás guardar. En GitHub edita la clave y en <b>Permissions → Contents</b> elige <b>Read and write</b>; luego recarga esta página.</span><a class="boton chico" href="https://github.com/settings/personal-access-tokens" target="_blank" rel="noopener">Abrir mis claves</a></div>
+</div>
 <div class="aviso-cambios" id="aviso-cambios" hidden>
   <div class="envoltura"><span id="aviso-texto"></span><button class="boton chico" type="button" id="descartar">Descartar cambios</button></div>
 </div>
@@ -221,7 +224,7 @@ nav.pestanas .cuenta { font-family: var(--f-ficha); font-weight: 400; color: var
   const $ = (id) => document.getElementById(id);
   const esc = (s) => String(s ?? "").replace(/[&<>"']/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]));
 
-  let token = "", datos = null, original = "", baseSha = "", tab = "obras";
+  let token = "", datos = null, original = "", baseSha = "", datosSha = "", tab = "obras";
   let selObra = null, selArtista = null;
   const pendientes = new Map();   // ruta -> { b64, url }
   const borrar = new Set();       // rutas de fotos a eliminar del repositorio
@@ -290,10 +293,12 @@ nav.pestanas .cuenta { font-family: var(--f-ficha); font-weight: 400; color: var
   $("form-acceso").addEventListener("submit", (e) => { e.preventDefault(); conectar($("token").value, $("recordar").checked); });
 
   async function cargar() {
+    let soloLectura = false;
+    try { const info = await gh(""); soloLectura = !!(info.permissions && info.permissions.push === false); } catch (e) { if (e.status === 401) throw e; }
     const ref = await gh(`/git/ref/heads/${RAMA}`);
     baseSha = ref.object.sha;
     const arch = await gh(`/contents/datos.json?ref=${baseSha}`);
-    datos = JSON.parse(b64aTexto(arch.content));
+    datos = JSON.parse(b64aTexto(arch.content)); datosSha = arch.sha;
     datos.colectivo ??= {}; datos.ventas ??= {}; datos.artistas ??= []; datos.obras ??= [];
     datos.artistas = datos.artistas.filter(a => a.nombre || a.foto || a.descripcion);   // quita la ficha vacía de ejemplo
     original = JSON.stringify(datos);
@@ -301,7 +306,8 @@ nav.pestanas .cuenta { font-family: var(--f-ficha); font-weight: 400; color: var
     datos.obras.forEach(o => (o.imagenes || []).forEach(r => archivosOriginales.add(r)));
     datos.artistas.forEach(a => a.foto && archivosOriginales.add(a.foto));
     selObra = datos.obras[0]?.id || null; selArtista = datos.artistas[0]?.id || null;
-    $("estado").innerHTML = `Conectado a <b>${esc(REPO)}</b>`;
+    $("estado").innerHTML = soloLectura ? `Conectado <b>solo para leer</b>` : `Conectado a <b>${esc(REPO)}</b>`;
+    $("aviso-permiso").hidden = !soloLectura;
     pintarTodo();
   }
 
@@ -561,7 +567,10 @@ nav.pestanas .cuenta { font-family: var(--f-ficha); font-weight: 400; color: var
     try {
       const ref = await gh(`/git/ref/heads/${RAMA}`);
       if (ref.object.sha !== baseSha) {
-        const err = new Error("conflicto"); err.conflicto = true; throw err;
+        // La web cambió por otro lado (por ejemplo, un ajuste de diseño). Si datos.json sigue igual, guardamos encima sin perder nada.
+        const actual = await gh(`/contents/datos.json?ref=${ref.object.sha}`);
+        if (actual.sha !== datosSha) { const err = new Error("conflicto"); err.conflicto = true; throw err; }
+        baseSha = ref.object.sha;
       }
       const commitBase = await gh(`/git/commits/${baseSha}`);
       const arbol = [];
@@ -583,7 +592,7 @@ nav.pestanas .cuenta { font-family: var(--f-ficha); font-weight: 400; color: var
         message: "Actualizar obras y artistas desde el panel" + (resumen.length ? " (" + resumen.join(", ") + ")" : ""),
         tree: nuevoArbol.sha, parents: [baseSha] }) });
       await gh(`/git/refs/heads/${RAMA}`, { method: "PATCH", body: JSON.stringify({ sha: commit.sha, force: false }) });
-      baseSha = commit.sha;
+      baseSha = commit.sha; datosSha = blobDatos.sha;
       pendientes.forEach((p, ruta) => recientes.set(ruta, p.url));
       datos.obras.forEach(o => (o.imagenes || []).forEach(r => archivosOriginales.add(r)));
       datos.artistas.forEach(a => a.foto && archivosOriginales.add(a.foto));
@@ -594,7 +603,7 @@ nav.pestanas .cuenta { font-family: var(--f-ficha); font-weight: 400; color: var
     } catch (e) {
       if (e.conflicto) avisar("Alguien guardó cambios en la web mientras editabas. Copia lo que cambiaste, recarga la página y vuelve a intentarlo.", "error");
       else if (e.status === 401) avisar("La clave venció o no es válida. Recarga la página y conéctate con una nueva.", "error");
-      else if (e.status === 403 || e.status === 404) avisar("La clave no tiene permiso para escribir. Debe tener Contents: Read and write.", "error");
+      else if (e.status === 403 || e.status === 404) { avisar("La clave no tiene permiso para escribir. En GitHub edita la clave y en Permissions → Contents elige Read and write. Tus cambios siguen aquí.", "error"); $("aviso-permiso").hidden = false; }
       else avisar("No se pudo guardar: " + e.message + ". Tus cambios siguen aquí; inténtalo de nuevo.", "error");
     } finally { btn.textContent = "Guardar y publicar"; marcarCambios(); }
   }
