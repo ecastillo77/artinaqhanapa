@@ -1,0 +1,613 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="robots" content="noindex, nofollow">
+<title>Administrar · Artina Qhanapa</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Lexend:wght@400;500;600;700&family=Figtree:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+/* Panel de administración: lista a la izquierda, ficha de edición a la derecha; mismos colores del logo. */
+:root {
+  --muro: #fffcf8; --papel: #ffffff; --tinta: #141110; --tinta-suave: #5e534d; --linea: #eee2d8;
+  --rojo: #b3300e; --rojo-suave: #fcebe3; --naranja: #f0821e; --verde: #1c7c54; --verde-suave: #e3f3eb;
+  --f-display: "Lexend", "Montserrat", "Segoe UI", sans-serif;
+  --f-texto: "Figtree", "Segoe UI", system-ui, sans-serif;
+  --f-ficha: "IBM Plex Mono", ui-monospace, Menlo, monospace;
+  color-scheme: light;
+}
+* { box-sizing: border-box; }
+html, body { margin: 0; }
+body { background: var(--muro); color: var(--tinta); font: 400 15px/1.5 var(--f-texto); }
+[hidden] { display: none !important; }
+:focus-visible { outline: 2px solid var(--rojo); outline-offset: 2px; }
+button, input, select, textarea { font: inherit; color: inherit; }
+.envoltura { max-width: 1280px; margin-inline: auto; padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px)); }
+.mosaico { height: 6px; background: linear-gradient(to right, var(--rojo) 0 34%, var(--naranja) 34% 58%, var(--tinta) 58% 68%, var(--naranja) 68% 84%, var(--rojo) 84%); background-size: 220px 6px; }
+
+header.barra { position: sticky; top: env(safe-area-inset-top, 0px); z-index: 10; background: rgba(255,252,248,.96); backdrop-filter: blur(6px); border-bottom: 1px solid var(--linea); }
+header.barra .envoltura { display: flex; align-items: center; gap: 1rem; padding-block: .7rem; flex-wrap: wrap; }
+.marca { display: flex; align-items: center; gap: .8rem; text-decoration: none; margin-right: auto; }
+.marca img { height: 42px; width: auto; }
+.marca span { font: 600 .78rem/1.2 var(--f-display); letter-spacing: .12em; text-transform: uppercase; color: var(--rojo); }
+.estado { font: .78rem/1.3 var(--f-ficha); color: var(--tinta-suave); }
+.estado b { color: var(--rojo); font-weight: 500; }
+
+.boton { display: inline-flex; align-items: center; justify-content: center; gap: .45rem; padding: .62rem 1rem; border-radius: 6px; border: 1px solid var(--tinta); background: var(--papel); font: 600 .86rem/1 var(--f-display); letter-spacing: .02em; cursor: pointer; text-decoration: none; }
+.boton:hover:not(:disabled) { border-color: var(--rojo); color: var(--rojo); }
+.boton.principal { background: var(--rojo); border-color: var(--rojo); color: #fff; }
+.boton.principal:hover:not(:disabled) { background: #8f250a; color: #fff; }
+.boton.peligro { border-color: var(--rojo); color: var(--rojo); }
+.boton.peligro.confirmar { background: var(--rojo); color: #fff; }
+.boton:disabled { opacity: .45; cursor: not-allowed; }
+.boton.chico { padding: .4rem .6rem; font-size: .78rem; }
+.pildora { display: inline-flex; min-width: 1.4rem; justify-content: center; padding: .15rem .4rem; border-radius: 999px; background: var(--naranja); color: #fff; font: 600 .72rem/1.2 var(--f-display); }
+
+/* Acceso */
+.acceso { max-width: 640px; margin: clamp(2rem, 6vw, 4rem) auto; background: var(--papel); border: 1px solid var(--linea); padding: clamp(1.25rem, 4vw, 2.25rem); }
+h1 { font: 700 clamp(1.5rem, 3vw, 2rem)/1.1 var(--f-display); text-transform: uppercase; margin: 0 0 .75rem; letter-spacing: -.01em; }
+h2 { font: 700 1.15rem/1.2 var(--f-display); text-transform: uppercase; margin: 0; letter-spacing: .01em; }
+.acceso ol { padding-left: 1.2rem; color: var(--tinta-suave); }
+.acceso li { margin-bottom: .35rem; }
+.acceso code { font: .82rem var(--f-ficha); background: var(--rojo-suave); padding: .05rem .3rem; border-radius: 3px; color: var(--tinta); }
+
+/* Campos */
+.campo { display: grid; gap: .3rem; min-width: 0; }
+.campo label, .campo .etq { font: 500 .72rem/1.3 var(--f-ficha); letter-spacing: .08em; text-transform: uppercase; color: var(--tinta-suave); }
+.campo .ayuda { font-size: .8rem; color: var(--tinta-suave); }
+input[type=text], input[type=password], input[type=number], input[type=tel], input[type=url], select, textarea { width: 100%; padding: .6rem .7rem; border: 1px solid #dccfc4; border-radius: 6px; background: #fff; }
+input:focus, select:focus, textarea:focus { outline: 2px solid var(--rojo); outline-offset: 0; border-color: var(--rojo); }
+textarea { resize: vertical; min-height: 5.5rem; }
+.fila { display: grid; grid-template-columns: repeat(auto-fit, minmax(170px, 1fr)); gap: 1rem; }
+.check { display: flex; align-items: center; gap: .5rem; font-size: .92rem; cursor: pointer; }
+.check input { width: 1.1rem; height: 1.1rem; accent-color: var(--rojo); }
+
+/* Pestañas */
+nav.pestanas .envoltura { display: flex; gap: .25rem; padding-block: 1rem 0; border-bottom: 1px solid var(--linea); overflow-x: auto; }
+nav.pestanas button { all: unset; cursor: pointer; padding: .7rem 1rem; font: 600 .9rem/1 var(--f-display); text-transform: uppercase; letter-spacing: .04em; color: var(--tinta-suave); border-bottom: 3px solid transparent; white-space: nowrap; }
+nav.pestanas button[aria-selected="true"] { color: var(--tinta); border-bottom-color: var(--rojo); }
+nav.pestanas button:focus-visible { outline: 2px solid var(--rojo); }
+nav.pestanas .cuenta { font-family: var(--f-ficha); font-weight: 400; color: var(--tinta-suave); margin-left: .3rem; }
+
+/* Editor */
+.editor { display: grid; grid-template-columns: minmax(260px, 340px) minmax(0, 1fr); gap: 1.5rem; padding-block: 1.5rem 4rem; align-items: start; }
+.lista { background: var(--papel); border: 1px solid var(--linea); position: sticky; top: 80px; max-height: calc(100dvh - 100px); display: flex; flex-direction: column; }
+.lista-cab { display: flex; gap: .5rem; align-items: center; justify-content: space-between; padding: .75rem; border-bottom: 1px solid var(--linea); }
+.lista-cab input { padding: .45rem .6rem; font-size: .88rem; }
+.lista-cab .boton { white-space: nowrap; flex: none; }
+.lista ul { list-style: none; margin: 0; padding: 0; overflow-y: auto; }
+.lista li button.item { all: unset; box-sizing: border-box; cursor: pointer; display: grid; grid-template-columns: 52px minmax(0, 1fr); gap: .7rem; align-items: center; width: 100%; padding: .55rem .75rem; border-bottom: 1px solid var(--linea); }
+.lista li button.item:hover { background: var(--muro); }
+.lista li button.item[aria-current="true"] { background: var(--rojo-suave); box-shadow: inset 4px 0 0 var(--rojo); }
+.lista li button.item:focus-visible { outline: 2px solid var(--rojo); outline-offset: -2px; }
+.miniatura { width: 52px; height: 52px; object-fit: cover; background: var(--linea); border-radius: 4px; display: block; }
+.miniatura.vacia { display: grid; place-items: center; font: 600 1.1rem var(--f-display); color: var(--tinta-suave); }
+.item-texto { min-width: 0; }
+.item-titulo { font-weight: 600; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; display: block; }
+.item-meta { font: .74rem/1.4 var(--f-ficha); color: var(--tinta-suave); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; display: block; }
+.marca-cambio { color: var(--naranja); font-weight: 700; }
+.etiq { display: inline-block; font: 500 .66rem/1 var(--f-ficha); padding: .2rem .35rem; border-radius: 3px; background: var(--linea); color: var(--tinta-suave); margin-left: .3rem; vertical-align: middle; }
+.etiq.vendida { background: var(--tinta); color: #fff; }
+
+.ficha { scroll-margin-top: 130px; background: var(--papel); border: 1px solid var(--linea); padding: clamp(1rem, 3vw, 1.75rem); display: grid; gap: 1.25rem; min-width: 0; }
+.ficha-cab { display: flex; gap: 1rem; align-items: center; justify-content: space-between; flex-wrap: wrap; }
+.ficha-cab .acciones { display: flex; gap: .5rem; flex-wrap: wrap; }
+.foto-campo { display: grid; grid-template-columns: minmax(0, 220px) minmax(0, 1fr); gap: 1.25rem; align-items: start; }
+.vista-foto { width: 100%; aspect-ratio: 4 / 5; object-fit: contain; background: #1a1614; border-radius: 4px; display: block; }
+.vista-foto.vacia { display: grid; place-items: center; color: #cbbfb6; font-size: .85rem; text-align: center; padding: 1rem; }
+.subir { position: relative; }
+.subir input[type=file] { position: absolute; inset: 0; opacity: 0; cursor: pointer; }
+.nota { font: .78rem/1.5 var(--f-ficha); color: var(--tinta-suave); margin: 0; }
+.vacio { padding: 3rem 1.5rem; text-align: center; color: var(--tinta-suave); background: var(--papel); border: 1px dashed var(--linea); }
+
+.toast { position: fixed; left: 50%; bottom: calc(18px + env(safe-area-inset-bottom, 0px)); transform: translateX(-50%); z-index: 50; background: var(--tinta); color: #fff; padding: .8rem 1.1rem; border-radius: 6px; font-size: .9rem; max-width: min(560px, calc(100vw - 32px)); box-shadow: 0 12px 30px -12px rgba(0,0,0,.6); }
+.toast.error { background: var(--rojo); }
+.toast.ok { background: var(--verde); }
+.aviso-cambios { background: var(--rojo-suave); }
+.aviso-cambios .envoltura { padding-block: .5rem; font-size: .86rem; display: flex; gap: .75rem; align-items: center; flex-wrap: wrap; }
+
+@media (max-width: 820px) {
+  .editor { grid-template-columns: 1fr; }
+  .lista { position: static; max-height: 46dvh; }
+  .foto-campo { grid-template-columns: 1fr; }
+  .vista-foto { max-height: 50dvh; }
+}
+</style>
+</head>
+<body>
+<div class="mosaico" aria-hidden="true"></div>
+<header class="barra">
+  <div class="envoltura">
+    <a class="marca" href="./" title="Ver la web"><img src="marca/logo.png" alt="Artina Qhanapa" width="1000" height="481"><span>Administrar<br>contenido</span></a>
+    <span class="estado" id="estado">Sin conectar</span>
+    <a class="boton" href="./" target="_blank" rel="noopener">Ver la web</a>
+    <button class="boton principal" type="button" id="guardar" disabled>Guardar y publicar</button>
+  </div>
+</header>
+<div class="aviso-cambios" id="aviso-cambios" hidden>
+  <div class="envoltura"><span id="aviso-texto"></span><button class="boton chico" type="button" id="descartar">Descartar cambios</button></div>
+</div>
+
+<!-- Acceso -->
+<section class="envoltura" id="vista-acceso">
+  <div class="acceso">
+    <h1>Entrar al panel</h1>
+    <p>Los cambios se guardan en el repositorio de GitHub de la web y se publican solos en www.artinaqhanapa.com en un minuto. Para eso necesitas una <b>clave de acceso de GitHub</b>.</p>
+    <form id="form-acceso" class="campo" style="gap:1rem">
+      <div class="campo">
+        <label for="token">Clave de acceso (token) de GitHub</label>
+        <input type="password" id="token" autocomplete="off" spellcheck="false" placeholder="github_pat_…" required>
+      </div>
+      <label class="check"><input type="checkbox" id="recordar" checked> Recordar en este navegador</label>
+      <div><button class="boton principal" type="submit" id="entrar">Conectar</button></div>
+      <p class="nota" id="error-acceso" role="alert"></p>
+    </form>
+    <details style="margin-top:1.25rem">
+      <summary style="cursor:pointer;font-weight:600">¿Cómo obtengo la clave? (solo la primera vez)</summary>
+      <ol>
+        <li>Entra a <a href="https://github.com/settings/personal-access-tokens/new" target="_blank" rel="noopener">github.com/settings/personal-access-tokens/new</a> con la cuenta <code>ecastillo77</code>.</li>
+        <li>Nombre: <code>Panel Artina Qhanapa</code>. Vencimiento: el que prefieras (por ejemplo 1 año).</li>
+        <li>En <b>Repository access</b> elige <b>Only select repositories</b> y marca <code>artinaqhanapa</code>.</li>
+        <li>En <b>Permissions → Repository permissions</b>, pon <b>Contents</b> en <b>Read and write</b>.</li>
+        <li>Toca <b>Generate token</b>, copia la clave y pégala arriba.</li>
+      </ol>
+      <p class="nota">La clave solo sirve para este repositorio. No la compartas. Si la pierdes o vence, crea otra igual.</p>
+    </details>
+  </div>
+</section>
+
+<!-- Panel -->
+<div id="vista-panel" hidden>
+  <nav class="pestanas" aria-label="Secciones">
+    <div class="envoltura" role="tablist">
+      <button type="button" role="tab" data-tab="obras" aria-selected="true">Obras<span class="cuenta" id="n-obras"></span></button>
+      <button type="button" role="tab" data-tab="artistas" aria-selected="false">Artistas<span class="cuenta" id="n-artistas"></span></button>
+      <button type="button" role="tab" data-tab="colectivo" aria-selected="false">Colectivo y ventas</button>
+    </div>
+  </nav>
+
+  <!-- Obras -->
+  <section class="envoltura editor" id="tab-obras">
+    <aside class="lista">
+      <div class="lista-cab">
+        <input type="text" id="buscar-obra" placeholder="Buscar obra" aria-label="Buscar obra">
+        <button class="boton chico principal" type="button" id="nueva-obra">+ Nueva</button>
+      </div>
+      <ul id="lista-obras"></ul>
+    </aside>
+    <div id="ficha-obra"></div>
+  </section>
+
+  <!-- Artistas -->
+  <section class="envoltura editor" id="tab-artistas" hidden>
+    <aside class="lista">
+      <div class="lista-cab">
+        <span class="nota">Artistas del colectivo</span>
+        <button class="boton chico principal" type="button" id="nueva-artista">+ Nueva</button>
+      </div>
+      <ul id="lista-artistas"></ul>
+    </aside>
+    <div id="ficha-artista"></div>
+  </section>
+
+  <!-- Colectivo -->
+  <section class="envoltura" id="tab-colectivo" hidden style="padding-block:1.5rem 4rem">
+    <div class="ficha" style="max-width:860px">
+      <h2>Datos del colectivo</h2>
+      <div class="campo"><label for="c-historia">Presentación (texto de la portada)</label><textarea id="c-historia" data-ruta="colectivo.historia" rows="4"></textarea><span class="ayuda">Si escribes "Artina Qhanapa", la web lo resalta en rojo automáticamente.</span></div>
+      <div class="campo"><label for="c-significado">Significado del nombre</label><textarea id="c-significado" data-ruta="colectivo.significado" rows="2"></textarea></div>
+      <div class="fila">
+        <div class="campo"><label for="c-ciudad">Ciudad</label><input type="text" id="c-ciudad" data-ruta="colectivo.ciudad"></div>
+        <div class="campo"><label for="c-facebook">Página de Facebook</label><input type="url" id="c-facebook" data-ruta="colectivo.facebook"></div>
+      </div>
+      <h2 style="margin-top:.5rem">Ventas</h2>
+      <div class="fila">
+        <div class="campo"><label for="v-whatsapp">WhatsApp para ventas</label><input type="tel" id="v-whatsapp" data-ruta="ventas.whatsapp" placeholder="987 654 321"><span class="ayuda">9 dígitos. Activa el botón "Pedir por WhatsApp".</span></div>
+        <div class="campo"><label for="v-yape">Titular de Yape / Plin</label><input type="text" id="v-yape" data-ruta="ventas.yape_plin_titular"></div>
+      </div>
+      <div class="campo"><label for="v-envios">Envíos</label><textarea id="v-envios" data-ruta="ventas.envios" rows="3"></textarea></div>
+    </div>
+  </section>
+</div>
+
+<div class="toast" id="toast" role="status" aria-live="polite" hidden></div>
+
+<script>
+(function () {
+  "use strict";
+  const REPO = "ecastillo77/artinaqhanapa", RAMA = "main", API = "https://api.github.com/repos/" + REPO;
+  const $ = (id) => document.getElementById(id);
+  const esc = (s) => String(s ?? "").replace(/[&<>"']/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]));
+
+  let token = "", datos = null, original = "", baseSha = "", tab = "obras";
+  let selObra = null, selArtista = null;
+  const pendientes = new Map();   // ruta -> { b64, url }
+  const borrar = new Set();       // rutas de fotos a eliminar del repositorio
+  const archivosOriginales = new Set();
+
+  // ---------- utilidades ----------
+  let tToast;
+  function avisar(msg, tipo) {
+    const t = $("toast"); t.textContent = msg; t.className = "toast" + (tipo ? " " + tipo : ""); t.hidden = false;
+    clearTimeout(tToast); tToast = setTimeout(() => t.hidden = true, tipo === "error" ? 9000 : 4500);
+  }
+  const b64aTexto = (b64) => new TextDecoder().decode(Uint8Array.from(atob(b64.replace(/\s/g, "")), c => c.charCodeAt(0)));
+  function slug(s) { return String(s).normalize("NFD").replace(/[̀-ͯ]/g, "").toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, "").slice(0, 40) || "sin-nombre"; }
+  function sello() { const d = new Date(); return d.getFullYear().toString().slice(2) + String(d.getMonth() + 1).padStart(2, "0") + String(d.getDate()).padStart(2, "0") + "-" + String(d.getHours()).padStart(2, "0") + String(d.getMinutes()).padStart(2, "0") + String(d.getSeconds()).padStart(2, "0"); }
+  const recientes = new Map();   // fotos recién publicadas: se muestran desde la memoria hasta que la web termine de actualizarse
+  const srcDe = (ruta) => ruta ? (pendientes.get(ruta)?.url || recientes.get(ruta) || ruta) : "";
+
+  async function gh(ruta, opciones = {}) {
+    const r = await fetch(API + ruta, {
+      ...opciones,
+      headers: { "Authorization": "Bearer " + token, "Accept": "application/vnd.github+json", "X-GitHub-Api-Version": "2022-11-28", ...(opciones.body ? { "Content-Type": "application/json" } : {}) }
+    });
+    if (!r.ok) {
+      let m = ""; try { m = (await r.json()).message || ""; } catch (e) {}
+      const err = new Error(m || ("Error " + r.status)); err.status = r.status; throw err;
+    }
+    return r.status === 204 ? null : r.json();
+  }
+
+  // Reduce la foto en el navegador antes de subirla (máx. 1600 px, JPEG)
+  function prepararFoto(archivo, max = 1600) {
+    return new Promise((ok, mal) => {
+      const url = URL.createObjectURL(archivo), im = new Image();
+      im.onload = () => {
+        const k = Math.min(1, max / Math.max(im.naturalWidth, im.naturalHeight));
+        const c = document.createElement("canvas"); c.width = Math.round(im.naturalWidth * k); c.height = Math.round(im.naturalHeight * k);
+        const g = c.getContext("2d"); g.fillStyle = "#fff"; g.fillRect(0, 0, c.width, c.height); g.drawImage(im, 0, 0, c.width, c.height);
+        URL.revokeObjectURL(url);
+        c.toBlob(b => {
+          if (!b) return mal(new Error("No se pudo procesar la imagen"));
+          const lector = new FileReader();
+          lector.onload = () => ok({ b64: String(lector.result).split(",")[1], url: URL.createObjectURL(b), kb: Math.round(b.size / 1024) });
+          lector.readAsDataURL(b);
+        }, "image/jpeg", 0.86);
+      };
+      im.onerror = () => { URL.revokeObjectURL(url); mal(new Error("El archivo no es una imagen válida")); };
+      im.src = url;
+    });
+  }
+
+  // ---------- acceso ----------
+  async function conectar(t, recordar) {
+    token = t.trim();
+    $("entrar").disabled = true; $("error-acceso").textContent = "Conectando…";
+    try {
+      await cargar();
+      try { recordar ? localStorage.setItem("artina-token", token) : localStorage.removeItem("artina-token"); } catch (e) {}
+      $("vista-acceso").hidden = true; $("vista-panel").hidden = false; $("error-acceso").textContent = "";
+    } catch (e) {
+      token = "";
+      $("error-acceso").textContent = e.status === 401 ? "La clave no es válida o ya venció. Crea una nueva." :
+        e.status === 404 || e.status === 403 ? "La clave no tiene permiso sobre el repositorio artinaqhanapa. Revisa que tenga Contents: Read and write." :
+        "No se pudo conectar: " + e.message;
+    } finally { $("entrar").disabled = false; }
+  }
+  $("form-acceso").addEventListener("submit", (e) => { e.preventDefault(); conectar($("token").value, $("recordar").checked); });
+
+  async function cargar() {
+    const ref = await gh(`/git/ref/heads/${RAMA}`);
+    baseSha = ref.object.sha;
+    const arch = await gh(`/contents/datos.json?ref=${baseSha}`);
+    datos = JSON.parse(b64aTexto(arch.content));
+    datos.colectivo ??= {}; datos.ventas ??= {}; datos.artistas ??= []; datos.obras ??= [];
+    datos.artistas = datos.artistas.filter(a => a.nombre || a.foto || a.descripcion);   // quita la ficha vacía de ejemplo
+    original = JSON.stringify(datos);
+    pendientes.clear(); borrar.clear(); archivosOriginales.clear();
+    datos.obras.forEach(o => (o.imagenes || []).forEach(r => archivosOriginales.add(r)));
+    datos.artistas.forEach(a => a.foto && archivosOriginales.add(a.foto));
+    selObra = datos.obras[0]?.id || null; selArtista = datos.artistas[0]?.id || null;
+    $("estado").innerHTML = `Conectado a <b>${esc(REPO)}</b>`;
+    pintarTodo();
+  }
+
+  // ---------- estado de cambios ----------
+  function hayCambios() { return datos && (JSON.stringify(datos) !== original || pendientes.size > 0 || borrar.size > 0); }
+  function marcarCambios() {
+    const c = hayCambios();
+    $("guardar").disabled = !c;
+    $("aviso-cambios").hidden = !c;
+    if (c) $("aviso-texto").textContent = "Tienes cambios sin publicar" + (pendientes.size ? ` (incluye ${pendientes.size} foto${pendientes.size > 1 ? "s" : ""} nueva${pendientes.size > 1 ? "s" : ""})` : "") + ". Toca \"Guardar y publicar\" para que aparezcan en la web.";
+    $("n-obras").textContent = datos.obras.length; $("n-artistas").textContent = datos.artistas.length;
+  }
+  window.addEventListener("beforeunload", (e) => { if (hayCambios()) { e.preventDefault(); e.returnValue = ""; } });
+
+  // ---------- pestañas ----------
+  document.querySelectorAll("[data-tab]").forEach(b => b.addEventListener("click", () => {
+    tab = b.dataset.tab;
+    document.querySelectorAll("[data-tab]").forEach(x => x.setAttribute("aria-selected", x === b));
+    ["obras", "artistas", "colectivo"].forEach(t => $("tab-" + t).hidden = t !== tab);
+    pintarTodo();
+  }));
+
+  function pintarTodo() { pintarObras(); pintarArtistas(); pintarColectivo(); marcarCambios(); }
+
+  // ---------- obras ----------
+  const nombreArtista = (id) => datos.artistas.find(a => a.id === id)?.nombre || "";
+  const numObra = (o) => "N.º " + (String(o.id).match(/\d+/)?.[0] || "").padStart(2, "0");
+
+  function pintarObras() {
+    const q = $("buscar-obra").value.trim().toLowerCase();
+    const lista = datos.obras.filter(o => !q || (o.titulo + " " + nombreArtista(o.artista_id)).toLowerCase().includes(q));
+    $("lista-obras").innerHTML = lista.map(o => `
+      <li><button type="button" class="item" data-obra="${esc(o.id)}" aria-current="${o.id === selObra}">
+        ${o.imagenes?.[0] ? `<img class="miniatura" src="${esc(srcDe(o.imagenes[0]))}" alt="" loading="lazy">` : `<span class="miniatura vacia">?</span>`}
+        <span class="item-texto"><span class="item-titulo">${esc(o.titulo || "Sin título")}${o.disponible === false ? '<span class="etiq vendida">Vendida</span>' : ""}</span>
+        <span class="item-meta">${esc(numObra(o))} · ${esc(nombreArtista(o.artista_id) || "sin artista")}${o.precio_soles ? " · S/ " + esc(o.precio_soles) : ""}</span></span>
+      </button></li>`).join("") || `<li class="nota" style="padding:1rem">No hay obras que coincidan.</li>`;
+    pintarFichaObra();
+  }
+  $("buscar-obra").addEventListener("input", pintarObras);
+  $("lista-obras").addEventListener("click", (e) => { const b = e.target.closest("[data-obra]"); if (b) { selObra = b.dataset.obra; pintarObras(); irAFicha("ficha-obra"); } });
+
+  function pintarFichaObra() {
+    const o = datos.obras.find(x => x.id === selObra);
+    const cont = $("ficha-obra");
+    if (!o) { cont.innerHTML = `<div class="vacio">Elige una obra de la lista o crea una nueva con <b>+ Nueva</b>.</div>`; return; }
+    const i = datos.obras.indexOf(o);
+    const opcArt = `<option value="">— Sin asignar —</option>` + datos.artistas.map(a => `<option value="${esc(a.id)}" ${a.id === o.artista_id ? "selected" : ""}>${esc(a.nombre || "(sin nombre)")}</option>`).join("");
+    const foto = o.imagenes?.[0];
+    cont.innerHTML = `
+      <div class="ficha">
+        <div class="ficha-cab">
+          <h2>${esc(numObra(o))} · ${esc(o.titulo || "Sin título")}</h2>
+          <div class="acciones">
+            <button class="boton chico" type="button" data-mover="-1" ${i === 0 ? "disabled" : ""} title="Mostrar antes en la web">↑ Subir</button>
+            <button class="boton chico" type="button" data-mover="1" ${i === datos.obras.length - 1 ? "disabled" : ""} title="Mostrar después en la web">↓ Bajar</button>
+            <button class="boton chico peligro" type="button" id="eliminar-obra">Eliminar</button>
+          </div>
+        </div>
+        <div class="foto-campo">
+          <div>
+            ${foto ? `<img class="vista-foto" src="${esc(srcDe(foto))}" alt="Foto de ${esc(o.titulo)}">` : `<div class="vista-foto vacia">Sin foto</div>`}
+            <div class="subir" style="margin-top:.6rem"><button class="boton chico" type="button" style="width:100%">${foto ? "Cambiar foto" : "Subir foto"}</button><input type="file" accept="image/*" id="foto-obra" aria-label="Elegir foto de la obra"></div>
+            <p class="nota" style="margin-top:.4rem">JPG o PNG. Se reduce sola para que cargue rápido.</p>
+          </div>
+          <div style="display:grid;gap:1rem;min-width:0">
+            <div class="campo"><label for="o-titulo">Título</label><input type="text" id="o-titulo" data-campo="titulo" value="${esc(o.titulo)}"></div>
+            <div class="fila">
+              <div class="campo"><label for="o-artista">Artista</label><select id="o-artista" data-campo="artista_id">${opcArt}</select></div>
+              <div class="campo"><label for="o-tipo">Tipo</label><select id="o-tipo" data-campo="tipo">
+                <option value="pintura" ${o.tipo === "pintura" ? "selected" : ""}>Pintura</option>
+                <option value="escultura" ${o.tipo === "escultura" ? "selected" : ""}>Escultura</option></select></div>
+            </div>
+            <div class="fila">
+              <div class="campo"><label for="o-tecnica">Técnica</label><input type="text" id="o-tecnica" data-campo="tecnica" value="${esc(o.tecnica)}" placeholder="Óleo sobre lienzo"></div>
+              <div class="campo"><label for="o-medidas">Medidas</label><input type="text" id="o-medidas" data-campo="medidas" value="${esc(o.medidas)}" placeholder="60 × 80 cm"></div>
+              <div class="campo"><label for="o-anio">Año</label><input type="text" id="o-anio" data-campo="anio" value="${esc(o.anio)}" inputmode="numeric" placeholder="2025"></div>
+            </div>
+            <div class="fila">
+              <div class="campo"><label for="o-precio">Precio (S/)</label><input type="number" id="o-precio" data-campo="precio_soles" min="0" step="1" value="${o.precio_soles ?? ""}" placeholder="Vacío = a consultar"></div>
+              <div class="campo"><span class="etq">Estado</span><label class="check" style="padding-top:.5rem"><input type="checkbox" id="o-disponible" data-campo="disponible" ${o.disponible !== false ? "checked" : ""}> Disponible para la venta</label></div>
+            </div>
+            <div class="campo"><label for="o-descripcion">Descripción</label><textarea id="o-descripcion" data-campo="descripcion" rows="4">${esc(o.descripcion)}</textarea></div>
+          </div>
+        </div>
+      </div>`;
+    cont.querySelectorAll("[data-campo]").forEach(el => el.addEventListener(el.type === "checkbox" || el.tagName === "SELECT" ? "change" : "input", () => {
+      const c = el.dataset.campo;
+      if (c === "precio_soles") o[c] = el.value === "" ? null : Math.max(0, Number(el.value));
+      else if (c === "disponible") o[c] = el.checked;
+      else o[c] = el.value;
+      if (c === "titulo") o.titulo_es_provisional = false;
+      actualizarItem("obra", o); marcarCambios();
+    }));
+    cont.querySelectorAll("[data-mover]").forEach(b => b.addEventListener("click", () => {
+      const j = i + Number(b.dataset.mover); [datos.obras[i], datos.obras[j]] = [datos.obras[j], datos.obras[i]];
+      pintarObras(); marcarCambios();
+    }));
+    $("foto-obra").addEventListener("change", async (e) => {
+      const f = e.target.files[0]; if (!f) return;
+      try {
+        const p = await prepararFoto(f);
+        const ruta = `obras/${o.id}-${sello()}.jpg`;
+        quitarFoto(o.imagenes?.[0]);
+        pendientes.set(ruta, p); o.imagenes = [ruta];
+        avisar(`Foto lista (${p.kb} KB). Se subirá al guardar.`);
+        pintarObras(); marcarCambios();
+      } catch (err) { avisar(err.message, "error"); }
+    });
+    confirmarDoble($("eliminar-obra"), () => {
+      quitarFoto(o.imagenes?.[0]);
+      datos.obras.splice(i, 1);
+      selObra = datos.obras[Math.min(i, datos.obras.length - 1)]?.id || null;
+      avisar("Obra eliminada. Se quitará de la web al guardar.");
+      pintarObras(); marcarCambios();
+    });
+  }
+
+  $("nueva-obra").addEventListener("click", () => {
+    const max = datos.obras.reduce((m, o) => Math.max(m, Number(String(o.id).match(/\d+/)?.[0] || 0)), 0);
+    const o = { id: "obra-" + String(max + 1).padStart(2, "0"), titulo: "", tipo: "pintura", artista_id: "", tecnica: "", medidas: "", anio: "", precio_soles: null, disponible: true, descripcion: "", imagenes: [] };
+    datos.obras.push(o); selObra = o.id; $("buscar-obra").value = "";
+    pintarObras(); marcarCambios();
+    $("o-titulo").focus();
+  });
+
+  // ---------- artistas ----------
+  function pintarArtistas() {
+    $("lista-artistas").innerHTML = datos.artistas.map(a => {
+      const n = datos.obras.filter(o => o.artista_id === a.id).length;
+      return `<li><button type="button" class="item" data-artista="${esc(a.id)}" aria-current="${a.id === selArtista}">
+        ${a.foto ? `<img class="miniatura" src="${esc(srcDe(a.foto))}" alt="" loading="lazy">` : `<span class="miniatura vacia">${esc((a.nombre || "?").trim().charAt(0).toUpperCase() || "?")}</span>`}
+        <span class="item-texto"><span class="item-titulo">${esc(a.nombre || "Sin nombre")}</span>
+        <span class="item-meta">${esc(a.disciplina || "—")} · ${n} obra${n === 1 ? "" : "s"}</span></span></button></li>`;
+    }).join("") || `<li class="nota" style="padding:1rem">Aún no hay artistas. Crea la primera con <b>+ Nueva</b>.</li>`;
+    pintarFichaArtista();
+  }
+  $("lista-artistas").addEventListener("click", (e) => { const b = e.target.closest("[data-artista]"); if (b) { selArtista = b.dataset.artista; pintarArtistas(); irAFicha("ficha-artista"); } });
+
+  function pintarFichaArtista() {
+    const a = datos.artistas.find(x => x.id === selArtista);
+    const cont = $("ficha-artista");
+    if (!a) { cont.innerHTML = `<div class="vacio">Elige una artista de la lista o crea una nueva con <b>+ Nueva</b>.</div>`; return; }
+    const i = datos.artistas.indexOf(a);
+    const suyas = datos.obras.filter(o => o.artista_id === a.id);
+    const libres = datos.obras.filter(o => !o.artista_id);
+    cont.innerHTML = `
+      <div class="ficha">
+        <div class="ficha-cab">
+          <h2>${esc(a.nombre || "Nueva artista")}</h2>
+          <div class="acciones">
+            <button class="boton chico" type="button" data-mover="-1" ${i === 0 ? "disabled" : ""}>↑ Subir</button>
+            <button class="boton chico" type="button" data-mover="1" ${i === datos.artistas.length - 1 ? "disabled" : ""}>↓ Bajar</button>
+            <button class="boton chico peligro" type="button" id="eliminar-artista">Eliminar</button>
+          </div>
+        </div>
+        <div class="foto-campo">
+          <div>
+            ${a.foto ? `<img class="vista-foto" src="${esc(srcDe(a.foto))}" alt="Foto de ${esc(a.nombre)}">` : `<div class="vista-foto vacia">Sin foto</div>`}
+            <div class="subir" style="margin-top:.6rem"><button class="boton chico" type="button" style="width:100%">${a.foto ? "Cambiar foto" : "Subir foto"}</button><input type="file" accept="image/*" id="foto-artista" aria-label="Elegir foto de la artista"></div>
+          </div>
+          <div style="display:grid;gap:1rem;min-width:0">
+            <div class="campo"><label for="a-nombre">Nombre</label><input type="text" id="a-nombre" data-campo="nombre" value="${esc(a.nombre)}"></div>
+            <div class="campo"><label for="a-disciplina">Qué hace</label><input type="text" id="a-disciplina" data-campo="disciplina" value="${esc(a.disciplina)}" placeholder="Pintura al óleo, escultura…"></div>
+            <div class="campo"><label for="a-descripcion">Sobre la artista</label><textarea id="a-descripcion" data-campo="descripcion" rows="5">${esc(a.descripcion)}</textarea></div>
+            <div class="campo"><span class="etq">Obras de esta artista (${suyas.length})</span>
+              <div class="nota">${suyas.length ? suyas.map(o => esc(numObra(o) + " " + (o.titulo || "Sin título"))).join(" · ") : "Ninguna todavía."}</div>
+              ${libres.length ? `<div style="display:flex;gap:.5rem;flex-wrap:wrap;align-items:center;margin-top:.4rem">
+                <select id="asignar-obra" aria-label="Obra sin artista" style="width:auto;flex:1;min-width:180px"><option value="">Asignarle una obra sin artista…</option>${libres.map(o => `<option value="${esc(o.id)}">${esc(numObra(o) + " " + (o.titulo || "Sin título"))}</option>`).join("")}</select>
+                <button class="boton chico" type="button" id="asignar">Asignar</button></div>` : ""}
+            </div>
+          </div>
+        </div>
+      </div>`;
+    cont.querySelectorAll("[data-campo]").forEach(el => el.addEventListener("input", () => { a[el.dataset.campo] = el.value; actualizarItem("artista", a); marcarCambios(); }));
+    cont.querySelectorAll("[data-mover]").forEach(b => b.addEventListener("click", () => {
+      const j = i + Number(b.dataset.mover); [datos.artistas[i], datos.artistas[j]] = [datos.artistas[j], datos.artistas[i]];
+      pintarArtistas(); marcarCambios();
+    }));
+    $("asignar")?.addEventListener("click", () => {
+      const o = datos.obras.find(x => x.id === $("asignar-obra").value); if (!o) return;
+      o.artista_id = a.id; pintarArtistas(); marcarCambios();
+    });
+    $("foto-artista").addEventListener("change", async (e) => {
+      const f = e.target.files[0]; if (!f) return;
+      try {
+        const p = await prepararFoto(f, 900);
+        const ruta = `artistas/${slug(a.nombre || a.id)}-${sello()}.jpg`;
+        quitarFoto(a.foto); pendientes.set(ruta, p); a.foto = ruta;
+        avisar(`Foto lista (${p.kb} KB). Se subirá al guardar.`);
+        pintarArtistas(); marcarCambios();
+      } catch (err) { avisar(err.message, "error"); }
+    });
+    confirmarDoble($("eliminar-artista"), () => {
+      quitarFoto(a.foto);
+      datos.obras.forEach(o => { if (o.artista_id === a.id) o.artista_id = ""; });
+      datos.artistas.splice(i, 1);
+      selArtista = datos.artistas[Math.min(i, datos.artistas.length - 1)]?.id || null;
+      avisar(suyas.length ? `Artista eliminada. Sus ${suyas.length} obras quedaron sin artista.` : "Artista eliminada.");
+      pintarArtistas(); marcarCambios();
+    }, suyas.length ? `¿Eliminar? ${suyas.length} obras quedarán sin artista` : null);
+  }
+
+  $("nueva-artista").addEventListener("click", () => {
+    let n = datos.artistas.length + 1, id;
+    do { id = "artista-" + n++; } while (datos.artistas.some(a => a.id === id));
+    const a = { id, nombre: "", disciplina: "", descripcion: "", foto: "" };
+    datos.artistas.push(a); selArtista = a.id;
+    pintarArtistas(); marcarCambios(); $("a-nombre").focus();
+  });
+
+  // ---------- colectivo ----------
+  function pintarColectivo() {
+    document.querySelectorAll("#tab-colectivo [data-ruta]").forEach(el => {
+      const [g, k] = el.dataset.ruta.split(".");
+      if (document.activeElement !== el) el.value = datos[g]?.[k] ?? "";
+    });
+  }
+  document.querySelectorAll("#tab-colectivo [data-ruta]").forEach(el => el.addEventListener("input", () => {
+    const [g, k] = el.dataset.ruta.split("."); datos[g][k] = el.value; marcarCambios();
+  }));
+
+  // ---------- ayudas de la interfaz ----------
+  function actualizarItem(tipo, x) {
+    // Refresca solo la fila de la lista, sin redibujar el formulario (para no perder el cursor)
+    const b = document.querySelector(`[data-${tipo}="${CSS.escape(x.id)}"]`); if (!b) return;
+    const t = b.querySelector(".item-titulo"), m = b.querySelector(".item-meta");
+    if (tipo === "obra") {
+      t.innerHTML = esc(x.titulo || "Sin título") + (x.disponible === false ? '<span class="etiq vendida">Vendida</span>' : "");
+      m.textContent = `${numObra(x)} · ${nombreArtista(x.artista_id) || "sin artista"}${x.precio_soles ? " · S/ " + x.precio_soles : ""}`;
+    } else {
+      t.textContent = x.nombre || "Sin nombre";
+      const n = datos.obras.filter(o => o.artista_id === x.id).length;
+      m.textContent = `${x.disciplina || "—"} · ${n} obra${n === 1 ? "" : "s"}`;
+      const h = document.querySelector("#ficha-artista h2"); if (h) h.textContent = x.nombre || "Nueva artista";
+    }
+  }
+  function irAFicha(id) { if (window.matchMedia("(max-width: 820px)").matches) $(id).scrollIntoView({ behavior: "smooth", block: "start" }); }
+  function quitarFoto(ruta) {
+    if (!ruta) return;
+    if (pendientes.has(ruta)) { URL.revokeObjectURL(pendientes.get(ruta).url); pendientes.delete(ruta); return; }
+    const enUso = datos.obras.filter(o => o.imagenes?.includes(ruta)).length + datos.artistas.filter(a => a.foto === ruta).length;
+    if (enUso <= 1 && archivosOriginales.has(ruta) && /^(obras|artistas)\//.test(ruta)) borrar.add(ruta);
+  }
+  function confirmarDoble(boton, accion, texto) {
+    let armado = false, t; const orig = boton.textContent;
+    boton.addEventListener("click", () => {
+      if (armado) { clearTimeout(t); accion(); return; }
+      armado = true; boton.classList.add("confirmar"); boton.textContent = texto || "¿Seguro? Toca otra vez";
+      t = setTimeout(() => { armado = false; boton.classList.remove("confirmar"); boton.textContent = orig; }, 4000);
+    });
+  }
+
+  // ---------- guardar y publicar (un solo commit) ----------
+  async function guardar() {
+    const btn = $("guardar"); btn.disabled = true; btn.textContent = "Publicando…";
+    try {
+      const ref = await gh(`/git/ref/heads/${RAMA}`);
+      if (ref.object.sha !== baseSha) {
+        const err = new Error("conflicto"); err.conflicto = true; throw err;
+      }
+      const commitBase = await gh(`/git/commits/${baseSha}`);
+      const arbol = [];
+      for (const [ruta, p] of pendientes) {
+        const blob = await gh(`/git/blobs`, { method: "POST", body: JSON.stringify({ content: p.b64, encoding: "base64" }) });
+        arbol.push({ path: ruta, mode: "100644", type: "blob", sha: blob.sha });
+      }
+      const limpio = JSON.parse(JSON.stringify(datos));
+      if (!limpio.artistas.length) limpio.artistas = [];
+      const texto = JSON.stringify(limpio, null, 2) + "\n";
+      const blobDatos = await gh(`/git/blobs`, { method: "POST", body: JSON.stringify({ content: texto, encoding: "utf-8" }) });
+      arbol.push({ path: "datos.json", mode: "100644", type: "blob", sha: blobDatos.sha });
+      for (const ruta of borrar) arbol.push({ path: ruta, mode: "100644", type: "blob", sha: null });
+      const nuevoArbol = await gh(`/git/trees`, { method: "POST", body: JSON.stringify({ base_tree: commitBase.tree.sha, tree: arbol }) });
+      const resumen = [];
+      if (pendientes.size) resumen.push(`${pendientes.size} foto(s) nueva(s)`);
+      if (borrar.size) resumen.push(`${borrar.size} foto(s) eliminada(s)`);
+      const commit = await gh(`/git/commits`, { method: "POST", body: JSON.stringify({
+        message: "Actualizar obras y artistas desde el panel" + (resumen.length ? " (" + resumen.join(", ") + ")" : ""),
+        tree: nuevoArbol.sha, parents: [baseSha] }) });
+      await gh(`/git/refs/heads/${RAMA}`, { method: "PATCH", body: JSON.stringify({ sha: commit.sha, force: false }) });
+      baseSha = commit.sha;
+      pendientes.forEach((p, ruta) => recientes.set(ruta, p.url));
+      datos.obras.forEach(o => (o.imagenes || []).forEach(r => archivosOriginales.add(r)));
+      datos.artistas.forEach(a => a.foto && archivosOriginales.add(a.foto));
+      borrar.forEach(r => archivosOriginales.delete(r));
+      pendientes.clear(); borrar.clear(); original = JSON.stringify(datos);
+      pintarTodo();
+      avisar("¡Guardado! La web se actualiza en aproximadamente un minuto.", "ok");
+    } catch (e) {
+      if (e.conflicto) avisar("Alguien guardó cambios en la web mientras editabas. Copia lo que cambiaste, recarga la página y vuelve a intentarlo.", "error");
+      else if (e.status === 401) avisar("La clave venció o no es válida. Recarga la página y conéctate con una nueva.", "error");
+      else if (e.status === 403 || e.status === 404) avisar("La clave no tiene permiso para escribir. Debe tener Contents: Read and write.", "error");
+      else avisar("No se pudo guardar: " + e.message + ". Tus cambios siguen aquí; inténtalo de nuevo.", "error");
+    } finally { btn.textContent = "Guardar y publicar"; marcarCambios(); }
+  }
+  $("guardar").addEventListener("click", guardar);
+  confirmarDoble($("descartar"), async () => {
+    try { await cargar(); avisar("Cambios descartados."); } catch (e) { avisar("No se pudo recargar: " + e.message, "error"); }
+  }, "¿Descartar todo? Toca otra vez");
+
+  // ---------- inicio ----------
+  let guardado = "";
+  try { guardado = localStorage.getItem("artina-token") || ""; } catch (e) {}
+  if (guardado) { $("token").value = guardado; conectar(guardado, true); }
+})();
+</script>
+</body>
+</html>

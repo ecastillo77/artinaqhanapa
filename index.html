@@ -217,6 +217,13 @@ header.sitio, section.bloque, footer { background: rgba(255,252,248,.84); backdr
 .musica[aria-pressed="true"] .ondas i:nth-child(4) { animation-delay: .45s; }
 @keyframes onda { 0%, 100% { height: 4px; } 50% { height: 14px; } }
 .portada p .nombre { font: 700 1.3em/1.2 var(--f-display); color: var(--rojo); letter-spacing: .01em; text-transform: uppercase; white-space: nowrap; }
+.artista { background: var(--papel); border: 1px solid var(--linea); padding: 1rem; display: grid; gap: .35rem; align-content: start; min-width: 0; }
+.artista-foto { width: 100%; aspect-ratio: 1; object-fit: cover; border-radius: 4px; background: var(--linea); margin-bottom: .5rem; }
+.artista-foto.vacia { display: grid; place-items: center; font: 700 3rem/1 var(--f-display); color: #fff; background: linear-gradient(135deg, var(--rojo), var(--naranja)); }
+.artista h3 { margin: 0; font: 700 1.05rem/1.25 var(--f-display); text-transform: uppercase; letter-spacing: .01em; }
+.artista-disc { margin: 0; color: var(--rojo); font-weight: 600; font-size: .92rem; }
+.artista-desc { margin: 0; color: var(--tinta-suave); font-size: .92rem; }
+.artista-obras { margin: 0; font: .76rem/1.4 var(--f-ficha); color: var(--tinta-suave); }
 </style>
 
 <div class="aviso" id="aviso">
@@ -550,7 +557,16 @@ header.sitio, section.bloque, footer { background: rgba(255,252,248,.84); backdr
     // Artistas
     const lista = Object.values(artistas);
     $("lista-artistas").innerHTML = lista.length
-      ? `<div class="lista-artistas">${lista.map(a => `<div><strong>${esc(a.nombre)}</strong><br><span class="pendiente">${esc(a.disciplina)}</span><p>${esc(a.descripcion)}</p></div>`).join("")}</div>`
+      ? `<div class="lista-artistas">${lista.map(a => {
+          const n = obras.filter(o => o.artista_id === a.id).length;
+          return `<article class="artista">
+            ${a.foto ? `<img class="artista-foto" src="${esc(a.foto)}" alt="${esc(a.nombre)}" loading="lazy">` : `<div class="artista-foto vacia" aria-hidden="true">${esc(a.nombre.trim().charAt(0).toUpperCase())}</div>`}
+            <h3>${esc(a.nombre)}</h3>
+            ${a.disciplina ? `<p class="artista-disc">${esc(a.disciplina)}</p>` : ""}
+            ${a.descripcion ? `<p class="artista-desc">${esc(a.descripcion)}</p>` : ""}
+            ${n ? `<p class="artista-obras">${n} obra${n === 1 ? "" : "s"} en la galería</p>` : ""}
+          </article>`;
+        }).join("")}</div>`
       : `<div class="artistas-vacio"><strong>Muy pronto.</strong> Aquí presentaremos a cada artista del colectivo, con su foto, lo que hace y sus obras.</div>`;
 
     // Ficha
