@@ -15,7 +15,7 @@
   "artistas": [
     {
       "id": "artista-1",
-      "nombre": "",
+      "nombre": "Maribel Carrera del Aguila",
       "disciplina": "",
       "descripcion": "",
       "foto": ""
@@ -59,7 +59,7 @@
       "titulo": "Formas en movimiento",
       "titulo_es_provisional": true,
       "tipo": "pintura",
-      "artista_id": "",
+      "artista_id": "artista-1",
       "tecnica": "Óleo o acrílico sobre lienzo (por confirmar)",
       "medidas": "",
       "anio": "",
