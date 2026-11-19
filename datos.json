@@ -231,5 +231,6 @@
       ]
     }
   ],
-  "musica": "musica/fondo.mp3"
+  "musica": "musica/fondo.mp3",
+  "exposiciones": []
 }

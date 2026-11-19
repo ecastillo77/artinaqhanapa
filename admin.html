@@ -57,7 +57,7 @@ h2 { font: 700 1.15rem/1.2 var(--f-display); text-transform: uppercase; margin: 
 .campo { display: grid; gap: .3rem; min-width: 0; }
 .campo label, .campo .etq { font: 500 .72rem/1.3 var(--f-ficha); letter-spacing: .08em; text-transform: uppercase; color: var(--tinta-suave); }
 .campo .ayuda { font-size: .8rem; color: var(--tinta-suave); }
-input[type=text], input[type=password], input[type=number], input[type=tel], input[type=url], select, textarea { width: 100%; padding: .6rem .7rem; border: 1px solid #dccfc4; border-radius: 6px; background: #fff; }
+input[type=text], input[type=password], input[type=number], input[type=tel], input[type=url], input[type=date], select, textarea { width: 100%; padding: .6rem .7rem; border: 1px solid #dccfc4; border-radius: 6px; background: #fff; }
 input:focus, select:focus, textarea:focus { outline: 2px solid var(--rojo); outline-offset: 0; border-color: var(--rojo); }
 textarea { resize: vertical; min-height: 5.5rem; }
 .fila { display: grid; grid-template-columns: repeat(auto-fit, minmax(170px, 1fr)); gap: 1rem; }
@@ -114,6 +114,17 @@ nav.pestanas .cuenta { font-family: var(--f-ficha); font-weight: 400; color: var
   .foto-campo { grid-template-columns: 1fr; }
   .vista-foto { max-height: 50dvh; }
 }
+.elegir-obras { display: grid; grid-template-columns: repeat(auto-fill, minmax(78px, 1fr)); gap: .5rem; }
+.elegible { all: unset; box-sizing: border-box; cursor: pointer; display: grid; gap: .25rem; justify-items: center; padding: .3rem; border: 2px solid transparent; border-radius: 6px; font: .7rem/1 var(--f-ficha); color: var(--tinta-suave); position: relative; }
+.elegible img, .elegible .miniatura { width: 64px; height: 64px; object-fit: cover; border-radius: 4px; opacity: .45; filter: grayscale(.6); }
+.elegible[aria-pressed="true"] { border-color: var(--rojo); background: var(--rojo-suave); color: var(--rojo); }
+.elegible[aria-pressed="true"] img { opacity: 1; filter: none; }
+.elegible[aria-pressed="true"]::after { content: "✓"; position: absolute; top: .15rem; right: .2rem; width: 1.2rem; height: 1.2rem; border-radius: 50%; background: var(--rojo); color: #fff; display: grid; place-items: center; font: 700 .7rem/1 var(--f-texto); }
+.elegible:focus-visible { outline: 2px solid var(--rojo); }
+.orden-expo { list-style: none; margin: 0; padding: 0; border: 1px solid var(--linea); }
+.orden-expo li { display: grid; grid-template-columns: 52px minmax(0, 1fr) auto; gap: .7rem; align-items: center; padding: .45rem .6rem; border-bottom: 1px solid var(--linea); }
+.orden-expo li:last-child { border-bottom: 0; }
+.orden-expo .acciones { display: flex; gap: .3rem; }
 </style>
 </head>
 <body>
@@ -167,6 +178,7 @@ nav.pestanas .cuenta { font-family: var(--f-ficha); font-weight: 400; color: var
     <div class="envoltura" role="tablist">
       <button type="button" role="tab" data-tab="obras" aria-selected="true">Obras<span class="cuenta" id="n-obras"></span></button>
       <button type="button" role="tab" data-tab="artistas" aria-selected="false">Artistas<span class="cuenta" id="n-artistas"></span></button>
+      <button type="button" role="tab" data-tab="exposiciones" aria-selected="false">Exposiciones<span class="cuenta" id="n-expos"></span></button>
       <button type="button" role="tab" data-tab="colectivo" aria-selected="false">Colectivo y ventas</button>
     </div>
   </nav>
@@ -193,6 +205,18 @@ nav.pestanas .cuenta { font-family: var(--f-ficha); font-weight: 400; color: var
       <ul id="lista-artistas"></ul>
     </aside>
     <div id="ficha-artista"></div>
+  </section>
+
+  <!-- Exposiciones -->
+  <section class="envoltura editor" id="tab-exposiciones" hidden>
+    <aside class="lista">
+      <div class="lista-cab">
+        <span class="nota">Exposiciones</span>
+        <button class="boton chico principal" type="button" id="nueva-expo">+ Nueva</button>
+      </div>
+      <ul id="lista-expos"></ul>
+    </aside>
+    <div id="ficha-expo"></div>
   </section>
 
   <!-- Colectivo -->
@@ -225,7 +249,7 @@ nav.pestanas .cuenta { font-family: var(--f-ficha); font-weight: 400; color: var
   const esc = (s) => String(s ?? "").replace(/[&<>"']/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]));
 
   let token = "", datos = null, original = "", baseSha = "", datosSha = "", tab = "obras";
-  let selObra = null, selArtista = null;
+  let selObra = null, selArtista = null, selExpo = null;
   const pendientes = new Map();   // ruta -> { b64, url }
   const borrar = new Set();       // rutas de fotos a eliminar del repositorio
   const archivosOriginales = new Set();
@@ -299,12 +323,14 @@ nav.pestanas .cuenta { font-family: var(--f-ficha); font-weight: 400; color: var
     baseSha = ref.object.sha;
     const arch = await gh(`/contents/datos.json?ref=${baseSha}`);
     datos = JSON.parse(b64aTexto(arch.content)); datosSha = arch.sha;
-    datos.colectivo ??= {}; datos.ventas ??= {}; datos.artistas ??= []; datos.obras ??= [];
+    datos.colectivo ??= {}; datos.ventas ??= {}; datos.artistas ??= []; datos.obras ??= []; datos.exposiciones ??= [];
     datos.artistas = datos.artistas.filter(a => a.nombre || a.foto || a.descripcion);   // quita la ficha vacía de ejemplo
     original = JSON.stringify(datos);
     pendientes.clear(); borrar.clear(); archivosOriginales.clear();
     datos.obras.forEach(o => (o.imagenes || []).forEach(r => archivosOriginales.add(r)));
     datos.artistas.forEach(a => a.foto && archivosOriginales.add(a.foto));
+    datos.exposiciones.forEach(e => e.afiche && archivosOriginales.add(e.afiche));
+    selExpo = datos.exposiciones[0]?.id || null;
     selObra = datos.obras[0]?.id || null; selArtista = datos.artistas[0]?.id || null;
     $("estado").innerHTML = soloLectura ? `Conectado <b>solo para leer</b>` : `Conectado a <b>${esc(REPO)}</b>`;
     $("aviso-permiso").hidden = !soloLectura;
@@ -318,7 +344,7 @@ nav.pestanas .cuenta { font-family: var(--f-ficha); font-weight: 400; color: var
     $("guardar").disabled = !c;
     $("aviso-cambios").hidden = !c;
     if (c) $("aviso-texto").textContent = "Tienes cambios sin publicar" + (pendientes.size ? ` (incluye ${pendientes.size} foto${pendientes.size > 1 ? "s" : ""} nueva${pendientes.size > 1 ? "s" : ""})` : "") + ". Toca \"Guardar y publicar\" para que aparezcan en la web.";
-    $("n-obras").textContent = datos.obras.length; $("n-artistas").textContent = datos.artistas.length;
+    $("n-obras").textContent = datos.obras.length; $("n-artistas").textContent = datos.artistas.length; $("n-expos").textContent = datos.exposiciones.length;
   }
   window.addEventListener("beforeunload", (e) => { if (hayCambios()) { e.preventDefault(); e.returnValue = ""; } });
 
@@ -326,11 +352,11 @@ nav.pestanas .cuenta { font-family: var(--f-ficha); font-weight: 400; color: var
   document.querySelectorAll("[data-tab]").forEach(b => b.addEventListener("click", () => {
     tab = b.dataset.tab;
     document.querySelectorAll("[data-tab]").forEach(x => x.setAttribute("aria-selected", x === b));
-    ["obras", "artistas", "colectivo"].forEach(t => $("tab-" + t).hidden = t !== tab);
+    ["obras", "artistas", "exposiciones", "colectivo"].forEach(t => $("tab-" + t).hidden = t !== tab);
     pintarTodo();
   }));
 
-  function pintarTodo() { pintarObras(); pintarArtistas(); pintarColectivo(); marcarCambios(); }
+  function pintarTodo() { pintarObras(); pintarArtistas(); pintarExpos(); pintarColectivo(); marcarCambios(); }
 
   // ---------- obras ----------
   const nombreArtista = (id) => datos.artistas.find(a => a.id === id)?.nombre || "";
@@ -420,6 +446,7 @@ nav.pestanas .cuenta { font-family: var(--f-ficha); font-weight: 400; color: var
     confirmarDoble($("eliminar-obra"), () => {
       quitarFoto(o.imagenes?.[0]);
       datos.obras.splice(i, 1);
+      datos.exposiciones.forEach(x => { x.obras = (x.obras || []).filter(id => id !== o.id); });
       selObra = datos.obras[Math.min(i, datos.obras.length - 1)]?.id || null;
       avisar("Obra eliminada. Se quitará de la web al guardar.");
       pintarObras(); marcarCambios();
@@ -519,6 +546,110 @@ nav.pestanas .cuenta { font-family: var(--f-ficha); font-weight: 400; color: var
     pintarArtistas(); marcarCambios(); $("a-nombre").focus();
   });
 
+  // ---------- exposiciones ----------
+  const MESES = ["ene", "feb", "mar", "abr", "may", "jun", "jul", "ago", "sep", "oct", "nov", "dic"];
+  const fechaCorta = (s) => { const m = /^(\d{4})-(\d{2})-(\d{2})$/.exec(s || ""); return m ? `${+m[3]} ${MESES[+m[2] - 1]} ${m[1]}` : ""; };
+  function pintarExpos() {
+    $("lista-expos").innerHTML = datos.exposiciones.map(e => {
+      const primera = datos.obras.find(o => o.id === (e.obras || [])[0]);
+      const img = e.afiche || primera?.imagenes?.[0];
+      return `<li><button type="button" class="item" data-expo="${esc(e.id)}" aria-current="${e.id === selExpo}">
+        ${img ? `<img class="miniatura" src="${esc(srcDe(img))}" alt="" loading="lazy">` : `<span class="miniatura vacia">E</span>`}
+        <span class="item-texto"><span class="item-titulo">${esc(e.titulo || "Sin título")}</span>
+        <span class="item-meta">${esc(fechaCorta(e.fecha_inicio) || "sin fecha")} · ${(e.obras || []).length} obras</span></span></button></li>`;
+    }).join("") || `<li class="nota" style="padding:1rem">Aún no hay exposiciones. Crea la primera con <b>+ Nueva</b>.</li>`;
+    pintarFichaExpo();
+  }
+  $("lista-expos").addEventListener("click", (e) => { const b = e.target.closest("[data-expo]"); if (b) { selExpo = b.dataset.expo; pintarExpos(); irAFicha("ficha-expo"); } });
+
+  function pintarFichaExpo() {
+    const e = datos.exposiciones.find(x => x.id === selExpo);
+    const cont = $("ficha-expo");
+    if (!e) { cont.innerHTML = `<div class="vacio">Elige una exposición de la lista o crea una nueva con <b>+ Nueva</b>.</div>`; return; }
+    e.obras ??= [];
+    const i = datos.exposiciones.indexOf(e);
+    const campo = (k, etq, tipo = "text", extra = "") => `<div class="campo"><label for="e-${k}">${etq}</label><input type="${tipo}" id="e-${k}" data-campo="${k}" value="${esc(e[k])}" ${extra}></div>`;
+    const incluidas = e.obras.map(id => datos.obras.find(o => o.id === id)).filter(Boolean);
+    cont.innerHTML = `
+      <div class="ficha">
+        <div class="ficha-cab">
+          <h2>${esc(e.titulo || "Nueva exposición")}</h2>
+          <div class="acciones">
+            <a class="boton chico" href="./#exposicion=${encodeURIComponent(e.id)}" target="_blank" rel="noopener" title="Abre la versión publicada">Ver en la web</a>
+            <button class="boton chico peligro" type="button" id="eliminar-expo">Eliminar</button>
+          </div>
+        </div>
+        <div class="foto-campo">
+          <div>
+            ${e.afiche ? `<img class="vista-foto" src="${esc(srcDe(e.afiche))}" alt="Afiche">` : `<div class="vista-foto vacia">Sin afiche.<br>La web arma una portada con la primera obra y el título.</div>`}
+            <div class="subir" style="margin-top:.6rem"><button class="boton chico" type="button" style="width:100%">${e.afiche ? "Cambiar afiche" : "Subir afiche (opcional)"}</button><input type="file" accept="image/*" id="foto-expo" aria-label="Elegir afiche"></div>
+            ${e.afiche ? `<button class="boton chico" type="button" id="quitar-afiche" style="width:100%;margin-top:.4rem">Quitar afiche</button>` : ""}
+            <p class="nota" style="margin-top:.4rem">Vertical, como un póster (3 × 4).</p>
+          </div>
+          <div style="display:grid;gap:1rem;min-width:0">
+            ${campo("titulo", "Título de la exposición")}
+            ${campo("subtitulo", "Subtítulo", "text", 'placeholder="Muestra colectiva de pintura"')}
+            <div class="fila">${campo("fecha_inicio", "Desde", "date")}${campo("fecha_fin", "Hasta", "date")}</div>
+            ${campo("horario", "Horario de visita", "text", 'placeholder="Lunes a sábado, de 10:00 a 20:00"')}
+            ${campo("inauguracion", "Inauguración (opcional)", "text", 'placeholder="Viernes 5 de diciembre, 7:00 p. m."')}
+            <div class="fila">${campo("lugar", "Lugar", "text", 'placeholder="Centro Cultural…"')}${campo("direccion", "Dirección")}</div>
+            ${campo("mapa", "Enlace de Google Maps (opcional)", "url", 'placeholder="Si lo dejas vacío, se busca por el lugar y la dirección"')}
+            <div class="campo"><label for="e-descripcion">Presentación</label><textarea id="e-descripcion" data-campo="descripcion" rows="4">${esc(e.descripcion)}</textarea></div>
+          </div>
+        </div>
+        <div class="campo"><span class="etq">Obras de la exposición (${incluidas.length}) · toca para agregar o quitar</span>
+          <div class="elegir-obras">${datos.obras.map(o => `<button type="button" class="elegible" data-elegir="${esc(o.id)}" aria-pressed="${e.obras.includes(o.id)}" title="${esc(o.titulo)}">
+            ${o.imagenes?.[0] ? `<img src="${esc(srcDe(o.imagenes[0]))}" alt="" loading="lazy">` : `<span class="miniatura vacia">?</span>`}<span>${esc(numObra(o))}</span></button>`).join("")}</div>
+        </div>
+        ${incluidas.length ? `<div class="campo"><span class="etq">Orden en el catálogo</span><ol class="orden-expo">${incluidas.map((o, k) => `<li>
+          <img class="miniatura" src="${esc(srcDe(o.imagenes?.[0] || ""))}" alt=""><span class="item-texto"><span class="item-titulo">${esc(o.titulo || "Sin título")}</span><span class="item-meta">${esc(numObra(o))} · ${esc(nombreArtista(o.artista_id) || "sin artista")}</span></span>
+          <span class="acciones"><button class="boton chico" type="button" data-orden="${k}" data-paso="-1" ${k === 0 ? "disabled" : ""} aria-label="Subir">↑</button><button class="boton chico" type="button" data-orden="${k}" data-paso="1" ${k === incluidas.length - 1 ? "disabled" : ""} aria-label="Bajar">↓</button></span></li>`).join("")}</ol></div>` : ""}
+      </div>`;
+    cont.querySelectorAll("[data-campo]").forEach(el => el.addEventListener("input", () => {
+      e[el.dataset.campo] = el.value.trim() === "" ? "" : el.value;
+      if (el.dataset.campo === "fecha_inicio" && (!e.fecha_fin || e.fecha_fin < e.fecha_inicio)) { e.fecha_fin = e.fecha_inicio; $("e-fecha_fin").value = e.fecha_fin; }
+      const b = document.querySelector(`[data-expo="${CSS.escape(e.id)}"]`);
+      if (b) { b.querySelector(".item-titulo").textContent = e.titulo || "Sin título"; b.querySelector(".item-meta").textContent = `${fechaCorta(e.fecha_inicio) || "sin fecha"} · ${e.obras.length} obras`; }
+      const h = cont.querySelector("h2"); if (h) h.textContent = e.titulo || "Nueva exposición";
+      marcarCambios();
+    }));
+    cont.querySelectorAll("[data-elegir]").forEach(b => b.addEventListener("click", () => {
+      const id = b.dataset.elegir, k = e.obras.indexOf(id);
+      if (k >= 0) e.obras.splice(k, 1); else e.obras.push(id);
+      pintarExpos(); marcarCambios();
+    }));
+    cont.querySelectorAll("[data-orden]").forEach(b => b.addEventListener("click", () => {
+      const k = +b.dataset.orden, j = k + Number(b.dataset.paso);
+      const ids = incluidas.map(o => o.id); [ids[k], ids[j]] = [ids[j], ids[k]]; e.obras = ids;
+      pintarExpos(); marcarCambios();
+    }));
+    $("foto-expo").addEventListener("change", async (ev) => {
+      const f = ev.target.files[0]; if (!f) return;
+      try {
+        const p = await prepararFoto(f);
+        const ruta = `exposiciones/${slug(e.titulo || e.id)}-${sello()}.jpg`;
+        quitarFoto(e.afiche); pendientes.set(ruta, p); e.afiche = ruta;
+        avisar(`Afiche listo (${p.kb} KB). Se subirá al guardar.`);
+        pintarExpos(); marcarCambios();
+      } catch (err) { avisar(err.message, "error"); }
+    });
+    $("quitar-afiche")?.addEventListener("click", () => { quitarFoto(e.afiche); e.afiche = ""; pintarExpos(); marcarCambios(); });
+    confirmarDoble($("eliminar-expo"), () => {
+      quitarFoto(e.afiche);
+      datos.exposiciones.splice(i, 1);
+      selExpo = datos.exposiciones[Math.min(i, datos.exposiciones.length - 1)]?.id || null;
+      avisar("Exposición eliminada. Se quitará de la web al guardar.");
+      pintarExpos(); marcarCambios();
+    });
+  }
+  $("nueva-expo").addEventListener("click", () => {
+    let n = datos.exposiciones.length + 1, id;
+    do { id = "expo-" + n++; } while (datos.exposiciones.some(x => x.id === id));
+    const e = { id, titulo: "", subtitulo: "", descripcion: "", lugar: "", direccion: "", mapa: "", fecha_inicio: "", fecha_fin: "", horario: "", inauguracion: "", afiche: "", obras: [] };
+    datos.exposiciones.unshift(e); selExpo = id;
+    pintarExpos(); marcarCambios(); $("e-titulo").focus();
+  });
+
   // ---------- colectivo ----------
   function pintarColectivo() {
     document.querySelectorAll("#tab-colectivo [data-ruta]").forEach(el => {
@@ -549,8 +680,8 @@ nav.pestanas .cuenta { font-family: var(--f-ficha); font-weight: 400; color: var
   function quitarFoto(ruta) {
     if (!ruta) return;
     if (pendientes.has(ruta)) { URL.revokeObjectURL(pendientes.get(ruta).url); pendientes.delete(ruta); return; }
-    const enUso = datos.obras.filter(o => o.imagenes?.includes(ruta)).length + datos.artistas.filter(a => a.foto === ruta).length;
-    if (enUso <= 1 && archivosOriginales.has(ruta) && /^(obras|artistas)\//.test(ruta)) borrar.add(ruta);
+    const enUso = datos.obras.filter(o => o.imagenes?.includes(ruta)).length + datos.artistas.filter(a => a.foto === ruta).length + datos.exposiciones.filter(e => e.afiche === ruta).length;
+    if (enUso <= 1 && archivosOriginales.has(ruta) && /^(obras|artistas|exposiciones)\//.test(ruta)) borrar.add(ruta);
   }
   function confirmarDoble(boton, accion, texto) {
     let armado = false, t; const orig = boton.textContent;
@@ -589,13 +720,14 @@ nav.pestanas .cuenta { font-family: var(--f-ficha); font-weight: 400; color: var
       if (pendientes.size) resumen.push(`${pendientes.size} foto(s) nueva(s)`);
       if (borrar.size) resumen.push(`${borrar.size} foto(s) eliminada(s)`);
       const commit = await gh(`/git/commits`, { method: "POST", body: JSON.stringify({
-        message: "Actualizar obras y artistas desde el panel" + (resumen.length ? " (" + resumen.join(", ") + ")" : ""),
+        message: "Actualizar contenido desde el panel" + (resumen.length ? " (" + resumen.join(", ") + ")" : ""),
         tree: nuevoArbol.sha, parents: [baseSha] }) });
       await gh(`/git/refs/heads/${RAMA}`, { method: "PATCH", body: JSON.stringify({ sha: commit.sha, force: false }) });
       baseSha = commit.sha; datosSha = blobDatos.sha;
       pendientes.forEach((p, ruta) => recientes.set(ruta, p.url));
       datos.obras.forEach(o => (o.imagenes || []).forEach(r => archivosOriginales.add(r)));
       datos.artistas.forEach(a => a.foto && archivosOriginales.add(a.foto));
+      datos.exposiciones.forEach(e => e.afiche && archivosOriginales.add(e.afiche));
       borrar.forEach(r => archivosOriginales.delete(r));
       pendientes.clear(); borrar.clear(); original = JSON.stringify(datos);
       pintarTodo();

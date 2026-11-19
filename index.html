@@ -224,6 +224,118 @@ header.sitio, section.bloque, footer { background: rgba(255,252,248,.84); backdr
 .artista-disc { margin: 0; color: var(--rojo); font-weight: 600; font-size: .92rem; }
 .artista-desc { margin: 0; color: var(--tinta-suave); font-size: .92rem; }
 .artista-obras { margin: 0; font: .76rem/1.4 var(--f-ficha); color: var(--tinta-suave); }
+
+/* Exposiciones */
+.expo { display: grid; grid-template-columns: minmax(0, 360px) minmax(0, 1fr); gap: clamp(1.25rem, 4vw, 3rem); background: var(--papel); border: 1px solid var(--linea); padding: clamp(1rem, 3vw, 2rem); align-items: center; }
+.expo-afiche { all: unset; cursor: pointer; display: block; position: relative; aspect-ratio: 3 / 4; overflow: hidden; border-radius: 3px; box-shadow: 0 2px 0 var(--linea), 0 26px 50px -26px rgba(0,0,0,.55); transition: transform .3s ease; }
+.expo-afiche:hover { transform: translateY(-3px) rotate(-.4deg); }
+.expo-afiche:focus-visible { outline: 2px solid var(--rojo); outline-offset: 4px; }
+.expo-afiche > img { width: 100%; height: 100%; object-fit: cover; display: block; }
+.expo-afiche .hojear { position: absolute; right: .8rem; top: .8rem; z-index: 2; background: var(--rojo); color: #fff; font: 600 .76rem/1 var(--f-display); letter-spacing: .08em; text-transform: uppercase; padding: .6rem .9rem; border-radius: 4px; white-space: nowrap; }
+.estado-expo { display: inline-block; font: 600 .72rem/1 var(--f-display); letter-spacing: .12em; text-transform: uppercase; padding: .45rem .65rem; border-radius: 4px; background: var(--rojo); color: #fff; }
+.estado-expo.proxima { background: var(--naranja); }
+.estado-expo.finalizada { background: var(--linea); color: var(--tinta-suave); }
+.expo h3 { font: 700 clamp(1.7rem, 3.6vw, 2.8rem)/1.02 var(--f-display); text-transform: uppercase; letter-spacing: -.01em; margin: .9rem 0 .35rem; text-wrap: balance; }
+.expo .sub { color: var(--rojo); font-weight: 600; margin: 0 0 .8rem; }
+.expo .descr { color: var(--tinta-suave); margin: 0; max-width: 40rem; }
+.expo-datos { display: grid; grid-template-columns: auto minmax(0, 1fr); gap: .5rem 1.1rem; border-top: 1px solid var(--linea); padding-top: 1rem; margin: 1.2rem 0; }
+.expo-datos dt { font: 500 .72rem/1.9 var(--f-ficha); text-transform: uppercase; letter-spacing: .08em; color: var(--tinta-suave); }
+.expo-datos dd { margin: 0; font-weight: 500; }
+.expo-tiras { display: flex; gap: .4rem; margin: 0 0 1.3rem; flex-wrap: wrap; }
+.expo-tiras img { width: 52px; height: 52px; object-fit: cover; border-radius: 3px; background: var(--linea); }
+.expo-tiras span { width: 52px; height: 52px; border-radius: 3px; display: grid; place-items: center; background: var(--rojo-suave); font: 600 .8rem var(--f-ficha); color: var(--rojo); }
+.boton.chico { padding: .65rem 1rem; font-size: .84rem; }
+.pasadas { margin-top: 2rem; }
+.pasadas h3 { font: 600 .8rem/1 var(--f-display); letter-spacing: .14em; text-transform: uppercase; color: var(--tinta-suave); margin: 0 0 1rem; }
+.lista-pasadas { display: grid; grid-template-columns: repeat(auto-fill, minmax(230px, 1fr)); gap: 1rem; }
+.pasada { all: unset; box-sizing: border-box; cursor: pointer; display: grid; grid-template-columns: 70px minmax(0, 1fr); gap: .8rem; align-items: center; background: var(--papel); border: 1px solid var(--linea); padding: .6rem; }
+.pasada:hover { border-color: var(--rojo); }
+.pasada:focus-visible { outline: 2px solid var(--rojo); outline-offset: 2px; }
+.pasada .mini { width: 70px; aspect-ratio: 3 / 4; overflow: hidden; border-radius: 2px; font-size: 3px; }
+.pasada .mini img { width: 100%; height: 100%; object-fit: cover; display: block; }
+.pasada b { display: block; font: 600 .95rem/1.25 var(--f-display); text-transform: uppercase; }
+.pasada small { font: .74rem/1.4 var(--f-ficha); color: var(--tinta-suave); }
+@media (max-width: 760px) { .expo { grid-template-columns: 1fr; } .expo-afiche { max-width: 320px; } }
+
+/* Portada generada (cuando no hay afiche) */
+.cubierta { position: relative; width: 100%; height: 100%; color: #fff; background: #1b1614; overflow: hidden; display: flex; flex-direction: column; justify-content: flex-end; padding: 9% 8%; font-size: 1em; }
+.cubierta .fondo-cub { position: absolute; inset: 0; background: var(--img) center / cover no-repeat; }
+.cubierta::after { content: ""; position: absolute; inset: 0; background: linear-gradient(180deg, rgba(20,17,16,.15) 0%, rgba(20,17,16,.2) 35%, rgba(20,17,16,.92) 78%); }
+.cubierta > *:not(.fondo-cub) { position: relative; z-index: 1; }
+.cubierta .logo-cub { position: absolute; top: 7%; left: 8%; width: 32%; background: #fffcf8; padding: 3% 4%; border-radius: 2px; z-index: 1; }
+.cubierta .logo-cub img { width: 100%; display: block; }
+.cubierta .eti { font: 600 .62em/1 var(--f-display); letter-spacing: .2em; text-transform: uppercase; color: var(--naranja); margin-bottom: .7em; }
+.cubierta .tit { font: 700 2.1em/1 var(--f-display); text-transform: uppercase; letter-spacing: -.01em; margin: 0 0 .35em; text-wrap: balance; }
+.cubierta .linea-cub { height: .22em; width: 30%; background: var(--rojo); margin: .5em 0 .7em; }
+.cubierta .dat { font: 500 .72em/1.45 var(--f-texto); opacity: .92; }
+.expo-afiche .cubierta { font-size: clamp(14px, 4.6vw, 22px); }
+
+/* Libro: exposición virtual que se hojea */
+dialog.libro { width: 100vw; max-width: 100vw; height: 100dvh; max-height: 100dvh; background: radial-gradient(ellipse at 50% 40%, #3a2e29 0%, #1b1614 70%); color: #fff; overflow: hidden; }
+dialog.libro::backdrop { background: #1b1614; }
+dialog.libro[open] { display: flex; flex-direction: column; }
+.libro-barra { display: flex; align-items: center; gap: 1rem; padding: .7rem max(16px, env(safe-area-inset-left, 0px)); padding-top: calc(.7rem + env(safe-area-inset-top, 0px)); }
+.libro-barra .tit { font: 600 .9rem/1.2 var(--f-display); text-transform: uppercase; letter-spacing: .06em; margin-right: auto; min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.libro-barra .tit span { color: var(--naranja); }
+.libro-barra button { width: 2.5rem; height: 2.5rem; border-radius: 50%; border: 1px solid rgba(255,255,255,.3); background: transparent; color: #fff; font-size: 1.3rem; line-height: 1; cursor: pointer; flex: none; }
+.libro-barra button:hover { background: var(--rojo); border-color: var(--rojo); }
+.escena { flex: 1; position: relative; display: grid; place-items: center; min-height: 0; overflow: hidden; touch-action: pan-y; user-select: none; -webkit-user-select: none; }
+.libro-cuerpo { position: relative; perspective: 2400px; transition: transform .9s cubic-bezier(.3,.1,.2,1); }
+.libro-cuerpo::before { content: ""; position: absolute; left: 50%; top: 2%; bottom: -3%; width: 50%; background: rgba(0,0,0,.45); filter: blur(18px); transform: translateY(2%); z-index: -1; }
+.libro-cuerpo.abierto::before { left: 0; width: 100%; }
+.libro-cuerpo.cerrado-fin::before { left: 0; width: 50%; }
+.movil .libro-cuerpo::before { left: 0; width: 100%; }
+.hoja { position: absolute; top: 0; left: 50%; width: 50%; height: 100%; transform-origin: left center; transform-style: preserve-3d; transition: transform .9s cubic-bezier(.3,.1,.2,1); cursor: pointer; }
+.movil .hoja { left: 0; width: 100%; transition: transform .75s cubic-bezier(.3,.1,.2,1), opacity .15s; }
+.hoja.vuelta { transform: rotateY(-180deg); }
+.movil .hoja.vuelta { opacity: 0; transition: transform .75s cubic-bezier(.3,.1,.2,1), opacity .25s .5s; }
+.cara { position: absolute; inset: 0; backface-visibility: hidden; -webkit-backface-visibility: hidden; background: #fffcf8; color: var(--tinta); overflow: hidden; }
+.cara.atras { transform: rotateY(180deg); }
+.cara::after { content: ""; position: absolute; inset: 0; pointer-events: none; background: linear-gradient(to right, rgba(0,0,0,.2), rgba(0,0,0,0) 7%); }
+.cara.atras::after { background: linear-gradient(to left, rgba(0,0,0,.2), rgba(0,0,0,0) 7%); }
+.cara.sin-sombra::after { display: none; }
+.dorso { width: 100%; height: 100%; background: #f4ece4; }
+.pag { height: 100%; display: flex; flex-direction: column; padding: 8% 8% 7%; gap: .6em; position: relative; }
+.pag .folio { position: absolute; bottom: 3%; left: 0; right: 0; text-align: center; font: .5em/1 var(--f-ficha); color: var(--tinta-suave); }
+.pag .eti { font: 600 .55em/1 var(--f-display); letter-spacing: .18em; text-transform: uppercase; color: var(--rojo); }
+.pag h4 { font: 700 1.5em/1.05 var(--f-display); text-transform: uppercase; margin: 0; letter-spacing: -.01em; text-wrap: balance; }
+.pag p { margin: 0; font-size: .7em; line-height: 1.55; color: var(--tinta-suave); }
+.pag .sub { color: var(--rojo); font-weight: 600; font-size: .75em; }
+.pag .espiral-pag { height: .2em; width: 22%; background: var(--rojo); margin: .3em 0; }
+.pag .artistas-pag { margin-top: auto; border-top: 1px solid var(--linea); padding-top: .7em; font-size: .62em; color: var(--tinta); }
+.pag .artistas-pag b { display: block; font: 500 .85em/1.6 var(--f-ficha); text-transform: uppercase; letter-spacing: .08em; color: var(--tinta-suave); }
+.pag-obra .lienzo { flex: 1; min-height: 0; position: relative; background: #f1e9e1; margin-bottom: .3em; }
+.pag-obra .lienzo img { position: absolute; inset: 0; margin: auto; max-width: 90%; max-height: 90%; object-fit: contain; display: block; box-shadow: 0 .4em 1em -.4em rgba(0,0,0,.5); }
+.pag-obra .num { font: 600 .5em/1 var(--f-ficha); color: var(--rojo); }
+.pag-obra h5 { font: 700 .95em/1.15 var(--f-display); margin: 0; text-transform: uppercase; }
+.pag-obra .meta { font: .52em/1.5 var(--f-ficha); color: var(--tinta-suave); }
+.pag-obra .pie-obra { display: flex; justify-content: space-between; align-items: center; gap: .6em; flex-wrap: wrap; }
+.pag-obra .precio-pag { font: 600 .7em/1 var(--f-texto); }
+.pag-obra .precio-pag.vendida { color: var(--rojo); text-transform: uppercase; letter-spacing: .08em; font-size: .6em; }
+.pag a.btn-pag { display: inline-flex; align-items: center; gap: .3em; font: 600 .5em/1 var(--f-display); letter-spacing: .04em; padding: .7em 1em; border-radius: 4px; text-decoration: none; background: var(--whatsapp); color: #fff; }
+.pag a.btn-pag.rojo { background: var(--rojo); }
+.pag a.btn-pag.borde { background: transparent; color: var(--tinta); border: 1px solid var(--tinta); }
+.pag-visita { background: var(--tinta); color: #fff; }
+.pag-visita h4 { color: #fff; }
+.pag-visita .eti { color: var(--naranja); }
+.pag-visita dl { margin: .4em 0 0; display: grid; gap: .2em; font-size: .68em; }
+.pag-visita dt { font: 500 .78em/1.6 var(--f-ficha); text-transform: uppercase; letter-spacing: .08em; color: #cbbfb6; margin-top: .5em; }
+.pag-visita dd { margin: 0; font-weight: 500; }
+.pag-visita .botones { display: flex; gap: .5em; flex-wrap: wrap; margin-top: auto; }
+.pag-visita a.btn-pag.borde { color: #fff; border-color: rgba(255,255,255,.6); }
+.pag-fin { align-items: center; justify-content: center; text-align: center; background: #fffcf8; }
+.pag-fin img { width: 62%; }
+.pag-fin p { font: .55em/1.6 var(--f-ficha); }
+.afiche-pag { width: 100%; height: 100%; object-fit: cover; display: block; }
+.libro-nav { position: absolute; top: 50%; transform: translateY(-50%); width: 3rem; height: 3rem; border-radius: 50%; border: 0; background: rgba(255,255,255,.12); color: #fff; font-size: 1.3rem; cursor: pointer; z-index: 500; }
+.libro-nav:hover:not(:disabled) { background: var(--rojo); }
+.libro-nav:disabled { opacity: .2; cursor: default; }
+.libro-nav.ant { left: max(12px, env(safe-area-inset-left, 0px)); }
+.libro-nav.sig { right: max(12px, env(safe-area-inset-right, 0px)); }
+.libro-pie { display: flex; align-items: center; justify-content: center; gap: 1rem; padding: .6rem 16px calc(.8rem + env(safe-area-inset-bottom, 0px)); font: .78rem/1 var(--f-ficha); color: #cbbfb6; }
+.libro-pie .barra-libro { width: min(260px, 50vw); height: 3px; background: rgba(255,255,255,.15); border-radius: 2px; overflow: hidden; }
+.libro-pie .barra-libro span { display: block; height: 100%; background: var(--naranja); transition: width .5s ease; }
+@media (max-width: 760px) { .libro-nav { top: auto; bottom: calc(.3rem + env(safe-area-inset-bottom, 0px)); transform: none; width: 2.6rem; height: 2.6rem; } .libro-pie { padding-inline: 4rem; white-space: nowrap; } #libro-ayuda { display: none; } }
 </style>
 
 <div class="aviso" id="aviso">
@@ -260,6 +372,14 @@ header.sitio, section.bloque, footer { background: rgba(255,252,248,.84); backdr
           <a class="boton" href="#comprar">Cómo comprar</a>
         </div>
       </div>
+    </div>
+  </section>
+
+  <section class="bloque" id="exposiciones" hidden>
+    <div class="envoltura">
+      <div class="cabecera-bloque"><h2>Exposiciones</h2></div>
+      <div id="expo-destacada"></div>
+      <div class="pasadas" id="expo-otras" hidden><h3 id="expo-otras-tit">Otras exposiciones</h3><div class="lista-pasadas" id="lista-pasadas"></div></div>
     </div>
   </section>
 
@@ -340,6 +460,20 @@ header.sitio, section.bloque, footer { background: rgba(255,252,248,.84); backdr
       <p class="nota" id="ficha-nota"></p>
     </div>
   </div>
+</dialog>
+
+<dialog class="libro" id="libro" aria-labelledby="libro-tit">
+  <div class="libro-barra">
+    <div class="tit" id="libro-tit"></div>
+    <button type="button" id="libro-compartir" aria-label="Compartir por WhatsApp" title="Compartir por WhatsApp">⤴</button>
+    <button type="button" id="libro-cerrar" aria-label="Cerrar">×</button>
+  </div>
+  <div class="escena" id="escena">
+    <button class="libro-nav ant" type="button" id="libro-ant" aria-label="Página anterior">←</button>
+    <div class="libro-cuerpo" id="libro-cuerpo"></div>
+    <button class="libro-nav sig" type="button" id="libro-sig" aria-label="Página siguiente">→</button>
+  </div>
+  <div class="libro-pie"><span id="libro-pag" aria-live="polite"></span><div class="barra-libro"><span id="libro-barra"></span></div><span id="libro-ayuda">Desliza o usa las flechas</span></div>
 </dialog>
 
 <script>
@@ -568,6 +702,254 @@ header.sitio, section.bloque, footer { background: rgba(255,252,248,.84); backdr
           </article>`;
         }).join("")}</div>`
       : `<div class="artistas-vacio"><strong>Muy pronto.</strong> Aquí presentaremos a cada artista del colectivo, con su foto, lo que hace y sus obras.</div>`;
+
+
+    // ---------- Exposiciones ----------
+    (function exposiciones() {
+      const expos = (d.exposiciones || []).filter(e => e.titulo);
+      if (!expos.length) return;
+      $("exposiciones").hidden = false;
+      const nav = document.querySelector('nav.menu');
+      if (nav && !nav.querySelector('[href="#exposiciones"]')) nav.insertAdjacentHTML("afterbegin", '<a href="#exposiciones">Exposiciones</a>');
+      const MESES = ["enero","febrero","marzo","abril","mayo","junio","julio","agosto","septiembre","octubre","noviembre","diciembre"];
+      const partes = (s) => { const m = /^(\d{4})-(\d{2})-(\d{2})$/.exec(s || ""); return m ? { a: +m[1], m: +m[2] - 1, d: +m[3] } : null; };
+      function rango(e) {
+        const i = partes(e.fecha_inicio), f = partes(e.fecha_fin) || i;
+        if (!i) return "";
+        if (i.a === f.a && i.m === f.m && i.d === f.d) return `${i.d} de ${MESES[i.m]} de ${i.a}`;
+        if (i.a === f.a && i.m === f.m) return `Del ${i.d} al ${f.d} de ${MESES[i.m]} de ${i.a}`;
+        if (i.a === f.a) return `Del ${i.d} de ${MESES[i.m]} al ${f.d} de ${MESES[f.m]} de ${i.a}`;
+        return `Del ${i.d} de ${MESES[i.m]} de ${i.a} al ${f.d} de ${MESES[f.m]} de ${f.a}`;
+      }
+      const hoy = (() => { const t = new Date(); return `${t.getFullYear()}-${String(t.getMonth() + 1).padStart(2, "0")}-${String(t.getDate()).padStart(2, "0")}`; })();
+      function estado(e) {
+        const fin = e.fecha_fin || e.fecha_inicio || "";
+        if (e.fecha_inicio && hoy < e.fecha_inicio) return { k: "proxima", t: "Próximamente" };
+        if (fin && hoy > fin) return { k: "finalizada", t: "Finalizada" };
+        return { k: "en-curso", t: "En curso" };
+      }
+      const obrasDe = (e) => (e.obras || []).map(id => obras.find(o => o.id === id)).filter(Boolean);
+      const mapa = (e) => e.mapa || ("https://www.google.com/maps/search/?api=1&query=" + encodeURIComponent([e.lugar, e.direccion, col.ciudad].filter(Boolean).join(", ")));
+      const enlace = (e) => location.href.split("#")[0] + "#exposicion=" + encodeURIComponent(e.id);
+      const compartir = (e) => "https://wa.me/?text=" + encodeURIComponent(`Te invito a la exposición "${e.titulo}" de Artina Qhanapa. ${rango(e)}${e.horario ? ", " + e.horario : ""}${e.lugar ? ", en " + e.lugar : ""}. Mírala aquí: ${enlace(e)}`);
+      function cubierta(e) {
+        const fondo = e.afiche ? "" : (obrasDe(e)[0]?.imagenes?.[0] || "");
+        if (e.afiche) return `<img class="afiche-pag" src="${esc(e.afiche)}" alt="Afiche de ${esc(e.titulo)}">`;
+        return `<div class="cubierta">
+          ${fondo ? `<div class="fondo-cub" style="--img:url('${esc(fondo)}')"></div>` : ""}
+          <div class="logo-cub"><img src="${esc(col.logo || "marca/logo.png")}" alt=""></div>
+          <div class="eti">Exposición</div>
+          <div class="tit">${esc(e.titulo)}</div>
+          <div class="linea-cub"></div>
+          <div class="dat">${esc(rango(e))}${e.lugar ? "<br>" + esc(e.lugar) : ""}</div>
+        </div>`;
+      }
+      function descargarIcs(e) {
+        const i = partes(e.fecha_inicio); if (!i) return;
+        const f = partes(e.fecha_fin) || i;
+        const sig = new Date(f.a, f.m, f.d + 1);
+        const fmt = (a, m, dd) => `${a}${String(m + 1).padStart(2, "0")}${String(dd).padStart(2, "0")}`;
+        const limpio = (s) => String(s || "").replace(/\\/g, "\\\\").replace(/([,;])/g, "\\$1").replace(/\n/g, "\\n");
+        const ahora = new Date().toISOString().replace(/[-:]/g, "").replace(/\.\d+/, "");
+        const ics = ["BEGIN:VCALENDAR", "VERSION:2.0", "PRODID:-//Artina Qhanapa//Exposiciones//ES", "BEGIN:VEVENT",
+          `UID:${e.id}@artinaqhanapa.com`, `DTSTAMP:${ahora}`,
+          `DTSTART;VALUE=DATE:${fmt(i.a, i.m, i.d)}`, `DTEND;VALUE=DATE:${fmt(sig.getFullYear(), sig.getMonth(), sig.getDate())}`,
+          `SUMMARY:${limpio("Exposición: " + e.titulo)}`, `LOCATION:${limpio([e.lugar, e.direccion].filter(Boolean).join(", "))}`,
+          `DESCRIPTION:${limpio([e.horario && "Horario: " + e.horario, e.inauguracion && "Inauguración: " + e.inauguracion, enlace(e)].filter(Boolean).join("\n"))}`,
+          "END:VEVENT", "END:VCALENDAR"].join("\r\n");
+        const a = document.createElement("a");
+        a.href = URL.createObjectURL(new Blob([ics], { type: "text/calendar" }));
+        a.download = slugArchivo(e.titulo) + ".ics"; document.body.appendChild(a); a.click();
+        setTimeout(() => { URL.revokeObjectURL(a.href); a.remove(); }, 1000);
+      }
+      const slugArchivo = (s) => String(s).normalize("NFD").replace(/[̀-ͯ]/g, "").toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, "") || "exposicion";
+
+      // Orden: primero la que está en curso o la próxima más cercana; si no hay, la última realizada
+      const vigentes = expos.filter(e => estado(e).k !== "finalizada").sort((a, b) => (a.fecha_inicio || "").localeCompare(b.fecha_inicio || ""));
+      const pasadas = expos.filter(e => estado(e).k === "finalizada").sort((a, b) => (b.fecha_inicio || "").localeCompare(a.fecha_inicio || ""));
+      const principal = vigentes[0] || pasadas[0];
+      const resto = [...vigentes.slice(1), ...pasadas.filter(e => e !== principal)];
+
+      function filasDatos(e) {
+        return [["Fechas", rango(e)], ["Horario", e.horario], ["Inauguración", e.inauguracion], ["Lugar", [e.lugar, e.direccion].filter(Boolean).join(" · ")]]
+          .filter(([, v]) => v).map(([k, v]) => `<dt>${k}</dt><dd>${esc(v)}</dd>`).join("");
+      }
+      (function pintarPrincipal(e) {
+        const st = estado(e), lista = obrasDe(e);
+        $("expo-destacada").innerHTML = `<article class="expo">
+          <button class="expo-afiche" type="button" data-expo="${esc(e.id)}" aria-label="Hojear la exposición virtual ${esc(e.titulo)}">${cubierta(e)}<span class="hojear">Hojear catálogo</span></button>
+          <div>
+            <span class="estado-expo ${st.k}">${st.t}</span>
+            <h3>${esc(e.titulo)}</h3>
+            ${e.subtitulo ? `<p class="sub">${esc(e.subtitulo)}</p>` : ""}
+            ${e.descripcion ? `<p class="descr">${esc(e.descripcion)}</p>` : ""}
+            <dl class="expo-datos">${filasDatos(e)}</dl>
+            ${lista.length ? `<div class="expo-tiras">${lista.slice(0, 7).map(o => `<img src="${esc(o.imagenes[0])}" alt="" loading="lazy">`).join("")}${lista.length > 7 ? `<span>+${lista.length - 7}</span>` : ""}</div>` : ""}
+            <div class="acciones">
+              <button class="boton lleno" type="button" data-expo="${esc(e.id)}">Ver exposición virtual</button>
+              ${st.k !== "finalizada" && e.lugar ? `<a class="boton chico" href="${esc(mapa(e))}" target="_blank" rel="noopener">Cómo llegar</a>` : ""}
+              ${st.k !== "finalizada" && e.fecha_inicio ? `<button class="boton chico" type="button" data-agendar="${esc(e.id)}">Agendar</button>` : ""}
+              <a class="boton chico" href="${esc(compartir(e))}" target="_blank" rel="noopener">Compartir</a>
+            </div>
+          </div>
+        </article>`;
+      })(principal);
+      if (resto.length) {
+        $("expo-otras").hidden = false;
+        $("expo-otras-tit").textContent = vigentes.length > 1 ? "Más exposiciones" : "Exposiciones anteriores";
+        $("lista-pasadas").innerHTML = resto.map(e => `<button class="pasada" type="button" data-expo="${esc(e.id)}">
+          <span class="mini">${cubierta(e)}</span>
+          <span><b>${esc(e.titulo)}</b><small>${esc(rango(e))}${e.lugar ? "<br>" + esc(e.lugar) : ""}</small></span></button>`).join("");
+      }
+
+      // ---------- Catálogo que se hojea ----------
+      const lib = $("libro"), cuerpo = $("libro-cuerpo"), escena = $("escena");
+      let expo = null, paginas = [], hojas = [], pos = 0, modo = "", timers = new Map();
+      const movil = () => window.matchMedia("(max-width: 760px)").matches;
+
+      function armarPaginas(e) {
+        const lista = obrasDe(e), pp = [];
+        const artistasExpo = [...new Set(lista.map(o => nombreArtista(o)).filter(Boolean))];
+        pp.push({ html: cubierta(e), sinSombra: true });
+        pp.push({ html: `<div class="pag">
+          <span class="eti">Exposición${e.subtitulo ? "" : " colectiva"}</span>
+          <h4>${esc(e.titulo)}</h4>
+          ${e.subtitulo ? `<span class="sub">${esc(e.subtitulo)}</span>` : ""}
+          <div class="espiral-pag"></div>
+          <p>${esc(e.descripcion || col.historia || "")}</p>
+          <p><b style="color:var(--tinta)">${esc(rango(e))}</b>${e.lugar ? " · " + esc(e.lugar) : ""}</p>
+          ${artistasExpo.length ? `<div class="artistas-pag"><b>Artistas</b>${artistasExpo.map(esc).join(" · ")}</div>` : `<div class="artistas-pag"><b>${lista.length} obras</b>Colectivo de arte Artina Qhanapa · ${esc(col.ciudad || "Tacna")}</div>`}
+        </div>` });
+        lista.forEach((o, k) => {
+          const meta = [o.tecnica && !/por confirmar/i.test(o.tecnica) ? o.tecnica : "", o.medidas, o.anio].filter(Boolean).join(" · ");
+          const vendida = o.disponible === false;
+          const msg = `Hola, me interesa la obra "${o.titulo}" (${num(o)}) de la exposición "${e.titulo}".`;
+          pp.push({ html: `<div class="pag pag-obra">
+            <div class="lienzo"><img src="${esc(o.imagenes[0])}" alt="${esc(o.titulo)}" loading="lazy"></div>
+            <span class="num">${num(o)} · Obra ${k + 1} de ${lista.length}</span>
+            <h5>${esc(o.titulo)}</h5>
+            <span class="meta">${esc(nombreArtista(o) || "Artista por confirmar")}${meta ? "<br>" + esc(meta) : ""}</span>
+            <div class="pie-obra">
+              <span class="precio-pag${vendida ? " vendida" : ""}">${vendida ? "Vendida" : o.precio_soles ? soles(o.precio_soles) : "Precio a consultar"}</span>
+              ${waBase && !vendida ? `<a class="btn-pag" href="${esc(waBase + "?text=" + encodeURIComponent(msg))}" target="_blank" rel="noopener">Pedir por WhatsApp</a>` : ""}
+            </div>
+          </div>` });
+        });
+        const st = estado(e);
+        pp.push({ html: `<div class="pag pag-visita">
+          <span class="eti">${st.k === "finalizada" ? "Se presentó en" : "Visítanos"}</span>
+          <h4>${esc(e.lugar || "Exposición")}</h4>
+          <dl>${filasDatos(e).replace(/<dt>Lugar<\/dt><dd>[^<]*<\/dd>/, e.direccion ? `<dt>Dirección</dt><dd>${esc(e.direccion)}</dd>` : "")}</dl>
+          <div class="botones">
+            ${st.k !== "finalizada" && e.lugar ? `<a class="btn-pag rojo" href="${esc(mapa(e))}" target="_blank" rel="noopener">Cómo llegar</a>` : ""}
+            ${st.k !== "finalizada" && e.fecha_inicio ? `<a class="btn-pag borde" href="#" data-agendar="${esc(e.id)}">Agendar</a>` : ""}
+            <a class="btn-pag" href="${esc(compartir(e))}" target="_blank" rel="noopener">Compartir</a>
+          </div>
+        </div>` });
+        return pp;
+      }
+      const contraportada = { html: `<div class="pag pag-fin"><img src="${esc(col.logo || "marca/logo.png")}" alt="Artina Qhanapa"><p>Colectivo de arte · ${esc(col.ciudad || "Tacna, Perú")}<br>www.artinaqhanapa.com</p></div>`, sinSombra: true };
+      const blanca = { html: `<div class="pag pag-fin"></div>` };
+
+      function medir() {
+        const w = escena.clientWidth, h = escena.clientHeight - 16, r = 0.72;
+        let ph, pw;
+        if (modo === "doble") { ph = Math.min(h, (w - 150) / 2 / r); pw = ph * r; cuerpo.style.width = pw * 2 + "px"; }
+        else { ph = Math.min(h, (w - 24) / r); pw = ph * r; cuerpo.style.width = pw + "px"; }
+        cuerpo.style.height = ph + "px";
+        cuerpo.style.fontSize = (pw / 19) + "px";
+      }
+      function construir(paginaInicial = 0) {
+        modo = movil() ? "movil" : "doble";
+        escena.classList.toggle("movil", modo === "movil");
+        let pp = paginas.slice();
+        if (modo === "doble") { pp.push(contraportada); if (pp.length % 2) pp.splice(pp.length - 1, 0, blanca); }
+        const caras = [];
+        if (modo === "doble") for (let k = 0; k < pp.length; k += 2) caras.push([pp[k], pp[k + 1]]);
+        else pp.forEach(p => caras.push([p, { html: '<div class="dorso"></div>', sinSombra: true }]));
+        cuerpo.innerHTML = caras.map(([f, a]) => `<div class="hoja"><div class="cara frente${f.sinSombra ? " sin-sombra" : ""}">${f.html}</div><div class="cara atras${a.sinSombra ? " sin-sombra" : ""}">${a.html}</div></div>`).join("");
+        hojas = [...cuerpo.children];
+        pos = modo === "doble" ? Math.min(hojas.length, Math.ceil(paginaInicial / 2)) : Math.min(hojas.length - 1, paginaInicial);
+        medir(); pintar(false);
+      }
+      const paginaActual = () => modo === "doble" ? Math.max(0, pos * 2 - 1) : pos;
+      function pintar(animar = true) {
+        const L = hojas.length;
+        hojas.forEach((h, k) => {
+          h.style.transition = animar ? "" : "none";
+          h.classList.toggle("vuelta", k < pos);
+          if (!timers.has(k)) h.style.zIndex = k < pos ? k + 1 : L - k;
+        });
+        if (!animar) { void cuerpo.offsetWidth; hojas.forEach(h => h.style.transition = ""); }
+        if (modo === "doble") {
+          cuerpo.style.transform = pos === 0 ? "translateX(-25%)" : pos === L ? "translateX(25%)" : "none";
+          cuerpo.classList.toggle("abierto", pos > 0 && pos < L);
+          cuerpo.classList.toggle("cerrado-fin", pos === L);
+        } else cuerpo.style.transform = "none";
+        const max = modo === "doble" ? L : L - 1;
+        $("libro-ant").disabled = pos === 0; $("libro-sig").disabled = pos >= max;
+        const total = paginas.length;
+        let etiqueta;
+        if (modo === "doble") etiqueta = pos === 0 ? "Portada" : pos === L ? "Contraportada" : `Páginas ${2 * pos}–${Math.min(2 * pos + 1, total)} de ${total}`;
+        else etiqueta = pos === 0 ? "Portada" : `Página ${pos + 1} de ${total}`;
+        $("libro-pag").textContent = etiqueta;
+        $("libro-barra").style.width = (max ? pos / max * 100 : 100) + "%";
+        hojas.forEach((h, k) => h.querySelectorAll("a, button").forEach(x => x.tabIndex = visible(k) ? 0 : -1));
+      }
+      function visible(k) { return modo === "doble" ? (k === pos || k === pos - 1) : k === pos; }
+      function ir(paso) {
+        const L = hojas.length, max = modo === "doble" ? L : L - 1;
+        const nuevo = Math.max(0, Math.min(max, pos + paso));
+        if (nuevo === pos) return;
+        const k = paso > 0 ? pos : nuevo;   // hoja que se mueve
+        const h = hojas[k];
+        clearTimeout(timers.get(k)); h.style.zIndex = 400;
+        timers.set(k, setTimeout(() => { timers.delete(k); h.style.zIndex = k < pos ? k + 1 : L - k; }, 900));
+        pos = nuevo; pintar();
+      }
+      function abrirLibro(id, pagina = 0) {
+        const e = expos.find(x => x.id === id); if (!e) return;
+        expo = e; paginas = armarPaginas(e);
+        $("libro-tit").innerHTML = `<span>Exposición</span> · ${esc(e.titulo)}`;
+        if (!lib.open) { if (typeof lib.showModal === "function") lib.showModal(); else lib.setAttribute("open", ""); }
+        construir(pagina);
+        try { history.replaceState(null, "", "#exposicion=" + encodeURIComponent(id)); } catch (err) {}
+      }
+      $("libro-ant").addEventListener("click", () => ir(-1));
+      $("libro-sig").addEventListener("click", () => ir(1));
+      $("libro-cerrar").addEventListener("click", () => lib.close());
+      $("libro-compartir").addEventListener("click", () => { if (expo) window.open(compartir(expo), "_blank", "noopener"); });
+      lib.addEventListener("close", () => { try { history.replaceState(null, "", "#exposiciones"); } catch (err) {} });
+      document.addEventListener("keydown", (ev) => {
+        if (!lib.open) return;
+        if (ev.key === "ArrowRight") { ev.preventDefault(); ir(1); }
+        if (ev.key === "ArrowLeft") { ev.preventDefault(); ir(-1); }
+      });
+      // Deslizar o tocar el lado de la página para pasar
+      let x0 = null, y0 = 0;
+      escena.addEventListener("pointerdown", (ev) => { if (ev.target.closest("a, button")) return; x0 = ev.clientX; y0 = ev.clientY; });
+      escena.addEventListener("pointerup", (ev) => {
+        if (x0 === null) return;
+        const dx = ev.clientX - x0, dy = ev.clientY - y0; x0 = null;
+        if (Math.abs(dx) > 40 && Math.abs(dx) > Math.abs(dy)) { ir(dx < 0 ? 1 : -1); return; }
+        if (Math.abs(dx) < 8 && Math.abs(dy) < 8 && ev.target.closest(".libro-cuerpo")) {
+          const r = cuerpo.getBoundingClientRect();
+          ir(ev.clientX > r.left + r.width * (modo === "doble" && pos > 0 ? 0.5 : 0.35) ? 1 : -1);
+        }
+      });
+      let tRes;
+      window.addEventListener("resize", () => {
+        if (!lib.open) return;
+        clearTimeout(tRes);
+        tRes = setTimeout(() => { if ((movil() ? "movil" : "doble") !== modo) construir(paginaActual()); else medir(); }, 120);
+      });
+      document.addEventListener("click", (ev) => {
+        const b = ev.target.closest("[data-expo]"); if (b) { abrirLibro(b.dataset.expo); return; }
+        const g = ev.target.closest("[data-agendar]"); if (g) { ev.preventDefault(); const e = expos.find(x => x.id === g.dataset.agendar); if (e) descargarIcs(e); }
+      });
+      const m = /#exposicion=([^&]+)/.exec(location.hash);
+      if (m) { $("exposiciones").scrollIntoView(); abrirLibro(decodeURIComponent(m[1])); }
+    })();
 
     // Ficha
     let actual = null;
