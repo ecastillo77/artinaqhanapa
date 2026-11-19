@@ -232,5 +232,27 @@
     }
   ],
   "musica": "musica/fondo.mp3",
-  "exposiciones": []
+  "exposiciones": [
+    {
+      "id": "expo-1",
+      "titulo": "El umbral de los sueños",
+      "subtitulo": "",
+      "descripcion": "",
+      "lugar": "Centro Cultural Casa Basadre",
+      "direccion": "",
+      "mapa": "",
+      "fecha_inicio": "2026-11-05",
+      "fecha_fin": "2026-11-12",
+      "horario": "Lunes a Viernes de 9 am. a 1 pm.",
+      "inauguracion": "",
+      "afiche": "exposiciones/el-umbral-de-los-suenos-261119-130229.jpg",
+      "obras": [
+        "obra-01",
+        "obra-02",
+        "obra-03",
+        "obra-10",
+        "obra-12"
+      ]
+    }
+  ]
 }
