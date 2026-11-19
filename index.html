@@ -490,7 +490,7 @@ dialog.libro[open] { display: flex; flex-direction: column; }
     try { localStorage.setItem("aviso-oculto", "1"); } catch (e) {}
   });
 
-  fetch("datos.json").then(r => r.json()).then(iniciar).catch(() => {
+  fetch("datos.json", { cache: "no-cache" }).then(r => r.json()).then(iniciar).catch(() => {
     $("galeria").innerHTML = '<p class="pendiente">No se pudieron cargar las obras. Revisa que el archivo datos.json esté junto a esta página.</p>';
   });
 
