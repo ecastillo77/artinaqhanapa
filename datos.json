@@ -56,16 +56,16 @@
     },
     {
       "id": "obra-03",
-      "titulo": "Formas en movimiento",
-      "titulo_es_provisional": true,
+      "titulo": "Abstracción biomórfica",
+      "titulo_es_provisional": false,
       "tipo": "pintura",
       "artista_id": "artista-1",
-      "tecnica": "Óleo o acrílico sobre lienzo (por confirmar)",
-      "medidas": "",
-      "anio": "",
+      "tecnica": "Óleo",
+      "medidas": "120 x 80cm.",
+      "anio": "2026",
       "precio_soles": null,
       "disponible": true,
-      "descripcion": "Composición abstracta de formas orgánicas y espirales en rojo, verde y azul.",
+      "descripcion": "Interacción de estructuras tubulares acanaladas y sinuosas que simulan organismos microscópicos o anatomías fantásticas.",
       "imagenes": [
         "obras/obra-03.jpg"
       ]
