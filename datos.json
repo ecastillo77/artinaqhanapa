@@ -72,16 +72,16 @@
     },
     {
       "id": "obra-04",
-      "titulo": "Mujer y gato negro",
-      "titulo_es_provisional": true,
+      "titulo": "Antahualla",
+      "titulo_es_provisional": false,
       "tipo": "escultura",
       "artista_id": "",
-      "tecnica": "Escultura (material por confirmar)",
-      "medidas": "",
-      "anio": "",
+      "tecnica": "Mixta",
+      "medidas": "50 x 20 x 25cm.",
+      "anio": "2026",
       "precio_soles": null,
       "disponible": true,
-      "descripcion": "Figura femenina arrodillada con acabado marmolado rosa y negro, abrazada por un gato negro de ojos encendidos.",
+      "descripcion": "La Antahualla es una criatura maligna del folklore aymara que adopta la forma de un gato o una estrella fugaz con cola de fuego. \nSe dice que provoca enfermedades, locura y muerte a quienes la observan o escuchan. \nLa mujer arrodillada y cubriéndose el rostro representa el dolor, el sufrimiento y la desesperación de sus víctimas, al borde de la locura.",
       "imagenes": [
         "obras/obra-04.jpg"
       ]
