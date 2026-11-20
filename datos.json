@@ -87,33 +87,17 @@
       ]
     },
     {
-      "id": "obra-05",
-      "titulo": "Ojo y palomas",
-      "titulo_es_provisional": true,
-      "tipo": "pintura",
-      "artista_id": "",
-      "tecnica": "Óleo o acrílico sobre lienzo (por confirmar)",
-      "medidas": "",
-      "anio": "",
-      "precio_soles": null,
-      "disponible": true,
-      "descripcion": "Un gran ojo en la oscuridad, rodeado de palomas doradas y manos que se elevan.",
-      "imagenes": [
-        "obras/obra-05.jpg"
-      ]
-    },
-    {
       "id": "obra-06",
-      "titulo": "Viento y luz verde",
-      "titulo_es_provisional": true,
+      "titulo": "Los caballeros de la mesa cuadrada",
+      "titulo_es_provisional": false,
       "tipo": "pintura",
       "artista_id": "",
-      "tecnica": "Técnica por confirmar",
-      "medidas": "",
-      "anio": "",
-      "precio_soles": null,
+      "tecnica": "Mixta",
+      "medidas": "120 x 80cm.",
+      "anio": "2026",
+      "precio_soles": 230,
       "disponible": true,
-      "descripcion": "Abstracto de trazos ondulantes en negro, blanco y verde fluorescente.",
+      "descripcion": "Tres figuras, tres personalidades y un mundo que solo existe bajo sus propias reglas. Entre el orden y el caos, cada una encuentra su lugar en un universo de formas orgánicas y relaciones inesperadas, donde incluso lo más pequeño puede alterar el equilibrio.",
       "imagenes": [
         "obras/obra-06.jpg"
       ]
