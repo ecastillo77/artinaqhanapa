@@ -24,16 +24,16 @@
   "obras": [
     {
       "id": "obra-01",
-      "titulo": "Mujer con girasoles",
-      "titulo_es_provisional": true,
+      "titulo": "Narrativa de una despedida inesperada",
+      "titulo_es_provisional": false,
       "tipo": "pintura",
       "artista_id": "",
-      "tecnica": "Técnica mixta: pintura con collage de tela y objetos (por confirmar)",
-      "medidas": "",
-      "anio": "",
+      "tecnica": "Ensamblaje sobre lienzo",
+      "medidas": "100 x 70cm.",
+      "anio": "20026",
       "precio_soles": null,
-      "disponible": true,
-      "descripcion": "Retrato de mujer con los ojos cerrados; de su cabeza brotan girasoles, pétalos y telas rojizas sobre fondo oscuro.",
+      "disponible": false,
+      "descripcion": "Inspirada en un acontecimiento de mi vida, propuesta guiada por mi mayor referente del surrealismo figurativo, Frida Kahlo.",
       "imagenes": [
         "obras/obra-01.jpg"
       ]
