@@ -40,16 +40,16 @@
     },
     {
       "id": "obra-02",
-      "titulo": "Niña y la granada",
-      "titulo_es_provisional": true,
+      "titulo": "Naturaleza indomable",
+      "titulo_es_provisional": false,
       "tipo": "pintura",
       "artista_id": "",
-      "tecnica": "Óleo o acrílico sobre lienzo (por confirmar)",
-      "medidas": "",
-      "anio": "",
-      "precio_soles": null,
+      "tecnica": "Óleo",
+      "medidas": "90 x 70cm.",
+      "anio": "2026",
+      "precio_soles": 300,
       "disponible": true,
-      "descripcion": "Paisaje onírico con árboles de granadas y relojes flotantes; una niña de trenzas mira a un personaje granada.",
+      "descripcion": "La obra representa el poder de la naturaleza en un universo de granadas, enfrentando la falta de agua y el difícil cambio climático. \nOjalá podamos imaginar lo bello e imposible, a pesar de las circunstancias.",
       "imagenes": [
         "obras/obra-02.jpg"
       ]
