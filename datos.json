@@ -151,33 +151,17 @@
       ]
     },
     {
-      "id": "obra-11",
-      "titulo": "Niña andina con cordero",
-      "titulo_es_provisional": true,
-      "tipo": "pintura",
-      "artista_id": "",
-      "tecnica": "Óleo o acrílico sobre lienzo (por confirmar)",
-      "medidas": "",
-      "anio": "",
-      "precio_soles": null,
-      "disponible": true,
-      "descripcion": "Niña con chullo y manta tejida que abraza un cordero, con montañas y espirales en tonos cálidos.",
-      "imagenes": [
-        "obras/obra-11.jpg"
-      ]
-    },
-    {
       "id": "obra-12",
-      "titulo": "Ciudad de los sueños",
-      "titulo_es_provisional": true,
+      "titulo": "Nexo",
+      "titulo_es_provisional": false,
       "tipo": "pintura",
       "artista_id": "",
-      "tecnica": "Óleo o acrílico sobre lienzo (por confirmar)",
-      "medidas": "",
-      "anio": "",
+      "tecnica": "Óleo",
+      "medidas": "120 x 80cm.",
+      "anio": "2026",
       "precio_soles": null,
       "disponible": true,
-      "descripcion": "Arquitectura surrealista con un gran ojo, un rostro, nubes sobre columnas y un caracol.",
+      "descripcion": "Esta obra fusiona elementos arquitectónicos, figuras simbólicas y paisajes surrealistas creando una atmósfera enigmática. \nA través de una visión surrealista, invita a reflexionar sobre la conexión entre la realidad, la imaginación y lo desconocido.",
       "imagenes": [
         "obras/obra-12.jpg"
       ]
