@@ -135,6 +135,22 @@
       ]
     },
     {
+      "id": "obra-15",
+      "titulo": "Madre",
+      "tipo": "escultura",
+      "artista_id": "artista-1",
+      "tecnica": "Tallado en madera",
+      "medidas": "58 x 24.5 x 22cm.",
+      "anio": "2026",
+      "precio_soles": null,
+      "disponible": true,
+      "descripcion": "La obra busca resaltar las curvas fluidas y los volúmenes redondeados, transmitiendo una sensación de calidez, fortaleza y amor maternal.",
+      "imagenes": [
+        "obras/obra-15-261120-191852.jpg"
+      ],
+      "titulo_es_provisional": false
+    },
+    {
       "id": "obra-02",
       "titulo": "Naturaleza indomable",
       "titulo_es_provisional": false,
@@ -147,23 +163,7 @@
       "disponible": true,
       "descripcion": "La obra representa el poder de la naturaleza en un universo de granadas, enfrentando la falta de agua y el difícil cambio climático. \nOjalá podamos imaginar lo bello e imposible, a pesar de las circunstancias.",
       "imagenes": [
-        "obras/obra-02.jpg"
-      ]
-    },
-    {
-      "id": "obra-06",
-      "titulo": "Los caballeros de la mesa cuadrada",
-      "titulo_es_provisional": false,
-      "tipo": "pintura",
-      "artista_id": "",
-      "tecnica": "Mixta",
-      "medidas": "120 x 80cm.",
-      "anio": "2026",
-      "precio_soles": 230,
-      "disponible": true,
-      "descripcion": "Tres figuras, tres personalidades y un mundo que solo existe bajo sus propias reglas. Entre el orden y el caos, cada una encuentra su lugar en un universo de formas orgánicas y relaciones inesperadas, donde incluso lo más pequeño puede alterar el equilibrio.",
-      "imagenes": [
-        "obras/obra-06-261120-185824.jpg"
+        "obras/obra-02-261120-192144.jpg"
       ]
     },
     {
@@ -183,20 +183,20 @@
       ]
     },
     {
-      "id": "obra-15",
-      "titulo": "Madre",
-      "tipo": "escultura",
-      "artista_id": "artista-1",
-      "tecnica": "Tallado en madera",
-      "medidas": "58 x 24.5 x 22cm.",
+      "id": "obra-06",
+      "titulo": "Los caballeros de la mesa cuadrada",
+      "titulo_es_provisional": false,
+      "tipo": "pintura",
+      "artista_id": "",
+      "tecnica": "Mixta",
+      "medidas": "120 x 80cm.",
       "anio": "2026",
-      "precio_soles": null,
+      "precio_soles": 230,
       "disponible": true,
-      "descripcion": "La obra busca resaltar las curvas fluidas y los volúmenes redondeados, transmitiendo una sensación de calidez, fortaleza y amor maternal.",
+      "descripcion": "Tres figuras, tres personalidades y un mundo que solo existe bajo sus propias reglas. Entre el orden y el caos, cada una encuentra su lugar en un universo de formas orgánicas y relaciones inesperadas, donde incluso lo más pequeño puede alterar el equilibrio.",
       "imagenes": [
-        "obras/obra-15-261120-191852.jpg"
-      ],
-      "titulo_es_provisional": false
+        "obras/obra-06-261120-185824.jpg"
+      ]
     }
   ],
   "musica": "musica/fondo.mp3",
