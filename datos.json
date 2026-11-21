@@ -294,6 +294,22 @@
         "obras/obra-18-261121-174744.jpg"
       ],
       "titulo_es_provisional": false
+    },
+    {
+      "id": "obra-19",
+      "titulo": "Alegoría del corazón",
+      "tipo": "pintura",
+      "artista_id": "artista-3",
+      "tecnica": "Mixta",
+      "medidas": "100 x 80cm.",
+      "anio": "2026",
+      "precio_soles": 150,
+      "disponible": true,
+      "descripcion": "",
+      "imagenes": [
+        "obras/obra-19-261121-180811.jpg"
+      ],
+      "titulo_es_provisional": false
     }
   ],
   "musica": "musica/fondo.mp3",
