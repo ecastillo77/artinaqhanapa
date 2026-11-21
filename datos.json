@@ -278,6 +278,22 @@
         "obras/obra-17-261120-205527.jpg"
       ],
       "titulo_es_provisional": false
+    },
+    {
+      "id": "obra-18",
+      "titulo": "Metamorfosis",
+      "tipo": "pintura",
+      "artista_id": "artista-3",
+      "tecnica": "Acrílico",
+      "medidas": "120 x 80cm.",
+      "anio": "2026",
+      "precio_soles": 350,
+      "disponible": true,
+      "descripcion": "Representa la evolución de la conciencia mediante una transformación progresiva. Es el tránsito entre distintas etapas de percibir la identidad y el mundo.",
+      "imagenes": [
+        "obras/obra-18-261121-174744.jpg"
+      ],
+      "titulo_es_provisional": false
     }
   ],
   "musica": "musica/fondo.mp3",
