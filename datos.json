@@ -220,6 +220,22 @@
         "obras/obra-16-261120-205305.jpg"
       ],
       "titulo_es_provisional": false
+    },
+    {
+      "id": "obra-17",
+      "titulo": "Corazón del océano",
+      "tipo": "escultura",
+      "artista_id": "",
+      "tecnica": "Mixta",
+      "medidas": "23 x 23 cm.",
+      "anio": "2026",
+      "precio_soles": 400,
+      "disponible": true,
+      "descripcion": "Nacido de la arcilla y el mar, donde el pulso del fondo marino esculpe sus latidos, donde el océano guarda sus secretos de sal y eternidad.",
+      "imagenes": [
+        "obras/obra-17-261120-205527.jpg"
+      ],
+      "titulo_es_provisional": false
     }
   ],
   "musica": "musica/fondo.mp3",
