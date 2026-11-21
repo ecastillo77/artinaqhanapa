@@ -204,6 +204,22 @@
       "imagenes": [
         "obras/obra-06-261120-185824.jpg"
       ]
+    },
+    {
+      "id": "obra-16",
+      "titulo": "¿Quién eres?",
+      "tipo": "pintura",
+      "artista_id": "",
+      "tecnica": "Mixta",
+      "medidas": "120 x 80cm.",
+      "anio": "2026",
+      "precio_soles": 320,
+      "disponible": true,
+      "descripcion": "¿Eres un reflejo distorsionado y roto sumergido en la oscuridad? o ¿Eres como las mariposas que nacen de aquellas grietas? ¿Eres transformación o eres pasado? ¿Quién eres?",
+      "imagenes": [
+        "obras/obra-16-261120-205305.jpg"
+      ],
+      "titulo_es_provisional": false
     }
   ],
   "musica": "musica/fondo.mp3",
