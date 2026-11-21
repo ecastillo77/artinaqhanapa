@@ -119,22 +119,6 @@
       ]
     },
     {
-      "id": "obra-09",
-      "titulo": "Nubes azules",
-      "titulo_es_provisional": true,
-      "tipo": "escultura",
-      "artista_id": "",
-      "tecnica": "Escultura pintada (material por confirmar)",
-      "medidas": "",
-      "anio": "",
-      "precio_soles": null,
-      "disponible": true,
-      "descripcion": "Figura blanca de formas redondeadas decorada con nubes en azul cobalto.",
-      "imagenes": [
-        "obras/obra-09.jpg"
-      ]
-    },
-    {
       "id": "obra-10",
       "titulo": "Pensamientos ocultos",
       "titulo_es_provisional": false,
@@ -165,6 +149,22 @@
       "imagenes": [
         "obras/obra-12.jpg"
       ]
+    },
+    {
+      "id": "obra-13",
+      "titulo": "Ecos de la profundidad",
+      "tipo": "pintura",
+      "artista_id": "",
+      "tecnica": "Acrílico",
+      "medidas": "120 x 80cm.",
+      "anio": "2026",
+      "precio_soles": 500,
+      "disponible": true,
+      "descripcion": "Un universo surrealista donde flores y peces se funden en seres fantásticos, revelando los ecos de un mundo oculto entre las profundidades del océano y los sueños.",
+      "imagenes": [
+        "obras/obra-13-261120-191154.jpg"
+      ],
+      "titulo_es_provisional": false
     }
   ],
   "musica": "musica/fondo.mp3",
