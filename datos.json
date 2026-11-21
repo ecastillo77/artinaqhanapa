@@ -39,22 +39,6 @@
       ]
     },
     {
-      "id": "obra-04",
-      "titulo": "Antahualla",
-      "titulo_es_provisional": false,
-      "tipo": "escultura",
-      "artista_id": "",
-      "tecnica": "Mixta",
-      "medidas": "50 x 20 x 25cm.",
-      "anio": "2026",
-      "precio_soles": null,
-      "disponible": true,
-      "descripcion": "La Antahualla es una criatura maligna del folklore aymara que adopta la forma de un gato o una estrella fugaz con cola de fuego. \nSe dice que provoca enfermedades, locura y muerte a quienes la observan o escuchan. \nLa mujer arrodillada y cubriéndose el rostro representa el dolor, el sufrimiento y la desesperación de sus víctimas, al borde de la locura.",
-      "imagenes": [
-        "obras/obra-04.jpg"
-      ]
-    },
-    {
       "id": "obra-07",
       "titulo": "Lilith",
       "titulo_es_provisional": false,
@@ -71,19 +55,67 @@
       ]
     },
     {
-      "id": "obra-02",
-      "titulo": "Naturaleza indomable",
+      "id": "obra-04",
+      "titulo": "Antahualla",
+      "titulo_es_provisional": false,
+      "tipo": "escultura",
+      "artista_id": "",
+      "tecnica": "Mixta",
+      "medidas": "50 x 20 x 25cm.",
+      "anio": "2026",
+      "precio_soles": null,
+      "disponible": true,
+      "descripcion": "La Antahualla es una criatura maligna del folklore aymara que adopta la forma de un gato o una estrella fugaz con cola de fuego. \nSe dice que provoca enfermedades, locura y muerte a quienes la observan o escuchan. \nLa mujer arrodillada y cubriéndose el rostro representa el dolor, el sufrimiento y la desesperación de sus víctimas, al borde de la locura.",
+      "imagenes": [
+        "obras/obra-04.jpg"
+      ]
+    },
+    {
+      "id": "obra-13",
+      "titulo": "Ecos de la profundidad",
+      "tipo": "pintura",
+      "artista_id": "",
+      "tecnica": "Acrílico",
+      "medidas": "120 x 80cm.",
+      "anio": "2026",
+      "precio_soles": 500,
+      "disponible": true,
+      "descripcion": "Un universo surrealista donde flores y peces se funden en seres fantásticos, revelando los ecos de un mundo oculto entre las profundidades del océano y los sueños.",
+      "imagenes": [
+        "obras/obra-13-261120-191154.jpg"
+      ],
+      "titulo_es_provisional": false
+    },
+    {
+      "id": "obra-14",
+      "titulo": "Lo que habita en la sombra",
+      "tipo": "pintura",
+      "artista_id": "",
+      "tecnica": "Acrílico",
+      "medidas": "110 x 80cm.",
+      "anio": "2026",
+      "precio_soles": 500,
+      "disponible": true,
+      "descripcion": "Mi obra explora el mundo oculto de la imaginación representando un mundo mágico a través de criaturas fantásticas que simbolizan los miedos, pensamientos y emociones que permanecen dentro de nosotros, mediante tonos oscuros figuras misteriosas busco transmitir la belleza de los desconocido inspirado en el universo fantástico de Briand Fround.",
+      "imagenes": [
+        "obras/obra-14-261120-191445.jpg"
+      ],
+      "titulo_es_provisional": false
+    },
+    {
+      "id": "obra-12",
+      "titulo": "Nexo",
       "titulo_es_provisional": false,
       "tipo": "pintura",
       "artista_id": "",
       "tecnica": "Óleo",
-      "medidas": "90 x 70cm.",
+      "medidas": "120 x 80cm.",
       "anio": "2026",
-      "precio_soles": 300,
+      "precio_soles": null,
       "disponible": true,
-      "descripcion": "La obra representa el poder de la naturaleza en un universo de granadas, enfrentando la falta de agua y el difícil cambio climático. \nOjalá podamos imaginar lo bello e imposible, a pesar de las circunstancias.",
+      "descripcion": "Esta obra fusiona elementos arquitectónicos, figuras simbólicas y paisajes surrealistas creando una atmósfera enigmática. \nA través de una visión surrealista, invita a reflexionar sobre la conexión entre la realidad, la imaginación y lo desconocido.",
       "imagenes": [
-        "obras/obra-02.jpg"
+        "obras/obra-12.jpg"
       ]
     },
     {
@@ -100,6 +132,22 @@
       "descripcion": "Interacción de estructuras tubulares acanaladas y sinuosas que simulan organismos microscópicos o anatomías fantásticas.",
       "imagenes": [
         "obras/obra-03.jpg"
+      ]
+    },
+    {
+      "id": "obra-02",
+      "titulo": "Naturaleza indomable",
+      "titulo_es_provisional": false,
+      "tipo": "pintura",
+      "artista_id": "",
+      "tecnica": "Óleo",
+      "medidas": "90 x 70cm.",
+      "anio": "2026",
+      "precio_soles": 300,
+      "disponible": true,
+      "descripcion": "La obra representa el poder de la naturaleza en un universo de granadas, enfrentando la falta de agua y el difícil cambio climático. \nOjalá podamos imaginar lo bello e imposible, a pesar de las circunstancias.",
+      "imagenes": [
+        "obras/obra-02.jpg"
       ]
     },
     {
@@ -135,50 +183,18 @@
       ]
     },
     {
-      "id": "obra-12",
-      "titulo": "Nexo",
-      "titulo_es_provisional": false,
-      "tipo": "pintura",
-      "artista_id": "",
-      "tecnica": "Óleo",
-      "medidas": "120 x 80cm.",
+      "id": "obra-15",
+      "titulo": "Madre",
+      "tipo": "escultura",
+      "artista_id": "artista-1",
+      "tecnica": "Tallado en madera",
+      "medidas": "58 x 24.5 x 22cm.",
       "anio": "2026",
       "precio_soles": null,
       "disponible": true,
-      "descripcion": "Esta obra fusiona elementos arquitectónicos, figuras simbólicas y paisajes surrealistas creando una atmósfera enigmática. \nA través de una visión surrealista, invita a reflexionar sobre la conexión entre la realidad, la imaginación y lo desconocido.",
+      "descripcion": "La obra busca resaltar las curvas fluidas y los volúmenes redondeados, transmitiendo una sensación de calidez, fortaleza y amor maternal.",
       "imagenes": [
-        "obras/obra-12.jpg"
-      ]
-    },
-    {
-      "id": "obra-13",
-      "titulo": "Ecos de la profundidad",
-      "tipo": "pintura",
-      "artista_id": "",
-      "tecnica": "Acrílico",
-      "medidas": "120 x 80cm.",
-      "anio": "2026",
-      "precio_soles": 500,
-      "disponible": true,
-      "descripcion": "Un universo surrealista donde flores y peces se funden en seres fantásticos, revelando los ecos de un mundo oculto entre las profundidades del océano y los sueños.",
-      "imagenes": [
-        "obras/obra-13-261120-191154.jpg"
-      ],
-      "titulo_es_provisional": false
-    },
-    {
-      "id": "obra-14",
-      "titulo": "Lo que habita en la sombra",
-      "tipo": "pintura",
-      "artista_id": "",
-      "tecnica": "Acrílico",
-      "medidas": "110 x 80cm.",
-      "anio": "2026",
-      "precio_soles": 500,
-      "disponible": true,
-      "descripcion": "Mi obra explora el mundo oculto de la imaginación representando un mundo mágico a través de criaturas fantásticas que simbolizan los miedos, pensamientos y emociones que permanecen dentro de nosotros, mediante tonos oscuros figuras misteriosas busco transmitir la belleza de los desconocido inspirado en el universo fantástico de Briand Fround.",
-      "imagenes": [
-        "obras/obra-14-261120-191445.jpg"
+        "obras/obra-15-261120-191852.jpg"
       ],
       "titulo_es_provisional": false
     }
