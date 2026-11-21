@@ -342,6 +342,22 @@
         "obras/obra-20-261121-180952.jpg"
       ],
       "titulo_es_provisional": false
+    },
+    {
+      "id": "obra-22",
+      "titulo": "Pocollay de amarillo",
+      "tipo": "pintura",
+      "artista_id": "artista-2",
+      "tecnica": "Óleo",
+      "medidas": "50 x 40cm.",
+      "anio": "2025",
+      "precio_soles": 170,
+      "disponible": true,
+      "descripcion": "Pintada en vivo, refleja la tranquilidad y armonía de la zona, y el cuidado que tienen los vecinos.",
+      "imagenes": [
+        "obras/obra-22-261121-181747.jpg"
+      ],
+      "titulo_es_provisional": false
     }
   ],
   "musica": "musica/fondo.mp3",
