@@ -39,6 +39,38 @@
       ]
     },
     {
+      "id": "obra-04",
+      "titulo": "Antahualla",
+      "titulo_es_provisional": false,
+      "tipo": "escultura",
+      "artista_id": "",
+      "tecnica": "Mixta",
+      "medidas": "50 x 20 x 25cm.",
+      "anio": "2026",
+      "precio_soles": null,
+      "disponible": true,
+      "descripcion": "La Antahualla es una criatura maligna del folklore aymara que adopta la forma de un gato o una estrella fugaz con cola de fuego. \nSe dice que provoca enfermedades, locura y muerte a quienes la observan o escuchan. \nLa mujer arrodillada y cubriéndose el rostro representa el dolor, el sufrimiento y la desesperación de sus víctimas, al borde de la locura.",
+      "imagenes": [
+        "obras/obra-04.jpg"
+      ]
+    },
+    {
+      "id": "obra-07",
+      "titulo": "Lilith",
+      "titulo_es_provisional": false,
+      "tipo": "pintura",
+      "artista_id": "",
+      "tecnica": "Mixta",
+      "medidas": "120 x 80cm.",
+      "anio": "2026",
+      "precio_soles": null,
+      "disponible": true,
+      "descripcion": "El mito hebreo presenta a Lilith como la primera esposa de Adán, símbolo de rebeldía y libertad. \nAl no querer someterse a él, escapó del Edén, tras negarse a regresar Dios ordenó la muerte diaria de cien de sus hijos demoníacos, por lo que ella juró vengarse de los descendientes humanos de Adán. \nSu representación junto al búho y la serpiente simboliza la noche, el misterio, la sabiduría, el conocimiento y la tentación.",
+      "imagenes": [
+        "obras/obra-07-261120-185943.jpg"
+      ]
+    },
+    {
       "id": "obra-02",
       "titulo": "Naturaleza indomable",
       "titulo_es_provisional": false,
@@ -71,22 +103,6 @@
       ]
     },
     {
-      "id": "obra-04",
-      "titulo": "Antahualla",
-      "titulo_es_provisional": false,
-      "tipo": "escultura",
-      "artista_id": "",
-      "tecnica": "Mixta",
-      "medidas": "50 x 20 x 25cm.",
-      "anio": "2026",
-      "precio_soles": null,
-      "disponible": true,
-      "descripcion": "La Antahualla es una criatura maligna del folklore aymara que adopta la forma de un gato o una estrella fugaz con cola de fuego. \nSe dice que provoca enfermedades, locura y muerte a quienes la observan o escuchan. \nLa mujer arrodillada y cubriéndose el rostro representa el dolor, el sufrimiento y la desesperación de sus víctimas, al borde de la locura.",
-      "imagenes": [
-        "obras/obra-04.jpg"
-      ]
-    },
-    {
       "id": "obra-06",
       "titulo": "Los caballeros de la mesa cuadrada",
       "titulo_es_provisional": false,
@@ -100,22 +116,6 @@
       "descripcion": "Tres figuras, tres personalidades y un mundo que solo existe bajo sus propias reglas. Entre el orden y el caos, cada una encuentra su lugar en un universo de formas orgánicas y relaciones inesperadas, donde incluso lo más pequeño puede alterar el equilibrio.",
       "imagenes": [
         "obras/obra-06-261120-185824.jpg"
-      ]
-    },
-    {
-      "id": "obra-07",
-      "titulo": "Lilith",
-      "titulo_es_provisional": false,
-      "tipo": "pintura",
-      "artista_id": "",
-      "tecnica": "Mixta",
-      "medidas": "120 x 80cm.",
-      "anio": "2026",
-      "precio_soles": null,
-      "disponible": true,
-      "descripcion": "Título: “Lilith” \nAutora: Elizabeth Villalovos T.\nTécnica: Mixta \nFormato: 120 x 80 cm.\n\nEl mito hebreo presenta a Lilith como la primera esposa de Adán, símbolo de rebeldía y libertad. \nAl no querer someterse a él, escapó del Edén, tras negarse a regresar Dios ordenó la muerte diaria de cien de sus hijos demoníacos, por lo que ella juró vengarse de los descendientes humanos de Adán. \nSu representación junto al búho y la serpiente simboliza la noche, el misterio, la sabiduría, el conocimiento y la tentación.",
-      "imagenes": [
-        "obras/obra-07-261120-185943.jpg"
       ]
     },
     {
@@ -164,22 +164,6 @@
       "descripcion": "Esta obra fusiona elementos arquitectónicos, figuras simbólicas y paisajes surrealistas creando una atmósfera enigmática. \nA través de una visión surrealista, invita a reflexionar sobre la conexión entre la realidad, la imaginación y lo desconocido.",
       "imagenes": [
         "obras/obra-12.jpg"
-      ]
-    },
-    {
-      "id": "obra-13",
-      "titulo": "Mujer de la luna roja",
-      "titulo_es_provisional": true,
-      "tipo": "pintura",
-      "artista_id": "",
-      "tecnica": "Óleo o acrílico sobre lienzo (por confirmar)",
-      "medidas": "",
-      "anio": "",
-      "precio_soles": null,
-      "disponible": true,
-      "descripcion": "Mujer de cabello rojo bajo una luna naranja, con vestido que se derrite sobre el agua y granadas a sus pies.",
-      "imagenes": [
-        "obras/obra-13.jpg"
       ]
     }
   ],
