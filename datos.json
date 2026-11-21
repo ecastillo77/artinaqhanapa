@@ -232,6 +232,22 @@
       ]
     },
     {
+      "id": "obra-21",
+      "titulo": "Neblina y verde desde Pachía",
+      "tipo": "pintura",
+      "artista_id": "artista-2",
+      "tecnica": "Óleo",
+      "medidas": "70 x 50cm.",
+      "anio": "2025",
+      "precio_soles": 250,
+      "disponible": true,
+      "descripcion": "Paisaje existente en el noble distrito de Pachía, Tacna, está hacia el lado del cerro Intiorko, pero desde este punto puede verse también el Arunta. ",
+      "imagenes": [
+        "obras/obra-21-261121-181329.jpg"
+      ],
+      "titulo_es_provisional": false
+    },
+    {
       "id": "obra-06",
       "titulo": "Los caballeros de la mesa cuadrada",
       "titulo_es_provisional": false,
@@ -324,22 +340,6 @@
       "descripcion": "",
       "imagenes": [
         "obras/obra-20-261121-180952.jpg"
-      ],
-      "titulo_es_provisional": false
-    },
-    {
-      "id": "obra-21",
-      "titulo": "Neblina y verde desde Pachía",
-      "tipo": "pintura",
-      "artista_id": "artista-2",
-      "tecnica": "Óleo",
-      "medidas": "70 x 50cm.",
-      "anio": "2025",
-      "precio_soles": 250,
-      "disponible": true,
-      "descripcion": "Paisaje existente en el noble distrito de Pachía, Tacna, está hacia el lado del cerro Intiorko, pero desde este punto puede verse también el Arunta. ",
-      "imagenes": [
-        "obras/obra-21-261121-181329.jpg"
       ],
       "titulo_es_provisional": false
     }
