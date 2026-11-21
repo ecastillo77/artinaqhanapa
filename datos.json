@@ -26,6 +26,13 @@
       "disciplina": "Pinturas al óleo, acuarela, escultura en yeso",
       "descripcion": "Ella es tacneña, profesora, administradora y actualmente cursa la carrera de artista profesional, especialidad de artes plásticas en la Esfap.\nHa participado como jurado en concursos de dibujo y pintura organizados por el Gobierno Regional, Municipalidad de Ite, Municipalidad de Gregorio Albarracín, Club de Leones, Expo Coleccionistas, Universidad Privada de Tacna, Universidad Nacional Jorge Basadre Grohmann.\nHa participado en 12 exposiciones de arte, entre individuales y colectivas, ha realizado diversos murales, y dictado talleres a niños y adolescentes.\nEstá inscrita en Rentonca y Registro Nacional del Artesano.\nEste año ha asumido la coordinación del colectivo de arte Artina Qhanapa, cuya finalidad es la investigación y llevar arte a más públicos.",
       "foto": "artistas/maylin-liu-jimenez-261120-205040.jpg"
+    },
+    {
+      "id": "artista-3",
+      "nombre": "Yanela Chamorro Laulate",
+      "disciplina": "Pintura al óleo, mixta, esculturas",
+      "descripcion": "​Soy Yanela Alexandra Chamorro Laulate, tacneña de nacimiento, estudiante de la carrera de Artista Profesional en Artes Plásticas de la ESFA de Tacna. En constante formación y exploración técnica en campos como la escultura y la pintura, etc. Comprometida con el desarrollo cultural de mi región como miembro del colectivo Artina Qhanapa.",
+      "foto": ""
     }
   ],
   "obras": [
@@ -209,7 +216,7 @@
       "id": "obra-16",
       "titulo": "¿Quién eres?",
       "tipo": "pintura",
-      "artista_id": "",
+      "artista_id": "artista-3",
       "tecnica": "Mixta",
       "medidas": "120 x 80cm.",
       "anio": "2026",
@@ -225,7 +232,7 @@
       "id": "obra-17",
       "titulo": "Corazón del océano",
       "tipo": "escultura",
-      "artista_id": "",
+      "artista_id": "artista-3",
       "tecnica": "Mixta",
       "medidas": "23 x 23 cm.",
       "anio": "2026",
