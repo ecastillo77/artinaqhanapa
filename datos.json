@@ -56,17 +56,17 @@
       "foto": ""
     },
     {
-      "id": "artista-3",
-      "nombre": "Yanela Chamorro Laulate",
-      "disciplina": "Pintura al óleo, mixta, esculturas",
-      "descripcion": "​Soy Yanela Alexandra Chamorro Laulate, tacneña de nacimiento, estudiante de la carrera de Artista Profesional en Artes Plásticas de la ESFA de Tacna. En constante formación y exploración técnica en campos como la escultura y la pintura, etc. Comprometida con el desarrollo cultural de mi región como miembro del colectivo Artina Qhanapa.",
-      "foto": ""
-    },
-    {
       "id": "artista-8",
       "nombre": "Molly Yucra Serrano ",
       "disciplina": "Pinturas al óleo, esculturas",
       "descripcion": "Soy Molly Yucra Serrano, artista plástico en formación. Me interesa explorar diferentes formas de expresión a través de la pintura y la escultura. Me gusta crear composiciones de carácter surrealista, combinando elementos que aparentemente no tienen relación y dándoles un nuevo sentido. En mis trabajos suelo explorar la imaginación, las emociones y la creación de mundos propios.",
+      "foto": ""
+    },
+    {
+      "id": "artista-3",
+      "nombre": "Yanela Chamorro Laulate",
+      "disciplina": "Pintura al óleo, mixta, esculturas",
+      "descripcion": "​Soy Yanela Alexandra Chamorro Laulate, tacneña de nacimiento, estudiante de la carrera de Artista Profesional en Artes Plásticas de la ESFA de Tacna. En constante formación y exploración técnica en campos como la escultura y la pintura, etc. Comprometida con el desarrollo cultural de mi región como miembro del colectivo Artina Qhanapa.",
       "foto": ""
     }
   ],
