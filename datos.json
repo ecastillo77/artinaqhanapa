@@ -286,10 +286,10 @@
       "id": "expo-1",
       "titulo": "El umbral de los sueños",
       "subtitulo": "",
-      "descripcion": "",
+      "descripcion": "Estimados amigos:\nEsta es nuestra cuarta exposición de arte, desde que iniciamos \nactividades en junio 2026.\nTenemos el agrado de compartir con ustedes el catálogo virtual \nde nuestra exposición pictórica y escultórica “El umbral de los sueños” \ndonde mostramos diversas expresiones de temática surrealista. \nEl mismo surrealismo con el que a veces soñamos y nos cuesta \nrecordar. o ese que soñamos despiertos, donde la realidad supera \na la ficción.\nEl surrealismo es ese movimiento artístico donde los cuerpos, objetos \ny las locas ideas pueden fusionarse y a la vez irse volando o\ncorriendo, para pasar a otra dimensión, o de repente transcurrir en \notros tiempos, y de la nada volverse a encontrar.\nGracias por el tiempo que nos dedican, es un estímulo para\nnosotros... y así seguir creciendo en nuestro camino artístico. \nprocuremos siempre apoyar el arte local, es de suma importancia \nen cualquier comunidad, para vivir en un entorno sano e íntegro. \nEl arte nos iguala, y nos unE, PERO SOBRE TODO NOS ENSEÑA.",
       "lugar": "Centro Cultural Casa Basadre",
       "direccion": "",
-      "mapa": "",
+      "mapa": "https://maps.app.goo.gl/i7q91ZneaLahRBFN7?g_st=ac",
       "fecha_inicio": "2026-11-05",
       "fecha_fin": "2026-11-12",
       "horario": "Lunes a Viernes de 9 am. a 1 pm.",
@@ -297,10 +297,18 @@
       "afiche": "exposiciones/el-umbral-de-los-suenos-261119-130229.jpg",
       "obras": [
         "obra-01",
-        "obra-02",
+        "obra-07",
+        "obra-04",
+        "obra-12",
+        "obra-13",
+        "obra-14",
         "obra-03",
+        "obra-15",
+        "obra-02",
         "obra-10",
-        "obra-12"
+        "obra-06",
+        "obra-16",
+        "obra-17"
       ]
     }
   ]
