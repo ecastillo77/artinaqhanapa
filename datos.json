@@ -119,22 +119,6 @@
       ]
     },
     {
-      "id": "obra-08",
-      "titulo": "Espíritu de la flor",
-      "titulo_es_provisional": true,
-      "tipo": "pintura",
-      "artista_id": "",
-      "tecnica": "Óleo o acrílico sobre lienzo (por confirmar)",
-      "medidas": "",
-      "anio": "",
-      "precio_soles": null,
-      "disponible": true,
-      "descripcion": "Personaje en forma de flor de floripondio sobre fondo verde con burbujas.",
-      "imagenes": [
-        "obras/obra-08.jpg"
-      ]
-    },
-    {
       "id": "obra-09",
       "titulo": "Nubes azules",
       "titulo_es_provisional": true,
@@ -152,18 +136,18 @@
     },
     {
       "id": "obra-10",
-      "titulo": "Rostro con antifaz",
-      "titulo_es_provisional": true,
+      "titulo": "Pensamientos ocultos",
+      "titulo_es_provisional": false,
       "tipo": "escultura",
       "artista_id": "",
-      "tecnica": "Escultura con aplicaciones de encaje y lentejuelas (material por confirmar)",
-      "medidas": "",
-      "anio": "",
-      "precio_soles": null,
+      "tecnica": "Escultura en yeso piedra con agregados mixtos",
+      "medidas": "45 x 30cm.",
+      "anio": "2026",
+      "precio_soles": 180,
       "disponible": true,
-      "descripcion": "Busto dorado con antifaz de encaje blanco y lentejuelas.",
+      "descripcion": "El ser humano es un misterio, a veces no queremos ver lo visible teniendo una realidad frente a nosotros, nos ponemos una máscara pero interiormente sabemos que podemos quitárnosla.",
       "imagenes": [
-        "obras/obra-10.jpg"
+        "obras/obra-10-261120-190215.jpg"
       ]
     },
     {
