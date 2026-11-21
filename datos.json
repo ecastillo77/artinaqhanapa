@@ -232,6 +232,22 @@
       ]
     },
     {
+      "id": "obra-23",
+      "titulo": "El sonido del mar",
+      "tipo": "pintura",
+      "artista_id": "artista-2",
+      "tecnica": "Óleo espatulado",
+      "medidas": "60 x 50cm.",
+      "anio": "2025",
+      "precio_soles": 250,
+      "disponible": true,
+      "descripcion": "Desde el fondo del océano emerge lo femenino para dar paso a un mundo desconocido...",
+      "imagenes": [
+        "obras/obra-23-261121-182021.jpg"
+      ],
+      "titulo_es_provisional": false
+    },
+    {
       "id": "obra-21",
       "titulo": "Neblina y verde desde Pachía",
       "tipo": "pintura",
@@ -244,6 +260,22 @@
       "descripcion": "Paisaje existente en el noble distrito de Pachía, Tacna, está hacia el lado del cerro Intiorko, pero desde este punto puede verse también el Arunta. ",
       "imagenes": [
         "obras/obra-21-261121-181329.jpg"
+      ],
+      "titulo_es_provisional": false
+    },
+    {
+      "id": "obra-22",
+      "titulo": "Pocollay de amarillo",
+      "tipo": "pintura",
+      "artista_id": "artista-2",
+      "tecnica": "Óleo",
+      "medidas": "50 x 40cm.",
+      "anio": "2025",
+      "precio_soles": 170,
+      "disponible": true,
+      "descripcion": "Pintada en vivo, refleja la tranquilidad y armonía de la zona, y el cuidado que tienen los vecinos.",
+      "imagenes": [
+        "obras/obra-22-261121-181747.jpg"
       ],
       "titulo_es_provisional": false
     },
@@ -340,22 +372,6 @@
       "descripcion": "",
       "imagenes": [
         "obras/obra-20-261121-180952.jpg"
-      ],
-      "titulo_es_provisional": false
-    },
-    {
-      "id": "obra-22",
-      "titulo": "Pocollay de amarillo",
-      "tipo": "pintura",
-      "artista_id": "artista-2",
-      "tecnica": "Óleo",
-      "medidas": "50 x 40cm.",
-      "anio": "2025",
-      "precio_soles": 170,
-      "disponible": true,
-      "descripcion": "Pintada en vivo, refleja la tranquilidad y armonía de la zona, y el cuidado que tienen los vecinos.",
-      "imagenes": [
-        "obras/obra-22-261121-181747.jpg"
       ],
       "titulo_es_provisional": false
     }
