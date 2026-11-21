@@ -19,6 +19,13 @@
       "disciplina": "Pintura en diversas técnicas, esculturas, intervenciones",
       "descripcion": "Maribel Carrera del Aguila cuenta con una sólida formación y trayectoria vinculada al ámbito artístico y patrimonial del Perú. Realizó estudios de Historia del Arte en la Universidad Nacional Mayor de San Marcos (UNMSM) y se desempeñó en labores de gestión en el Instituto Superior Tecnológico de Conservación y Restauración Yachay Wasi, en Lima. \nActualmente, reside en Tacna, donde cursa los últimos ciclos de la carrera profesional de Artes Plásticas en la Escuela Superior de Formación Artística Pública (ESFAP) \"Francisco Laso\", integrando así su experiencia en gestión cultural y análisis histórico con la creación artística.",
       "foto": ""
+    },
+    {
+      "id": "artista-2",
+      "nombre": "Maylin Liu Jiménez",
+      "disciplina": "Pinturas al óleo, acuarela, escultura en yeso",
+      "descripcion": "Ella es tacneña, profesora, administradora y actualmente cursa la carrera de artista profesional, especialidad de artes plásticas en la Esfap.\nHa participado como jurado en concursos de dibujo y pintura organizados por el Gobierno Regional, Municipalidad de Ite, Municipalidad de Gregorio Albarracín, Club de Leones, Expo Coleccionistas, Universidad Privada de Tacna, Universidad Nacional Jorge Basadre Grohmann.\nHa participado en 12 exposiciones de arte, entre individuales y colectivas, ha realizado diversos murales, y dictado talleres a niños y adolescentes.\nEstá inscrita en Rentonca y Registro Nacional del Artesano.\nEste año ha asumido la coordinación del colectivo de arte Artina Qhanapa, cuya finalidad es la investigación y llevar arte a más públicos.",
+      "foto": ""
     }
   ],
   "obras": [
@@ -71,6 +78,22 @@
       ]
     },
     {
+      "id": "obra-12",
+      "titulo": "Nexo",
+      "titulo_es_provisional": false,
+      "tipo": "pintura",
+      "artista_id": "",
+      "tecnica": "Óleo",
+      "medidas": "120 x 80cm.",
+      "anio": "2026",
+      "precio_soles": null,
+      "disponible": true,
+      "descripcion": "Esta obra fusiona elementos arquitectónicos, figuras simbólicas y paisajes surrealistas creando una atmósfera enigmática. \nA través de una visión surrealista, invita a reflexionar sobre la conexión entre la realidad, la imaginación y lo desconocido.",
+      "imagenes": [
+        "obras/obra-12.jpg"
+      ]
+    },
+    {
       "id": "obra-13",
       "titulo": "Ecos de la profundidad",
       "tipo": "pintura",
@@ -101,22 +124,6 @@
         "obras/obra-14-261120-191445.jpg"
       ],
       "titulo_es_provisional": false
-    },
-    {
-      "id": "obra-12",
-      "titulo": "Nexo",
-      "titulo_es_provisional": false,
-      "tipo": "pintura",
-      "artista_id": "",
-      "tecnica": "Óleo",
-      "medidas": "120 x 80cm.",
-      "anio": "2026",
-      "precio_soles": null,
-      "disponible": true,
-      "descripcion": "Esta obra fusiona elementos arquitectónicos, figuras simbólicas y paisajes surrealistas creando una atmósfera enigmática. \nA través de una visión surrealista, invita a reflexionar sobre la conexión entre la realidad, la imaginación y lo desconocido.",
-      "imagenes": [
-        "obras/obra-12.jpg"
-      ]
     },
     {
       "id": "obra-03",
@@ -155,7 +162,7 @@
       "titulo": "Naturaleza indomable",
       "titulo_es_provisional": false,
       "tipo": "pintura",
-      "artista_id": "",
+      "artista_id": "artista-2",
       "tecnica": "Óleo",
       "medidas": "90 x 70cm.",
       "anio": "2026",
@@ -171,7 +178,7 @@
       "titulo": "Pensamientos ocultos",
       "titulo_es_provisional": false,
       "tipo": "escultura",
-      "artista_id": "",
+      "artista_id": "artista-2",
       "tecnica": "Escultura en yeso piedra con agregados mixtos",
       "medidas": "45 x 30cm.",
       "anio": "2026",
