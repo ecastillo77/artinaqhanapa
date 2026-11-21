@@ -14,10 +14,24 @@
   },
   "artistas": [
     {
+      "id": "artista-6",
+      "nombre": "Cynthia Arteta Maquera",
+      "disciplina": "Pintura al óleo, mixta, esculturas",
+      "descripcion": "Soy Cynthia Arteta Maquera una artista plástica en formación. A través de mis creaciones, transformo experiencias y vivencias personales en propuestas visuales propias, explorando el surrealismo como medio de expresión. Organizadora de la primera subasta de arte en Tacna y miembro activo del colectivo Artina Qhanapa.",
+      "foto": ""
+    },
+    {
       "id": "artista-4",
       "nombre": "Elizabeth Villalovos Tapia ",
       "disciplina": "Pintura al óleo, mixta, esculturas",
       "descripcion": "Soy Elizabeth Villalovos Tapia,  de la Ciudad Heroica de Tacna. Soy estudiante de la carrera de Artes Plásticas, en formación como artista profesional. Me especializo en las disciplinas de pintura y escultura, explorando diferentes técnicas y lenguajes artísticos. Mi producción artística se inspira principalmente en la teología bíblicas y los mitos andinos del Perú, tomando como referencia sus relatos, simbolismos y elementos culturales.",
+      "foto": ""
+    },
+    {
+      "id": "artista-7",
+      "nombre": "Freddy Leonardo Rojas Oyola ",
+      "disciplina": "Pinturas al óleo, esculturas",
+      "descripcion": "",
       "foto": ""
     },
     {
@@ -49,10 +63,10 @@
       "foto": ""
     },
     {
-      "id": "artista-6",
-      "nombre": "Cynthia Arteta Maquera",
-      "disciplina": "Pintura al óleo, mixta, esculturas",
-      "descripcion": "Soy Cynthia Arteta Maquera una artista plástica en formación. A través de mis creaciones, transformo experiencias y vivencias personales en propuestas visuales propias, explorando el surrealismo como medio de expresión. Organizadora de la primera subasta de arte en Tacna y miembro activo del colectivo Artina Qhanapa.",
+      "id": "artista-8",
+      "nombre": "Molly Yucra Serrano ",
+      "disciplina": "Pinturas al óleo, esculturas",
+      "descripcion": "Soy Molly Yucra Serrano, artista plástico en formación. Me interesa explorar diferentes formas de expresión a través de la pintura y la escultura. Me gusta crear composiciones de carácter surrealista, combinando elementos que aparentemente no tienen relación y dándoles un nuevo sentido. En mis trabajos suelo explorar la imaginación, las emociones y la creación de mundos propios.",
       "foto": ""
     }
   ],
@@ -110,7 +124,7 @@
       "titulo": "Nexo",
       "titulo_es_provisional": false,
       "tipo": "pintura",
-      "artista_id": "",
+      "artista_id": "artista-7",
       "tecnica": "Óleo",
       "medidas": "120 x 80cm.",
       "anio": "2026",
@@ -222,7 +236,7 @@
       "titulo": "Los caballeros de la mesa cuadrada",
       "titulo_es_provisional": false,
       "tipo": "pintura",
-      "artista_id": "",
+      "artista_id": "artista-8",
       "tecnica": "Mixta",
       "medidas": "120 x 80cm.",
       "anio": "2026",
