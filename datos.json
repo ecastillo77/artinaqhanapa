@@ -165,6 +165,22 @@
         "obras/obra-13-261120-191154.jpg"
       ],
       "titulo_es_provisional": false
+    },
+    {
+      "id": "obra-14",
+      "titulo": "Lo que habita en la sombra",
+      "tipo": "pintura",
+      "artista_id": "",
+      "tecnica": "Acrílico",
+      "medidas": "110 x 80cm.",
+      "anio": "2026",
+      "precio_soles": 500,
+      "disponible": true,
+      "descripcion": "Mi obra explora el mundo oculto de la imaginación representando un mundo mágico a través de criaturas fantásticas que simbolizan los miedos, pensamientos y emociones que permanecen dentro de nosotros, mediante tonos oscuros figuras misteriosas busco transmitir la belleza de los desconocido inspirado en el universo fantástico de Briand Fround.",
+      "imagenes": [
+        "obras/obra-14-261120-191445.jpg"
+      ],
+      "titulo_es_provisional": false
     }
   ],
   "musica": "musica/fondo.mp3",
