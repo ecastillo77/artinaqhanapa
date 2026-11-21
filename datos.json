@@ -33,6 +33,13 @@
       "disciplina": "Pintura al óleo, mixta, esculturas",
       "descripcion": "​Soy Yanela Alexandra Chamorro Laulate, tacneña de nacimiento, estudiante de la carrera de Artista Profesional en Artes Plásticas de la ESFA de Tacna. En constante formación y exploración técnica en campos como la escultura y la pintura, etc. Comprometida con el desarrollo cultural de mi región como miembro del colectivo Artina Qhanapa.",
       "foto": ""
+    },
+    {
+      "id": "artista-4",
+      "nombre": "Elizabeth Villalovos Tapia ",
+      "disciplina": "Pintura al óleo, mixta, esculturas",
+      "descripcion": "Soy Elizabeth Villalovos Tapia,  de la Ciudad Heroica de Tacna. Soy estudiante de la carrera de Artes Plásticas, en formación como artista profesional. Me especializo en las disciplinas de pintura y escultura, explorando diferentes técnicas y lenguajes artísticos. Mi producción artística se inspira principalmente en la teología bíblicas y los mitos andinos del Perú, tomando como referencia sus relatos, simbolismos y elementos culturales.",
+      "foto": ""
     }
   ],
   "obras": [
@@ -57,7 +64,7 @@
       "titulo": "Lilith",
       "titulo_es_provisional": false,
       "tipo": "pintura",
-      "artista_id": "",
+      "artista_id": "artista-4",
       "tecnica": "Mixta",
       "medidas": "120 x 80cm.",
       "anio": "2026",
@@ -73,7 +80,7 @@
       "titulo": "Antahualla",
       "titulo_es_provisional": false,
       "tipo": "escultura",
-      "artista_id": "",
+      "artista_id": "artista-4",
       "tecnica": "Mixta",
       "medidas": "50 x 20 x 25cm.",
       "anio": "2026",
